@@ -38,6 +38,9 @@
 <script>
 import PaginationCom from "@/components/PaginationCom.vue";
 export default {
+  components: {
+    PaginationCom,
+  },
   props: ["token"],
   data() {
     return {
@@ -45,9 +48,7 @@ export default {
       pagination: {},
     };
   },
-  components: {
-    PaginationCom,
-  },
+
   methods: {
     getProductsList(page = 1) {
       this.$http
