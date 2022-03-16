@@ -15,7 +15,7 @@ const routes = [
     children: [
       {
         path: "",
-        component: () => import("../views/IndexView.vue"),
+        component: () => import("../views/HomeView.vue"),
       },
       // 前台產品列表
       {
@@ -52,6 +52,10 @@ const routes = [
       {
         path: "coupon",
         component: () => import("../views/AdminCoupon.vue"),
+      },
+      {
+        path: "order",
+        component: () => import("../views/AdminOrder.vue"),
       },
     ],
   },

@@ -1,22 +1,16 @@
 <template>
-  <div class="container">
-    <FrontNav />
-
-    <router-view></router-view>
-  </div>
+  <FrontNav></FrontNav>
+  <router-view></router-view>
+  <FrontFooter></FrontFooter>
 </template>
-
-<style lang="scss" scoped>
-h1 {
-  text-align: center;
-}
-</style>
 
 <script>
 import FrontNav from "@/components/FrontNav.vue";
+import FrontFooter from "@/components/FrontFooter.vue";
 export default {
   components: {
     FrontNav,
+    FrontFooter,
   },
 };
 </script>

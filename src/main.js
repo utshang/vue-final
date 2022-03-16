@@ -11,8 +11,12 @@ import AllRules from "@vee-validate/rules";
 import { localize, setLocale } from "@vee-validate/i18n";
 import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
 
+import $httpMessageState from "@/libs/pushMessageState";
+import "material-icons/iconfont/material-icons.css";
+
 import App from "./App.vue";
 import router from "./router";
+import { date, currency } from "./libs/filters";
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
@@ -26,6 +30,14 @@ configure({
 setLocale("zh_TW");
 
 const app = createApp(App);
+app.config.globalProperties.$filters = {
+  date,
+  currency,
+};
+
+//掛載在global下
+app.config.globalProperties.$httpMessageState = $httpMessageState;
+
 app.use(router);
 app.use(VueAxios, axios);
 
