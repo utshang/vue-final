@@ -1,5 +1,7 @@
 <template>
-  <div class="container pt-3 pb-2">
+  <div
+    class="main-nav px-4 pt-2 pb-1 px-md-5 py-md-3 bg-white position-sticky top-0"
+  >
     <div class="nav justify-content-between">
       <router-link class="home text-secondary fs-3 mt-2" to="/"
         >The Florist</router-link
@@ -103,15 +105,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$secondary: #ad795d;
+.main-nav {
+  z-index: 1000;
+}
+
 .home {
   font-family: "Sansita Swashed", cursive;
 }
 .material-icons-outlined {
   font-size: 1.8rem;
-}
-
-.dropdown-item {
-  color: $secondary;
 }
 </style>

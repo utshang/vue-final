@@ -1,8 +1,8 @@
 <template>
   <h1>這是前台產品列表</h1>
 
+  <!-- row決定內層的數量 -->
   <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3">
-    <!-- row決定內層的數量 -->
     <div class="col" v-for="item in products" :key="item.id">
       <div class="card h-100">
         <div

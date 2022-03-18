@@ -2,6 +2,19 @@
   <FrontNav></FrontNav>
   <router-view></router-view>
   <FrontFooter></FrontFooter>
+  <transition name="fade">
+    <a
+      class="go-to-top bg-white text-center text-secondary position-fixed shadow rounded-circle"
+      v-if="GoToTop"
+      @click="goToTop"
+    >
+      <span
+        class="material-icons-outlined position-absolute top-50 start-50 translate-middle"
+      >
+        keyboard_capslock
+      </span>
+    </a>
+  </transition>
 </template>
 
 <script>
@@ -12,5 +25,38 @@ export default {
     FrontNav,
     FrontFooter,
   },
+  data() {
+    return {
+      GoToTop: false,
+    };
+  },
+  methods: {
+    goToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        this.GoToTop = true;
+      } else {
+        this.GoToTop = false;
+      }
+    });
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.go-to-top {
+  bottom: 50px;
+  right: 30px;
+  z-index: 1500;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+}
+</style>

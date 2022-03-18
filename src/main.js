@@ -13,6 +13,7 @@ import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
 
 import $httpMessageState from "@/libs/pushMessageState";
 import "material-icons/iconfont/material-icons.css";
+import "animate.css";
 
 import App from "./App.vue";
 import router from "./router";

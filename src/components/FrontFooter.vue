@@ -1,5 +1,5 @@
 <template>
-  <div class="footer mt-5 text-white">
+  <div class="footer text-white">
     <div
       class="footer_body bg-success pt-5 pb-3 fs-6 d-sm-flex justify-content-sm-between"
     >

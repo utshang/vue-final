@@ -21,5 +21,5 @@ export default {
 
 <style lang="scss">
 @import "./assets/stylesheets/all";
-@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;600&display=swap");
 </style>
