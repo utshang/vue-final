@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     getProduct() {
-      console.log(this.$route);
+      // console.log(this.$route);
       const { id } = this.$route.params;
       this.$http
         .get(
@@ -20,10 +20,10 @@ export default {
         )
         .then((res) => {
           this.product = res.data.product;
-          console.log(res);
+          // console.log(res);
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          // console.log(err);
         });
     },
   },

@@ -122,8 +122,8 @@ export default {
           this.isLoading = false;
           emitter.emit("get-cart");
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          // console.log(err);
         });
     },
     getProduct(id) {

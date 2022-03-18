@@ -1,5 +1,6 @@
 <template>
   <!-- banner -->
+
   <div
     class="banner"
     :style="{
@@ -20,63 +21,153 @@
   </div>
 
   <!-- 商品分類 -->
+  <div class="container products">
+    <div class="row row-cols-1 row-cols-md-2 align-items-center">
+      <!-- 花束 -->
+      <div class="category-des mb-3 p-md-3 ps-md-5 my-5">
+        <h2 class="fs-2 text-secondary fw-bold mb-3">
+          花束 <span class="fs-5">Bouquet</span>
+        </h2>
+        <p class="text-light lh-lg">
+          為想傳遞愛的你，<br />無論是特殊節日，或只是平凡到不行的平常日，<br />送給愛的人或是自己一束
+          The Florist 精心搭配好的浪漫花束吧！
+        </p>
+      </div>
 
-  <div class="container d-md-flex my-5">
-    <div class="category-des">
-      <h2 class="fs-3 text-secondary fw-bold mb-3">
-        花束 <span class="fs-5">Bouquet</span>
-      </h2>
-      <p class="text-light lh-lg">
-        為想傳遞愛的你，<br />無論是特殊節日，或只是平凡到不行的平常日，<br />送給愛的人或是自己一束
-        The Florist 精心搭配好的浪漫花束吧！
-      </p>
-    </div>
-    <div
-      class="category-img"
-      :style="{
-        backgroundImage:
-          'url(' + require('@/assets/images/front/bouquet.jpg') + ')',
-      }"
-    >
-      <!-- <img :src="require('@/assets/images/front/bouquet.jpg')" alt="" /> -->
+      <div class="h-100">
+        <div
+          class="category-img mb-5 mt-md-5"
+          :style="{
+            backgroundImage:
+              'url(' + require('@/assets/images/front/bouquet.jpg') + ')',
+          }"
+        ></div>
+      </div>
+
+      <!-- 花籃 -->
+
+      <div
+        class="category-img d-none d-md-block"
+        :style="{
+          backgroundImage:
+            'url(' + require('@/assets/images/front/basket.jpg') + ')',
+        }"
+      ></div>
+
+      <div class="category-des p-md-3 ps-md-5 d-md-block d-lg-none">
+        <h2 class="fs-2 text-secondary fw-bold mb-3">
+          花籃 <span class="fs-5">Flower Basket</span>
+        </h2>
+        <p class="text-light lh-lg">聚會或派對時，不可或缺的美麗點綴</p>
+      </div>
+      <div
+        class="category-img d-md-none d-block"
+        :style="{
+          backgroundImage:
+            'url(' + require('@/assets/images/front/basket.jpg') + ')',
+        }"
+      ></div>
+
+      <div class="category-des mt-4 p-md-3 ps-md-5 d-none d-lg-block">
+        <h2 class="fs-2 text-secondary fw-bold mb-3">
+          花籃 <span class="fs-5">Flower Basket</span>
+        </h2>
+        <p class="text-light lh-lg">聚會或派對時，不可或缺的美麗點綴</p>
+      </div>
+      <!-- 花材 -->
+      <div class="category-des mb-3 p-md-3 ps-md-5 my-5">
+        <h2 class="fs-2 text-secondary fw-bold mb-3">
+          花材 <span class="fs-5">Materials</span>
+        </h2>
+        <p class="text-light lh-lg">
+          為想自己創造生活儀式感的你，精選的經典花材
+        </p>
+      </div>
+
+      <div
+        class="category-img mb-5 mt-md-5"
+        :style="{
+          backgroundImage:
+            'url(' + require('@/assets/images/front/material.jpg') + ')',
+        }"
+      ></div>
+
+      <!-- 器皿 -->
+
+      <div
+        class="category-img d-none d-md-block"
+        :style="{
+          backgroundImage:
+            'url(' + require('@/assets/images/front/vase.jpg') + ')',
+        }"
+      ></div>
+
+      <div class="category-des p-md-3 ps-md-5 d-md-block d-lg-none">
+        <h2 class="fs-2 text-secondary fw-bold mb-3">
+          器皿 <span class="fs-5">Vase</span>
+        </h2>
+        <p class="text-light lh-lg">襯托花朵的質感器皿</p>
+      </div>
+      <div
+        class="category-img d-md-none d-block"
+        :style="{
+          backgroundImage:
+            'url(' + require('@/assets/images/front/vase.jpg') + ')',
+        }"
+      ></div>
+
+      <div class="category-des mt-4 p-md-3 ps-md-5 d-none d-lg-block">
+        <h2 class="fs-2 text-secondary fw-bold mb-3">
+          器皿 <span class="fs-5">Vase</span>
+        </h2>
+        <p class="text-light lh-lg">襯托花朵的質感器皿</p>
+      </div>
     </div>
   </div>
 
   <!-- 精選商品 輪播 -->
   <div class="container">
-    <h2 class="fs-3 text-secondary fw-bold my-4">
-      精選商品 <span class="fs-5">Selected</span>
-    </h2>
+    <div>
+      <h2 class="fs-2 text-secondary fw-bold mt-5 mb-4">
+        精選商品 <span class="fs-5">Selected</span>
+      </h2>
 
-    <swiper
-      :modules="modules"
-      :slides-per-view="3"
-      :space-between="50"
-      navigation
-      autoplay
-      :breakpoints="swiper.breakpoints"
-    >
-      <swiper-slide v-for="item in products" :key="item.id">
-        <div
-          class="swiper-slide-inner"
-          style="
-            height: 30rem;
-            background-position: center center;
-            background-size: cover;
-          "
-          :style="{ backgroundImage: `url(${item.imageUrl})` }"
-        ></div>
-      </swiper-slide>
-    </swiper>
-  </div>
-  <div class="text-center my-4 my-sm-5">
-    <a href="" class="link">
-      <router-link
-        class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
-        to="/products"
-        >查看更多</router-link
+      <swiper
+        :modules="modules"
+        :slides-per-view="3"
+        :space-between="50"
+        navigation
+        autoplay
+        :breakpoints="swiper.breakpoints"
       >
-    </a>
+        <swiper-slide v-for="item in products" :key="item.id">
+          <div
+            class="swiper-slide-inner"
+            style="
+              height: 30rem;
+              background-position: center center;
+              background-size: cover;
+            "
+            :style="{ backgroundImage: `url(${item.imageUrl})` }"
+          ></div>
+        </swiper-slide>
+      </swiper>
+    </div>
+    <div class="text-center my-4 my-sm-5">
+      <a href="" class="link">
+        <router-link
+          class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
+          to="/products"
+          >查看更多</router-link
+        >
+      </a>
+    </div>
+  </div>
+
+  <!-- 關於我們-->
+  <div class="container d-md-flex">
+    <div class="about-des"></div>
+    <div class="about-img"></div>
   </div>
 </template>
 
@@ -130,7 +221,7 @@ export default {
         .then((res) => {
           this.products = res.data.products;
 
-          console.log(this.products);
+          // console.log(this.products);
         });
     },
   },
@@ -157,22 +248,15 @@ h2 {
 }
 
 .title {
-  font-size: 80px;
+  font-size: 60px;
   font-family: "Sansita Swashed", cursive;
-
+  text-align: center;
   font-weight: 600;
-}
-
-@media screen and (min-width: 375px) {
-  .title {
-    font-size: 60px;
-    text-align: center;
-  }
 }
 
 @media screen and (min-width: 768px) {
   .title {
-    font-size: 70px;
+    font-size: 78px;
   }
 }
 
@@ -189,7 +273,7 @@ h2 {
 }
 
 .swiper-slide-inner {
-  box-shadow: 0 3px 12px 0 rgb(0 0 0 / 12%);
+  box-shadow: 1px 1px 10px #696969;
   border-radius: 1rem;
   &:hover {
     opacity: 0.7;
@@ -210,10 +294,18 @@ h2 {
 }
 
 .category-img {
-  height: 50rem;
+  height: 25rem;
+  border-radius: 1rem;
   // background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  box-shadow: 1px 1px 10px #696969;
+}
+
+@media screen and (min-width: 768px) {
+  .category-img {
+    height: 30rem;
+  }
 }
 </style>

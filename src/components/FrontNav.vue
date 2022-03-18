@@ -3,7 +3,7 @@
     class="main-nav px-4 pt-2 pb-1 px-md-5 py-md-3 bg-white position-sticky top-0"
   >
     <div class="nav justify-content-between">
-      <router-link class="home text-secondary fs-3 mt-2" to="/"
+      <router-link class="home text-secondary fs-3 mt-1" to="/"
         >The Florist</router-link
       >
       <div class="naverbar">
@@ -11,14 +11,14 @@
           <ul class="d-flex align-items-center">
             <li>
               <router-link class="home text-secondary" to="/">
-                <span class="material-icons-outlined px-3 text-secondary">
-                  favorite_border
+                <span class="material-icons px-3 text-secondary">
+                  favorite
                 </span></router-link
               >
             </li>
             <li>
               <router-link class="home text-secondary" to="/cart">
-                <span class="material-icons-outlined px-3 text-secondary">
+                <span class="material-icons px-3 text-secondary">
                   shopping_cart
                 </span></router-link
               >
@@ -26,12 +26,12 @@
             <li>
               <div class="dropdown">
                 <a
-                  class="home btn text-secondary px-0"
+                  class="home btn text-secondary p-0"
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span class="material-icons-outlined px-3 text-secondary">
+                  <span class="material-icons mt-1 px-3 text-secondary">
                     menu
                   </span></a
                 >
@@ -111,8 +111,9 @@ export default {
 
 .home {
   font-family: "Sansita Swashed", cursive;
+  font-weight: 600;
 }
-.material-icons-outlined {
+.material-icons {
   font-size: 1.8rem;
 }
 </style>

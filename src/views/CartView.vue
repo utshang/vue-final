@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="container">
     <h2>前台購物車</h2>
@@ -220,8 +221,8 @@ export default {
             data: { product_id: item.id, qty: item.qty },
           }
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          // console.log(res);
 
           this.getCart();
           //讀取完後清空
@@ -238,11 +239,11 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           this.cartData = res.data.data;
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          // alert(err);
         });
     },
     delProduct(id) {
@@ -252,15 +253,15 @@ export default {
         .delete(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart/${id}`
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          // console.log(res);
           this.getCart();
           this.loadingStatus.loadingItem = "";
           this.isLoading = false;
           emitter.emit("get-cart");
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          // alert(err);
         });
     },
     delAllProduct() {
@@ -269,8 +270,8 @@ export default {
         .delete(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/carts`
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          // console.log(res);
           this.getCart();
           emitter.emit("get-cart");
           this.isLoading = false;
@@ -286,8 +287,8 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/order`,
           { data: order }
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          // console.log(res);
           this.$refs.form.resetForm();
           this.getCart();
           emitter.emit("get-cart");
