@@ -1,6 +1,6 @@
 <template>
   <!-- banner -->
-
+  <VeeLoading :active="isLoading"></VeeLoading>
   <div
     class="banner"
     :style="{
@@ -21,15 +21,15 @@
   </div>
 
   <!-- 商品分類 -->
-  <div class="container products">
+  <div class="container">
     <div class="row row-cols-1 row-cols-md-2 align-items-center">
       <!-- 花束 -->
-      <div class="category-des mb-3 p-md-3 ps-md-5 my-5">
+      <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           花束 <span class="fs-5">Bouquet</span>
         </h2>
         <p class="text-light lh-lg">
-          為想傳遞愛的你，<br />無論是特殊節日，或只是平凡到不行的平常日，<br />送給愛的人或是自己一束
+          為想傳遞愛的你，<br />無論是特殊節日，抑或是平常日，<br />送給愛的人或是自己一束
           The Florist 精心搭配好的浪漫花束吧！
         </p>
       </div>
@@ -54,7 +54,7 @@
         }"
       ></div>
 
-      <div class="category-des p-md-3 ps-md-5 d-md-block d-lg-none">
+      <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           花籃 <span class="fs-5">Flower Basket</span>
         </h2>
@@ -68,14 +68,14 @@
         }"
       ></div>
 
-      <div class="category-des mt-4 p-md-3 ps-md-5 d-none d-lg-block">
+      <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           花籃 <span class="fs-5">Flower Basket</span>
         </h2>
         <p class="text-light lh-lg">聚會或派對時，不可或缺的美麗點綴</p>
       </div>
       <!-- 花材 -->
-      <div class="category-des mb-3 p-md-3 ps-md-5 my-5">
+      <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           花材 <span class="fs-5">Materials</span>
         </h2>
@@ -102,7 +102,7 @@
         }"
       ></div>
 
-      <div class="category-des p-md-3 ps-md-5 d-md-block d-lg-none">
+      <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           器皿 <span class="fs-5">Vase</span>
         </h2>
@@ -116,7 +116,7 @@
         }"
       ></div>
 
-      <div class="category-des mt-4 p-md-3 ps-md-5 d-none d-lg-block">
+      <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           器皿 <span class="fs-5">Vase</span>
         </h2>
@@ -126,9 +126,9 @@
   </div>
 
   <!-- 精選商品 輪播 -->
-  <div class="container">
+  <div class="container my-6">
     <div>
-      <h2 class="fs-2 text-secondary fw-bold mt-5 mb-4">
+      <h2 class="fs-2 text-secondary fw-bold my-5">
         精選商品 <span class="fs-5">Selected</span>
       </h2>
 
@@ -153,21 +153,41 @@
         </swiper-slide>
       </swiper>
     </div>
-    <div class="text-center my-4 my-sm-5">
-      <a href="" class="link">
-        <router-link
-          class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
-          to="/products"
-          >查看更多</router-link
-        >
-      </a>
+    <div class="text-center mt-4 my-sm-5">
+      <router-link
+        class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
+        to="/products"
+        >查看更多</router-link
+      >
     </div>
   </div>
 
   <!-- 關於我們-->
-  <div class="container d-md-flex">
-    <div class="about-des"></div>
-    <div class="about-img"></div>
+  <div class="container mb-4 mb-sm-5">
+    <div class="row align-items-center g-3">
+      <div
+        class="about-des col-md-6 col-xl-7 d-flex justify-content-center align-items-center flex-column"
+      >
+        <h2 class="fs-2 text-secondary fw-bold mb-5">
+          關於我們 <span class="fs-5">About us</span>
+        </h2>
+        <p class="text-light lh-lg">
+          The florist 花閣 讓花成為你生活中的陪伴<br />
+          花，除了可以為生活帶來氛圍，也是一種傳遞愛的媒介，<br />
+          希望可以透過花朵，創造生活的儀式感，激發你的浪漫因子，<br />
+          希望你的生活，有The Florist 花閣的相伴。
+        </p>
+      </div>
+      <div
+        class="about-img col-md-6 col-xl-5"
+        :style="{
+          backgroundImage:
+            'url(' + require('@/assets/images/front/about.jpg') + ')',
+        }"
+      >
+        <!-- <img :src="require('@/assets/images/front/about.jpg')" alt="about" /> -->
+      </div>
+    </div>
   </div>
 </template>
 
@@ -186,6 +206,10 @@ export default {
 
   data() {
     return {
+      loadingStatus: {
+        loadingItem: "",
+      },
+      isLoading: false,
       products: [],
       modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
       swiper: {
@@ -303,9 +327,23 @@ h2 {
   box-shadow: 1px 1px 10px #696969;
 }
 
+.about-img {
+  height: 35rem;
+  border-radius: 1rem;
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 1px 1px 10px #696969;
+}
+
 @media screen and (min-width: 768px) {
   .category-img {
     height: 30rem;
   }
+}
+
+.about-img img {
+  border-radius: 1rem;
 }
 </style>

@@ -1,64 +1,114 @@
 <template>
-  <h1>這是前台產品列表</h1>
+  <!-- 產品頁上方要放一張圖，原navbar背景透明，往下滑動後加上白背景，待做 -->
+  <router-link to="/login">login</router-link>
+  <div class="main container">
+    <!-- 麵包屑導航 -->
 
-  <!-- row決定內層的數量 -->
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3">
-    <div class="col" v-for="item in products" :key="item.id">
-      <div class="card h-100">
-        <div
-          :style="{ backgroundImage: `url(${item.imageUrl})` }"
-          style="
-            height: 23.5rem;
-            background-size: cover;
-            background-position: center;
-          "
-        ></div>
-        <div class="card-body">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <p class="card-text">
-            {{ item.price }}
-          </p>
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            :disabled="loadingStatus.loadingItem === item.id"
-            @click="getProduct(item.id)"
-          >
-            <i
-              class="fas fa-spinner fa-pulse"
-              v-if="loadingStatus.loadingItem === item.id"
-            ></i>
-            查看更多
-          </button>
+    <ol class="breadcrumb mb-5">
+      <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <router-link to="/products">全部產品</router-link>
+      </li>
+      <!-- 單一產品頁面 -->
+      <!-- <li class="breadcrumb-item active" aria-current="page">產品名稱</li> -->
+    </ol>
 
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            @click="addCart(item.id)"
-            :disabled="loadingStatus.loadingItem === item.id"
-          >
-            <i
-              class="fas fa-spinner fa-pulse"
-              v-if="loadingStatus.loadingItem === item.id"
-            ></i>
-            加到購物車
-          </button>
+    <!-- 產品 -->
+
+    <div class="menu row">
+      <div class="ps-md-5 col-md-6 col-lg-3">
+        <h3
+          class="mb-4 fs-4 fw-bold text-secondary d-flex align-items-center"
+          @click="getProductsList('')"
+        >
+          全部商品<span class="ms-2 material-icons-outlined">
+            local_florist
+          </span>
+        </h3>
+
+        <ul class="category d-flex d-md-block justify-content-evenly mt-3">
+          <li class="mb-4" @click="getProductsList('花束')">
+            <a><span>花束</span></a>
+          </li>
+          <li class="mb-4" @click="getProductsList('花籃')">
+            <a><span>花籃</span></a>
+          </li>
+          <li class="mb-4" @click="getProductsList('花材')">
+            <a><span>花材</span></a>
+          </li>
+          <li class="mb-4" @click="getProductsList('器皿')">
+            <a><span>器皿</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-lg-9">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+          <div class="col" v-for="item in products" :key="item.id">
+            <div class="card border-width h-100">
+              <div
+                class="card-img"
+                :style="{ backgroundImage: `url(${item.imageUrl})` }"
+              ></div>
+              <div
+                class="card-body d-flex align-items-end justify-content-between"
+              >
+                <div class="card-body-content">
+                  <h5 class="card-title fs-5 fw-bold lh-base">
+                    {{ item.title }}
+                  </h5>
+                  <div
+                    class="price fs-5 fw-bold text-secondary mt-xl-0"
+                    v-if="item.origin_price === item.price"
+                  >
+                    NT$ {{ item.price }} 元
+                  </div>
+                  <div
+                    class="d-flex d-md-block d-xl-flex align-items-end"
+                    v-else
+                  >
+                    <div class="fs-6 pe-2 text-secondary fs-5 fw-bold">
+                      NT$ {{ item.price }} 元
+                    </div>
+                    <del class="text-decoration-line-through">
+                      NT$ {{ item.origin_price }} 元</del
+                    >
+                  </div>
+                </div>
+                <div>
+                  <a
+                    class="cart-icon bg-secondary pt-3 pb-1 px-2 rounded-pill"
+                    @click="addCart(item.id), pushMessageState"
+                  >
+                    <span class="material-icons-outlined">
+                      add_shopping_cart
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <PaginationCom
+      class="d-flex justify-content-md-end justify-content-center mt-5"
+      :pages="pagination"
+      @emit-pages="getProductsList"
+    ></PaginationCom>
   </div>
 
   <VeeLoading :active="isLoading"></VeeLoading>
-
-  <UserProductModal
+  <!-- <UserProductModal
     ref="userProductModal"
     :product="product"
     @add-cart="addCart"
-  ></UserProductModal>
+  ></UserProductModal> -->
 </template>
 
 <script>
-import UserProductModal from "@/components/UserProductModal.vue";
+import PaginationCom from "@/components/PaginationCom.vue";
+// import UserProductModal from "@/components/UserProductModal.vue";
+
 import emitter from "@/libs/emitter";
 
 export default {
@@ -66,6 +116,7 @@ export default {
     return {
       product: {},
       products: [],
+      pagination: {},
       cartData: {},
       loadingStatus: {
         loadingItem: "",
@@ -73,22 +124,25 @@ export default {
       isLoading: false,
     };
   },
+  inject: ["emitter"],
   components: {
-    UserProductModal,
+    // UserProductModal,
+    PaginationCom,
   },
   methods: {
-    getProductsList() {
+    getProductsList(page = 1, category) {
+      let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
+      if (category) {
+        url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?category=${category}`;
+      }
       this.isLoading = true;
 
-      this.$http
-        .get(
-          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`
-        )
-        .then((res) => {
-          this.products = res.data.products;
-          this.isLoading = false;
-          // console.log(this.products);
-        });
+      this.$http.get(url).then((res) => {
+        this.products = res.data.products;
+        this.pagination = res.data.pagination;
+        this.isLoading = false;
+        console.log(res.data);
+      });
     },
     // getCart() {
     //   this.$http
@@ -114,12 +168,14 @@ export default {
           }
         )
         .then(() => {
-          // console.log(res);
-
           //讀取完後清空
           this.loadingStatus.loadingItem = "";
-          this.$refs.userProductModal.hideModal();
+          // this.$refs.userProductModal.hideModal();
           this.isLoading = false;
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "成功加入購物車囉！",
+          });
           emitter.emit("get-cart");
         })
         .catch(() => {
@@ -138,7 +194,7 @@ export default {
           this.loadingStatus.loadingItem = "";
           this.product = response.data.product;
           this.isLoading = false;
-          this.$refs.userProductModal.openModal();
+          // this.$refs.userProductModal.openModal();
         })
         .catch((err) => {
           alert(err.data.message);
@@ -156,7 +212,123 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+// .col-md-6 {
+//   padding: 0;
+// }
+
+.breadcrumb {
+  padding-left: 0rem;
+}
+
+@media screen and (min-width: 769px) {
+  .breadcrumb {
+    padding-left: 2.2rem;
+  }
+}
+
 h1 {
   text-align: center;
+}
+
+.router-link-active {
+  color: #6c757d;
+  &:hover {
+    color: #c6cace;
+  }
+}
+
+.router-link-exact-active {
+  color: #ad795d;
+  font-weight: bold;
+  &:hover {
+    color: #e6ccab;
+  }
+}
+
+.category li a {
+  color: #6c757d;
+  width: 200px;
+  transition: all 0.5s;
+}
+
+.category li a span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.category li a span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.category li a:hover span {
+  color: #c6cace;
+  padding-right: 25px;
+}
+
+.category li a:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.card {
+  box-shadow: 0 2px 15px -2px rgb(0 0 0 / 12%), 0 2px 6px -2px rgb(0 0 0 / 5%);
+  border-radius: 1rem;
+  transition-duration: 0.3s;
+  &:hover {
+    transform: translateY(-6px);
+  }
+}
+
+.card-img {
+  height: 22rem;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+del {
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.cart-icon {
+  color: #fffafa;
+
+  &:hover {
+    color: #ad795d;
+    background-color: #fffafa !important;
+    border: 3px solid #ad795d;
+  }
+}
+
+.menu {
+  h3 {
+    cursor: pointer;
+  }
+  &-bar {
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .price {
+    margin-top: 1.4rem;
+  }
 }
 </style>

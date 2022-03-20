@@ -3,7 +3,7 @@
     <div
       class="footer_body bg-success pt-5 pb-3 fs-6 d-sm-flex justify-content-sm-between"
     >
-      <div class="menu ps-4 ps-md-0">
+      <div class="menu ps-4">
         <ul>
           <li class="mb-3 mb-sm-4">
             <router-link class="text-white text-decoration-none" to="/products">
@@ -42,12 +42,18 @@
 </template>
 
 <style lang="scss" scoped>
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
   .footer_body {
-    padding-left: 13rem;
-    padding-right: 13rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
   }
 }
+// @media screen and (min-width: 769px) {
+//   .footer_body {
+//     padding-left: 13rem;
+//     padding-right: 13rem;
+//   }
+// }
 
 .footer_body li {
   font-size: 0.875rem;

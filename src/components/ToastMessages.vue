@@ -1,6 +1,6 @@
 <template>
   <div
-    class="toast-container position-fixed pe-3 top-0 end-0"
+    class="toast-container position-fixed pe-3 top-2 end-0"
     style="z-index: 1500"
   >
     <div
@@ -22,9 +22,6 @@
           @click="clearToast(key)"
           aria-label="Close"
         ></button>
-      </div>
-      <div class="toast-body" v-if="msg.content">
-        {{ msg.content }}
       </div>
     </div>
   </div>
@@ -53,8 +50,8 @@ export default {
     this.emitter.on("push-message", (message) => {
       //解構
       //預設style是success
-      const { style = "success", title, content } = message;
-      this.messages.push({ style, title, content });
+      const { style = "success", title } = message;
+      this.messages.push({ style, title });
       this.toastShow();
     });
   },

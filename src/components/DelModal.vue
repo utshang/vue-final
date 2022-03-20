@@ -49,7 +49,7 @@
 <script>
 import Modal from "bootstrap/js/dist/modal";
 export default {
-  inject: ["emitter"],
+  // inject: ["emitter"],
   props: {
     item: {},
   },

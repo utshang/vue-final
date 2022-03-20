@@ -13,14 +13,21 @@
               <router-link class="home text-secondary" to="/">
                 <span class="material-icons px-3 text-secondary">
                   favorite
-                </span></router-link
-              >
+                </span>
+                <span
+                  class="favorite-num rounded-pill bg-danger position-absolute"
+                ></span>
+              </router-link>
             </li>
             <li>
               <router-link class="home text-secondary" to="/cart">
                 <span class="material-icons px-3 text-secondary">
                   shopping_cart
-                </span></router-link
+                </span>
+                <span
+                  class="cart-num rounded-pill bg-danger position-absolute"
+                  >{{ cartData.carts.length }}</span
+                ></router-link
               >
             </li>
             <li>
@@ -40,21 +47,18 @@
                   aria-labelledby="dropdownMenuLink"
                 >
                   <li class="pb-3">
-                    <router-link
-                      class="dropdown-item text-light"
-                      to="/products"
-                    >
+                    <router-link class="dropdown-item" to="/products">
                       全部產品</router-link
                     >
                   </li>
 
                   <li class="pb-3">
-                    <router-link class="dropdown-item text-light" to="/products"
+                    <router-link class="dropdown-item" to="/products"
                       >關於我們</router-link
                     >
                   </li>
                   <li>
-                    <router-link class="dropdown-item text-light" to="/products"
+                    <router-link class="dropdown-item" to="/products"
                       >聯絡我們</router-link
                     >
                   </li>
@@ -115,5 +119,28 @@ export default {
 }
 .material-icons {
   font-size: 1.8rem;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #ad795d;
+}
+
+.cart-num {
+  font-size: 0.75rem;
+  color: #fffafa;
+  padding: 0.1rem 0.5rem 0.2rem;
+  top: 6px;
+  right: 88px;
+}
+
+@media screen and (min-width: 769px) {
+  .cart-num {
+    font-size: 0.75rem;
+    color: #fffafa;
+    padding: 0.1rem 0.4rem 0.2rem;
+    top: 12px;
+    right: 114px;
+  }
 }
 </style>
