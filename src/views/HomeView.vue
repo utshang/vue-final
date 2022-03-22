@@ -29,8 +29,8 @@
           花束 <span class="fs-5">Bouquet</span>
         </h2>
         <p class="text-light lh-lg">
-          為想傳遞愛的你，<br />無論是特殊節日，抑或是平常日，<br />送給愛的人或是自己一束
-          The Florist 精心搭配好的浪漫花束吧！
+          為想傳遞愛的你，
+          <br />無論是特殊節日，抑或是平常日，<br />送給愛的人或是自己一束精心搭配好的花吧！
         </p>
       </div>
 
@@ -58,7 +58,9 @@
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           花籃 <span class="fs-5">Flower Basket</span>
         </h2>
-        <p class="text-light lh-lg">聚會或派對時，不可或缺的美麗點綴</p>
+        <p class="text-light lh-lg">
+          在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
+        </p>
       </div>
       <div
         class="category-img d-md-none d-block"
@@ -72,7 +74,9 @@
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           花籃 <span class="fs-5">Flower Basket</span>
         </h2>
-        <p class="text-light lh-lg">聚會或派對時，不可或缺的美麗點綴</p>
+        <p class="text-light lh-lg">
+          在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
+        </p>
       </div>
       <!-- 花材 -->
       <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
@@ -80,7 +84,7 @@
           花材 <span class="fs-5">Materials</span>
         </h2>
         <p class="text-light lh-lg">
-          為想自己創造生活儀式感的你，精選的經典花材
+          為想創造生活儀式感的你，<br />準備了精選的花材，從經典到獨有<br />讓你親自挑選、親自搭配、親自包裝、親自享受！<br />
         </p>
       </div>
 
@@ -106,7 +110,9 @@
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           器皿 <span class="fs-5">Vase</span>
         </h2>
-        <p class="text-light lh-lg">襯托花朵的質感器皿</p>
+        <p class="text-light lh-lg">
+          在室內空間中的一隅，<br />需要器皿去襯托花的美好<br />讓花朵的美，更容易讓人看見！
+        </p>
       </div>
       <div
         class="category-img d-md-none d-block"
@@ -120,7 +126,9 @@
         <h2 class="fs-2 text-secondary fw-bold mb-3">
           器皿 <span class="fs-5">Vase</span>
         </h2>
-        <p class="text-light lh-lg">襯托花朵的質感器皿</p>
+        <p class="text-light lh-lg">
+          在室內空間中的一隅，<br />需要器皿去襯托花的美好<br />讓花朵的美，更容易讓人看見！
+        </p>
       </div>
     </div>
   </div>
@@ -213,9 +221,6 @@ export default {
       products: [],
       modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
       swiper: {
-        pagination: {
-          clickable: true,
-        },
         autoplay: {
           delay: 3000,
           disableOnInteraction: false,

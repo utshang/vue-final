@@ -7,7 +7,9 @@
     <ol class="breadcrumb mb-5">
       <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
       <li class="breadcrumb-item active" aria-current="page">
-        <router-link to="/products">全部產品</router-link>
+        <router-link to="/products" @click="getProductsList('')"
+          >全部產品</router-link
+        >
       </li>
       <!-- 單一產品頁面 -->
       <!-- <li class="breadcrumb-item active" aria-current="page">產品名稱</li> -->
@@ -45,27 +47,28 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
           <div class="col" v-for="item in products" :key="item.id">
             <div class="card border-width h-100">
-              <div
+              <router-link
                 class="card-img"
                 :style="{ backgroundImage: `url(${item.imageUrl})` }"
-              ></div>
+                :to="`/product/${item.id}`"
+              ></router-link>
               <div
                 class="card-body d-flex align-items-end justify-content-between"
               >
                 <div class="card-body-content">
-                  <h5 class="card-title fs-5 fw-bold lh-base">
+                  <router-link
+                    class="card-title fs-5 fw-bold lh-base mb-2"
+                    :to="`/product/${item.id}`"
+                  >
                     {{ item.title }}
-                  </h5>
+                  </router-link>
                   <div
-                    class="price fs-5 fw-bold text-secondary mt-xl-0"
+                    class="price fs-6 fw-bold text-secondary mt-3"
                     v-if="item.origin_price === item.price"
                   >
                     NT$ {{ item.price }} 元
                   </div>
-                  <div
-                    class="d-flex d-md-block d-xl-flex align-items-end"
-                    v-else
-                  >
+                  <div class="origin-price d-flex align-items-end mt-3" v-else>
                     <div class="fs-6 pe-2 text-secondary fs-5 fw-bold">
                       NT$ {{ item.price }} 元
                     </div>
@@ -93,7 +96,7 @@
     <PaginationCom
       class="d-flex justify-content-md-end justify-content-center mt-5"
       :pages="pagination"
-      @emit-pages="getProductsList"
+      @emit-pages="getProductsList()"
     ></PaginationCom>
   </div>
 
@@ -109,7 +112,7 @@
 import PaginationCom from "@/components/PaginationCom.vue";
 // import UserProductModal from "@/components/UserProductModal.vue";
 
-import emitter from "@/libs/emitter";
+// import emitter from "@/libs/emitter";
 
 export default {
   data() {
@@ -122,6 +125,7 @@ export default {
         loadingItem: "",
       },
       isLoading: false,
+      currentPage: 1,
     };
   },
   inject: ["emitter"],
@@ -129,11 +133,13 @@ export default {
     // UserProductModal,
     PaginationCom,
   },
+  // https://vue3-course-api.hexschool.io/v2/api/utshang216/products?page=${page}&category=${category}'
   methods: {
-    getProductsList(page = 1, category) {
+    getProductsList(category, page = 1) {
+      this.currentPage = page;
       let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
       if (category) {
-        url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?category=${category}`;
+        url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?category=${category}&page=${page}`;
       }
       this.isLoading = true;
 
@@ -144,19 +150,7 @@ export default {
         console.log(res.data);
       });
     },
-    // getCart() {
-    //   this.$http
-    //     .get(
-    //       `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`
-    //     )
-    //     .then((res) => {
-    //       // console.log(res);
-    //       this.cartData = res.data.data;
-    //     })
-    //     .catch((err) => {
-    //       alert(err);
-    //     });
-    // },
+
     addCart(id, qty = 1) {
       this.isLoading = true;
       this.loadingStatus.loadingItem = id;
@@ -176,35 +170,17 @@ export default {
             style: "success",
             title: "成功加入購物車囉！",
           });
-          emitter.emit("get-cart");
+          this.emitter.emit("get-cart");
         })
         .catch(() => {
           // console.log(err);
-        });
-    },
-    getProduct(id) {
-      this.isLoading = true;
-      this.loadingStatus.loadingItem = id;
-
-      this.$http
-        .get(
-          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/product/${id}`
-        )
-        .then((response) => {
-          this.loadingStatus.loadingItem = "";
-          this.product = response.data.product;
-          this.isLoading = false;
-          // this.$refs.userProductModal.openModal();
-        })
-        .catch((err) => {
-          alert(err.data.message);
         });
     },
   },
 
   mounted() {
     this.getProductsList();
-    // emitter.on("get-cart", () => {
+    // this.emitter.on("get-cart", () => {
     //   this.getCart();
     // });
   },
@@ -302,6 +278,10 @@ h1 {
   }
 }
 
+.card-title {
+  color: #000000;
+}
+
 del {
   color: #6c757d;
   font-size: 12px;
@@ -326,9 +306,13 @@ del {
   }
 }
 
-@media screen and (min-width: 992px) {
-  .price {
-    margin-top: 1.4rem;
-  }
-}
+// .origin-price {
+//   margin-top: 1.4rem;
+// }
+
+// @media screen and (min-width: 1200px) {
+//   .price {
+//     margin-top: 1.4rem;
+//   }
+// }
 </style>

@@ -385,6 +385,10 @@ $spacers: (
   4: $spacer * 1.5,
   5: $spacer * 3,
   6: 6rem,
+  7: 7rem,
+  8: 8rem,
+  9: 9rem,
+  10: 10rem,
 ) !default;
 
 $negative-spacers: if(
@@ -644,6 +648,7 @@ $font-sizes: (
   4: $h4-font-size,
   5: $h5-font-size,
   6: $h6-font-size,
+  7: 0.875rem,
 ) !default;
 // scss-docs-end font-sizes
 

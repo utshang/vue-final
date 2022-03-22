@@ -155,6 +155,17 @@
               <hr />
 
               <div class="mb-3">
+                <div class="mb-3">
+                  <label for="content" class="form-label">說明</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    id="content"
+                    v-model="tempProduct.content"
+                    placeholder="請輸入說明"
+                  ></textarea>
+                </div>
+                <!-- 文案 -->
                 <label for="description" class="form-label">產品描述</label>
                 <textarea
                   type="text"
@@ -164,14 +175,37 @@
                   placeholder="請輸入產品描述"
                 ></textarea>
               </div>
+              <!-- 尺寸、支數 -->
               <div class="mb-3">
-                <label for="content" class="form-label">說明內容</label>
+                <label for="specification" class="form-label">規格</label>
                 <textarea
                   type="text"
                   class="form-control"
-                  id="content"
-                  v-model="tempProduct.content"
-                  placeholder="請輸入產品說明內容"
+                  id="specification"
+                  v-model="tempProduct.specification"
+                  placeholder="請輸入規格"
+                ></textarea>
+              </div>
+              <!-- 花朵色系 -->
+              <div class="mb-3">
+                <label for="color" class="form-label">色系</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="color"
+                  v-model="tempProduct.color"
+                  placeholder="請輸入色系"
+                ></textarea>
+              </div>
+              <!-- 注意事項 -->
+              <div class="mb-3">
+                <label for="notice" class="form-label">注意事項</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="notice"
+                  v-model="tempProduct.notice"
+                  placeholder="請輸入注意事項"
                 ></textarea>
               </div>
               <div class="mb-3">
