@@ -53,13 +53,13 @@
                   </li>
 
                   <li class="pb-3">
-                    <router-link class="dropdown-item" to="/products"
+                    <router-link class="dropdown-item" to="/about"
                       >關於我們</router-link
                     >
                   </li>
                   <li>
-                    <router-link class="dropdown-item" to="/products"
-                      >聯絡我們</router-link
+                    <router-link class="dropdown-item" to="/faq"
+                      >常見問答</router-link
                     >
                   </li>
                 </ul>

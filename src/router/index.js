@@ -34,6 +34,14 @@ const routes = [
         path: "orderfinished",
         component: () => import("../views/OrderFinished.vue"),
       },
+      {
+        path: "about",
+        component: () => import("../views/AboutUs.vue"),
+      },
+      {
+        path: "faq",
+        component: () => import("../views/AskedQuestion.vue"),
+      },
     ],
   },
 

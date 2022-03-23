@@ -84,22 +84,30 @@
                   </div>
                 </div>
               </div>
+            </div>
 
-              <p
-                v-if="cartData.carts?.length"
-                class="text-end fw-bold text-secondary fs-5 mt-5"
-              >
+            <div v-if="cartData.carts?.length">
+              <p class="text-end fw-bold text-secondary fs-4 mt-5">
                 總金額 NT$ {{ cartData.final_total }}
-              </p>
-              <p class="fw-bold fs-7 text-muted text-end mt-2">
-                你已經省下NT$
-                {{
-                  item.product.origin_price * item.qty - cartData.final_total
-                }}了唷！
               </p>
             </div>
           </template>
-          <template v-else> 沒有東西 </template>
+          <template v-else>
+            <div class="text-center pt-4">
+              <span
+                class="material-icons-outlined add_shopping_cart text-primary pb-3"
+              >
+                add_shopping_cart
+              </span>
+              <p class="text-muted mb-4">購物車空空的唷～</p>
+
+              <router-link
+                to="/products"
+                class="bg-secondary text-white py-2 px-5 rounded-3"
+                >來去挑選商品</router-link
+              >
+            </div>
+          </template>
         </div>
       </div>
 
@@ -213,6 +221,7 @@ export default {
         loadingItem: "",
       },
       isLoading: false,
+      cartPrice: {},
       cartData: {},
       productId: "",
       form: {
@@ -255,8 +264,9 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`
         )
         .then((res) => {
-          // console.log(res);
           this.cartData = res.data.data;
+
+          console.log(this.cartData);
         })
         .catch(() => {
           // alert(err);
@@ -327,6 +337,10 @@ export default {
   height: 140px;
   width: 120px;
   object-fit: cover;
+}
+
+.add_shopping_cart {
+  font-size: 48px;
 }
 
 .select-num {

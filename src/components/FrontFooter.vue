@@ -12,13 +12,13 @@
           </li>
 
           <li class="mb-3 mb-sm-4">
-            <router-link class="text-white text-decoration-none" to="/products"
+            <router-link class="text-white text-decoration-none" to="/about"
               >關於我們</router-link
             >
           </li>
           <li class="mb-3 mb-sm-4">
-            <router-link class="text-white text-decoration-none" to="/products"
-              >聯絡我們</router-link
+            <router-link class="text-white text-decoration-none" to="/faq"
+              >常見問答</router-link
             >
           </li>
         </ul>

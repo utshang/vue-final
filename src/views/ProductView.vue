@@ -2,11 +2,8 @@
   <div class="container mt-5">
     <div class="product mb-5 mb-md-8">
       <div class="row">
-        <div
-          class="product-img text-xl-end col-md-7"
-          v-for="(img, index) in product.imagesUrl"
-          :key="img + index"
-        >
+        <div class="product-img text-xl-end col-md-7">
+          <!-- v-for="(img, index) in product.imagesUrl" :key="img + index" -->
           <!-- <div
             v-if="!product.imagesUrl"
             class="swiper-slide-inner"
@@ -18,24 +15,25 @@
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
           ></div> -->
 
-          <div v-if="!product.imagesUrl">
+          <!-- <div v-if="!product.imagesUrl">
             <img
               class="rounded-3 shadow"
               :src="product.imageUrl"
               alt="product.title"
             />
-          </div>
-          <div v-else>
+          </div> -->
+          <div>
             <img
               class="rounded-3 shadow"
               :src="product.imageUrl"
               alt="product.title"
             />
-            <img class="rounded-3 shadow" :src="img" alt="product.title" />
+            <!-- <img class="rounded-3 shadow" :src="img" alt="product.title" /> -->
           </div>
 
           <!-- <ProductSwiper v-else :product="product"></ProductSwiper> -->
         </div>
+
         <div class="product-body col-md-5 mt-4 mt-md-0">
           <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">
@@ -110,7 +108,6 @@
               >
                 <div
                   class="accordion-body lh-lg border-top border-1 border-primary"
-                  v-if="product.specification"
                 >
                   <ul>
                     <li class="fs-7" v-if="product.specification">
@@ -315,8 +312,15 @@ del {
   }
 }
 
+.product-img {
+  // height: 10rem;
+  // width: 8rem;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 1200px) {
   .product-img {
+    object-fit: cover;
     padding-right: 4rem;
   }
 }
