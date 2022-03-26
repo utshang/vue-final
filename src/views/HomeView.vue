@@ -144,7 +144,6 @@
         :modules="modules"
         :slides-per-view="3"
         :space-between="50"
-        navigation
         autoplay
         :breakpoints="swiper.breakpoints"
       >

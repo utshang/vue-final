@@ -27,8 +27,8 @@
 
 <style lang="scss" scoped>
 .row {
-  margin-top: 200px;
-  margin-bottom: 200px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 .shopping_bag {
   font-size: 48px;

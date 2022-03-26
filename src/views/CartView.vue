@@ -7,14 +7,14 @@
             class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-primary pb-3"
           >
             <h3 class="fs-4 fw-bold">購物清單</h3>
-            <a
-              class="text-muted d-block"
+            <button
+              class="text-muted d-block border-0"
               type="button"
               @click="delAllProduct"
               :disabled="cartData.carts?.length === 0"
             >
               清除購物清單
-            </a>
+            </button>
           </div>
           <template v-if="cartData.carts?.length">
             <div v-for="item in cartData.carts" :key="item.id">
@@ -99,12 +99,12 @@
               >
                 add_shopping_cart
               </span>
-              <p class="text-muted mb-4">購物車空空的唷～</p>
+              <p class="text-muted mb-4">購物車空空的唷！</p>
 
               <router-link
                 to="/products"
                 class="bg-secondary text-white py-2 px-5 rounded-3"
-                >來去挑選商品</router-link
+                >來去挑選商品！</router-link
               >
             </div>
           </template>
@@ -157,17 +157,15 @@
           <div class="form-floating form-downline mb-3">
             <VeeField
               id="address"
-              name="寄送地址"
+              name="地址"
               type="text"
               class="form-control"
               :class="{ 'is-invalid': errors['地址'] }"
+              rules="required"
               v-model="form.user.address"
               placeholder="請輸入地址"
             ></VeeField>
-            <ErrorMessage
-              name="寄送地址"
-              class="invalid-feedback"
-            ></ErrorMessage>
+            <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
             <label for="address" class="form-label">寄送地址</label>
           </div>
 
@@ -203,7 +201,7 @@
               Object.keys(errors).length > 0 || cartData.carts?.length === 0
             "
           >
-            送出訂單
+            前往付款
           </button>
         </VeeForm>
       </div>
@@ -213,10 +211,12 @@
 </template>
 
 <script>
-import emitter from "@/libs/emitter";
+// import emitter from "@/libs/emitter";
 export default {
+  inject: ["emitter"],
   data() {
     return {
+      isActive: true,
       loadingStatus: {
         loadingItem: "",
       },
@@ -284,7 +284,13 @@ export default {
           this.getCart();
           this.loadingStatus.loadingItem = "";
           this.isLoading = false;
-          emitter.emit("get-cart");
+
+          this.emitter.emit("get-cart");
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "成功刪除商品囉！",
+          });
+          // this.emitter.emit("get-cart");
         })
         .catch(() => {
           // alert(err);
@@ -299,7 +305,11 @@ export default {
         .then(() => {
           // console.log(res);
           this.getCart();
-          emitter.emit("get-cart");
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "成功刪除所有商品囉！",
+          });
+          this.emitter.emit("get-cart");
           this.isLoading = false;
         })
         .catch((err) => {
@@ -314,12 +324,13 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/order`,
           { data: order }
         )
-        .then(() => {
+        .then((res) => {
+          const { orderId } = res.data;
           // console.log(res);
           this.$refs.form.resetForm();
-          this.getCart();
-          emitter.emit("get-cart");
-          this.$router.push("/OrderFinished");
+          // this.getCart();
+          // this.emitter.emit("get-cart");
+          this.$router.push(`/checkout/${orderId}`);
         })
         .catch((err) => {
           alert(err);
@@ -340,7 +351,7 @@ export default {
 }
 
 .add_shopping_cart {
-  font-size: 48px;
+  font-size: 3rem;
 }
 
 .select-num {
@@ -355,5 +366,9 @@ export default {
 }
 .form-control {
   border-bottom: 1px solid #dee2e6;
+}
+
+.disabled {
+  cursor: not-allowed;
 }
 </style>

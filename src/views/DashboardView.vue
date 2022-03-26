@@ -44,7 +44,7 @@ export default {
             this.checkSuccess = true;
           })
           .catch((err) => {
-            alert(err.data.message);
+            alert(err);
             this.$router.push("/login");
           });
       } else {

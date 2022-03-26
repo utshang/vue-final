@@ -1,6 +1,6 @@
 <template>
   <!-- 產品頁上方要放一張圖，原navbar背景透明，往下滑動後加上白背景，待做 -->
-  <router-link to="/login">login</router-link>
+
   <div class="main container">
     <!-- 麵包屑導航 -->
 
