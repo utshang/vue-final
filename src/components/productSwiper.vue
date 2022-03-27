@@ -17,8 +17,21 @@
         :style="{ backgroundImage: `url(${product.imageUrl})` }"
       ></div>
     </swiper-slide>
-    <swiper-slide for="(img, index) in product.imagesUrl" :key="index">
-      <img :src="product.imagesUrl[index]" :alt="product.title" />
+    <swiper-slide
+      for="(img, index) in product.imagesUrl"
+      :key="`swiperImage_${index}`"
+    >
+      <div
+        style="
+          height: 8rem;
+          width: 8rem;
+          background-position: center center;
+          background-size: cover;
+        "
+        :style="{ backgroundImage: `url(${img})` }"
+      ></div>
+      <!-- <div>{{ index }}</div>
+      <img :src="img" :alt="`${product.title}_${index}`" /> -->
     </swiper-slide>
   </swiper>
 
@@ -30,21 +43,33 @@
     :watchSlidesProgress="true"
     :watchSlidesVisibility="true"
     :modules="modules"
-    class="mySwiper"
+    class="mySwiper mt-3"
   >
     <swiper-slide>
       <div
         class="swiper-slide-inner"
         style="
-          height: 30rem;
+          height: 8rem;
           background-position: center center;
           background-size: cover;
         "
         :style="{ backgroundImage: `url(${product.imageUrl})` }"
       ></div>
     </swiper-slide>
-    <swiper-slide for="(img, index) in product.imagesUrl" :key="index">
-      <img :src="product.imagesUrl[index]" :alt="product.title" />
+    <swiper-slide
+      for="(img, index) in product.imagesUrl"
+      :key="`swiperImage_${index}`"
+    >
+      <div
+        style="
+          height: 8rem;
+          width: 8rem;
+          background-position: center center;
+          background-size: cover;
+        "
+        :style="{ backgroundImage: `url(${img})` }"
+      ></div>
+      <!-- <img :src="img" :alt="`${product.title}_${index}`" /> -->
     </swiper-slide>
   </swiper>
 </template>
@@ -102,3 +127,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+// .swiper-slide-visible {
+//   height: 7rem;
+//   width: 7rem;
+//   object-fit: cover;
+// }
+</style>

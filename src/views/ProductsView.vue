@@ -18,7 +18,7 @@
     <!-- 產品 -->
 
     <div class="menu row">
-      <div class="ps-md-5 col-md-6 col-lg-3">
+      <div class="category ps-md-5 col-md-6 col-lg-3">
         <h3
           class="mb-4 fs-4 fw-bold text-secondary d-flex align-items-center"
           @click="getProductsList('')"
@@ -306,13 +306,11 @@ del {
   }
 }
 
-// .origin-price {
-//   margin-top: 1.4rem;
-// }
-
-// @media screen and (min-width: 1200px) {
-//   .price {
-//     margin-top: 1.4rem;
-//   }
-// }
+@media screen and (min-width: 769px) {
+  .category {
+    position: sticky;
+    top: 118px;
+    height: calc(100vh - 118px);
+  }
+}
 </style>
