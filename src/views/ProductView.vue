@@ -3,6 +3,18 @@
     <div class="product mb-5 mb-md-8">
       <div class="row">
         <div class="product-img text-xl-end col-md-7">
+          <!-- v-for="(img, index) in product.imagesUrl" :key="img + index" -->
+          <!-- <div
+            v-if="!product.imagesUrl"
+            class="swiper-slide-inner"
+            style="
+              height: 30rem;
+              background-position: center center;
+              background-size: cover;
+            "
+            :style="{ backgroundImage: `url(${product.imageUrl})` }"
+          ></div> -->
+
           <div
             v-if="!product.imagesUrl"
             style="
@@ -191,7 +203,7 @@
 </template>
 
 <script>
-import ProductSwiper from "@/components/productSwiper.vue";
+import ProductSwiper from "@/components/ProductSwiper.vue";
 export default {
   components: { ProductSwiper },
   inject: ["emitter"],

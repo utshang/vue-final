@@ -18,13 +18,13 @@
       ></div>
     </swiper-slide>
     <swiper-slide
-      for="(img, index) in product.imagesUrl"
+      v-for="(img, index) in product.imagesUrl"
       :key="`swiperImage_${index}`"
     >
       <div
         style="
-          height: 8rem;
-          width: 8rem;
+          height: 30rem;
+
           background-position: center center;
           background-size: cover;
         "
@@ -50,6 +50,7 @@
         class="swiper-slide-inner"
         style="
           height: 8rem;
+          width: 8rem;
           background-position: center center;
           background-size: cover;
         "
@@ -57,7 +58,7 @@
       ></div>
     </swiper-slide>
     <swiper-slide
-      for="(img, index) in product.imagesUrl"
+      v-for="(img, index) in product.imagesUrl"
       :key="`swiperImage_${index}`"
     >
       <div
@@ -129,9 +130,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .swiper-slide-visible {
-//   height: 7rem;
-//   width: 7rem;
-//   object-fit: cover;
-// }
+.swiper-slide-visible {
+  margin-right: 3.75rem !important;
+}
+@media screen and (min-width: 425px) {
+  .swiper-slide-visible {
+    margin-right: 3.125rem !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .swiper-slide-visible {
+    margin-right: 1.2rem !important;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .swiper-slide-visible {
+    margin-right: 1rem !important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .swiper-slide-visible {
+    margin-right: -1.5rem !important;
+  }
+}
 </style>

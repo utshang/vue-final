@@ -111,6 +111,7 @@ export default {
         .then((response) => {
           this.products = response.data.products;
           this.pagination = response.data.pagination;
+          console.log(this.products);
         })
         .catch(() => {
           // console.dir(err);
