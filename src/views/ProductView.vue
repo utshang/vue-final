@@ -203,7 +203,8 @@
 </template>
 
 <script>
-import ProductSwiper from "@/components/ProductSwiper.vue";
+import ProductSwiper from "@/components/ImageSwiper.vue";
+// import ProductSwiper from "@/components/productSwiper.vue";
 export default {
   components: { ProductSwiper },
   inject: ["emitter"],

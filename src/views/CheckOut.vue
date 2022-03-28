@@ -142,3 +142,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.row {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.shopping_bag {
+  font-size: 3rem;
+}
+</style>
