@@ -149,6 +149,6 @@ export default {
   margin-bottom: 100px;
 }
 .shopping_bag {
-  font-size: 48px;
+  font-size: 3rem;
 }
 </style>
