@@ -73,7 +73,7 @@
           </div>
           <div class="btn d-flex justify-content-around">
             <button
-              type="submit"
+              type="button"
               class="btn text-muted w-45 fs-5 border border-2"
             >
               返回

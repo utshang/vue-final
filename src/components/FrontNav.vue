@@ -276,8 +276,8 @@ export default {
   }
 }
 .cart-img {
-  height: 120px;
-  width: 120px;
+  height: 7.5rem;
+  width: 7.5rem;
   object-fit: cover;
 }
 

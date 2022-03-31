@@ -19,7 +19,6 @@
             v-if="!product.imagesUrl"
             style="
               height: 50rem;
-
               background-position: center center;
               background-size: cover;
             "
@@ -95,7 +94,6 @@
             <div class="accordion-item">
               <div
                 class="accordion-button"
-                type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseOne"
                 aria-expanded="true"

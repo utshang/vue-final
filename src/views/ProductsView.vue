@@ -11,8 +11,6 @@
           >全部產品</router-link
         >
       </li>
-      <!-- 單一產品頁面 -->
-      <!-- <li class="breadcrumb-item active" aria-current="page">產品名稱</li> -->
     </ol>
 
     <!-- 產品 -->
@@ -47,10 +45,28 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
           <div class="col" v-for="item in products" :key="item.id">
             <div class="card border-width h-100">
-              <router-link
-                class="card-img"
-                :style="{ backgroundImage: `url(${item.imageUrl})` }"
-                :to="`/product/${item.id}`"
+              <div
+                class="fav-icon position-absolute"
+                @click="toggleFav(item.id)"
+              >
+                <span
+                  class="material-icons-outlined favorite position-absolute"
+                  v-if="favorite.includes(item.id)"
+                >
+                  favorite
+                </span>
+                <span
+                  class="material-icons-outlined favorite position-absolute"
+                  v-else
+                >
+                  favorite_border
+                </span>
+              </div>
+              <router-link :to="`/product/${item.id}`">
+                <div
+                  class="card-img"
+                  :style="{ backgroundImage: `url(${item.imageUrl})` }"
+                ></div
               ></router-link>
               <div
                 class="card-body d-flex align-items-end justify-content-between"
@@ -79,7 +95,7 @@
                 </div>
                 <div>
                   <a
-                    class="cart-icon bg-secondary pt-3 pb-1 px-2 rounded-pill"
+                    class="cart-icon bg-secondary pt-3 pb-1 px-2 rounded-circle"
                     @click="addCart(item.id), pushMessageState"
                   >
                     <span class="material-icons-outlined">
@@ -113,7 +129,7 @@ import PaginationCom from "@/components/PaginationCom.vue";
 // import UserProductModal from "@/components/UserProductModal.vue";
 
 // import emitter from "@/libs/emitter";
-
+import FavoriteMixin from "@/mixins/FavoriteMixin";
 export default {
   data() {
     return {
@@ -128,6 +144,7 @@ export default {
       currentPage: 1,
     };
   },
+  mixins: [FavoriteMixin],
   inject: ["emitter"],
   components: {
     // UserProductModal,
@@ -264,6 +281,12 @@ h1 {
   transition-duration: 0.3s;
   &:hover {
     transform: translateY(-6px);
+    .fav-icon {
+      display: block;
+      animation: fav-animation;
+      animation-duration: 0.5s;
+      transition: all 0.3s ease;
+    }
   }
 }
 
@@ -273,9 +296,6 @@ h1 {
   background-position: center;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 .card-title {
@@ -288,6 +308,8 @@ del {
 }
 
 .cart-icon {
+  height: 2rem;
+  width: 2rem;
   color: #fffafa;
 
   &:hover {
@@ -311,6 +333,32 @@ del {
     position: sticky;
     top: 118px;
     height: calc(100vh - 118px);
+  }
+}
+
+.fav-icon {
+  top: 3%;
+  right: 3%;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+}
+.favorite {
+  top: 21%;
+  left: 20%;
+  transition: all 0.3s ease;
+  color: #fffafa;
+}
+
+@keyframes fav-animation {
+  from {
+    top: 0;
+  }
+  to {
+    top: 3%;
   }
 }
 </style>

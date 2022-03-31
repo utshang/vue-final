@@ -28,8 +28,13 @@
                     />
                   </router-link>
 
-                  <div class="d-flex flex-column justify-content-evenly ms-3">
-                    <router-link :to="`/product/${item.product.id}`">
+                  <div
+                    class="d-flex flex-column justify-content-start ms-3 mt-2"
+                  >
+                    <router-link
+                      :to="`/product/${item.product.id}`"
+                      class="mb-3"
+                    >
                       <p class="fs-5 fw-bold text-black">
                         {{ item.product.title }}
                       </p>
@@ -61,7 +66,7 @@
                   </div>
                 </div>
                 <div
-                  class="d-sm-flex flex-sm-column justify-content-sm-between"
+                  class="d-sm-flex flex-sm-column justify-content-sm-between mt-1"
                 >
                   <a
                     type="button"
@@ -345,8 +350,8 @@ export default {
 
 <style lang="scss" scoped>
 .cart-img {
-  height: 140px;
-  width: 120px;
+  height: 7.5rem;
+  width: 7.5rem;
   object-fit: cover;
 }
 
