@@ -11,40 +11,40 @@ const routes = [
 
   {
     path: "/",
-    component: () => import("../views/FrontView.vue"),
+    component: () => import("../views/frontend/FrontView.vue"),
     children: [
       {
         path: "",
-        component: () => import("../views/HomeView.vue"),
+        component: () => import("../views/frontend/HomeView.vue"),
       },
       // 前台產品列表
       {
         path: "products",
-        component: () => import("../views/ProductsView.vue"),
+        component: () => import("../views/frontend/ProductsView.vue"),
       },
       {
         path: "product/:id",
-        component: () => import("../views/ProductView.vue"),
+        component: () => import("../views/frontend/ProductView.vue"),
       },
       {
         path: "cart",
-        component: () => import("../views/CartView.vue"),
+        component: () => import("../views/frontend/CartView.vue"),
       },
       {
         path: "checkout/:id",
-        component: () => import("../views/CheckOut.vue"),
+        component: () => import("../views/frontend/CheckOut.vue"),
       },
       {
         path: "orderfinished",
-        component: () => import("../views/OrderFinished.vue"),
+        component: () => import("../views/frontend/OrderFinished.vue"),
       },
       {
         path: "about",
-        component: () => import("../views/AboutUs.vue"),
+        component: () => import("../views/frontend/AboutUs.vue"),
       },
       {
         path: "faq",
-        component: () => import("../views/AskedQuestion.vue"),
+        component: () => import("../views/frontend/AskedQuestion.vue"),
       },
     ],
   },
@@ -52,26 +52,26 @@ const routes = [
   //登入註冊
   {
     path: "/login",
-    component: () => import("../views/LoginView.vue"),
+    component: () => import("../views/frontend/LoginView.vue"),
   },
 
   //後台
   {
     path: "/admin",
-    component: () => import("../views/DashboardView.vue"),
+    component: () => import("../views/backend/DashboardView.vue"),
     children: [
       // 前台產品列表
       {
         path: "products",
-        component: () => import("../views/AdminProducts.vue"),
+        component: () => import("../views/backend/AdminProducts.vue"),
       },
       {
         path: "coupon",
-        component: () => import("../views/AdminCoupon.vue"),
+        component: () => import("../views/backend/AdminCoupon.vue"),
       },
       {
         path: "order",
-        component: () => import("../views/AdminOrder.vue"),
+        component: () => import("../views/backend/AdminOrder.vue"),
       },
     ],
   },

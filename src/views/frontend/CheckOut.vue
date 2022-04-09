@@ -105,7 +105,7 @@ export default {
   },
   methods: {
     getOrder(id) {
-      console.log(this.$route);
+      // console.log(this.$route);
 
       this.$http
         .get(
@@ -116,12 +116,12 @@ export default {
           this.order = res.data.order;
           this.user = res.data.order.user;
         })
-        .catch((err) => {
-          alert(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
     getPay(id) {
-      console.log(this.$route);
+      // console.log(this.$route);
 
       this.$http
         .post(
@@ -132,8 +132,11 @@ export default {
           this.emitter.emit("get-cart");
           this.$router.push(`/orderfinished`);
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "danger",
+            title: "付款失敗，請重新付款！",
+          });
         });
     },
   },

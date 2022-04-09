@@ -188,10 +188,7 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`
         )
         .then((res) => {
-          // console.log(res);
           this.cartData = res.data.data;
-          // console.log(this.cartData);
-          // console.log(this.cartData.carts.length);
         })
         .catch((err) => {
           alert(err);
@@ -206,7 +203,7 @@ export default {
           if (this.cartData.carts.length === 0) {
             this.hideOffcanvas();
           }
-          // console.log(res);
+
           this.getCart();
           this.emitter.emit("get-cart");
           this.emitter.emit("push-message", {
@@ -215,7 +212,10 @@ export default {
           });
         })
         .catch(() => {
-          // alert(err);
+          this.emitter.emit("push-message", {
+            style: "danger",
+            title: "刪除商品失敗囉！",
+          });
         });
     },
     goToCart() {

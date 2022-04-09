@@ -191,9 +191,7 @@
           backgroundImage:
             'url(' + require('@/assets/images/front/about.jpg') + ')',
         }"
-      >
-        <!-- <img :src="require('@/assets/images/front/about.jpg')" alt="about" /> -->
-      </div>
+      ></div>
     </div>
   </div>
 </template>
@@ -248,8 +246,9 @@ export default {
         )
         .then((res) => {
           this.products = res.data.products;
-
-          // console.log(this.products);
+        })
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
   },

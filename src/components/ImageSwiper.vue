@@ -30,8 +30,6 @@
         "
         :style="{ backgroundImage: `url(${img})` }"
       ></div>
-      <!-- <div>{{ index }}</div>
-      <img :src="img" :alt="`${product.title}_${index}`" /> -->
     </swiper-slide>
   </swiper>
 
@@ -70,7 +68,6 @@
         "
         :style="{ backgroundImage: `url(${img})` }"
       ></div>
-      <!-- <img :src="img" :alt="`${product.title}_${index}`" /> -->
     </swiper-slide>
   </swiper>
 </template>

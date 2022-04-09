@@ -252,15 +252,20 @@ export default {
           }
         )
         .then(() => {
-          // console.log(res);
-
           this.getCart();
           //讀取完後清空
           this.loadingStatus.loadingItem = "";
           this.isLoading = false;
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "成功更新商品囉！",
+          });
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "danger",
+            title: "更新商品失敗囉！",
+          });
         });
     },
     getCart() {
@@ -273,8 +278,8 @@ export default {
 
           console.log(this.cartData);
         })
-        .catch(() => {
-          // alert(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
     delProduct(id) {
@@ -285,7 +290,6 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart/${id}`
         )
         .then(() => {
-          // console.log(res);
           this.getCart();
           this.loadingStatus.loadingItem = "";
           this.isLoading = false;
@@ -295,10 +299,12 @@ export default {
             style: "success",
             title: "成功刪除商品囉！",
           });
-          // this.emitter.emit("get-cart");
         })
         .catch(() => {
-          // alert(err);
+          this.emitter.emit("push-message", {
+            style: "danger",
+            title: "刪除商品失敗囉！",
+          });
         });
     },
     delAllProduct() {
@@ -308,7 +314,6 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/carts`
         )
         .then(() => {
-          // console.log(res);
           this.getCart();
           this.emitter.emit("push-message", {
             style: "success",
@@ -317,9 +322,11 @@ export default {
           this.emitter.emit("get-cart");
           this.isLoading = false;
         })
-        .catch((err) => {
-          console.log(err);
-          // alert(err);
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "danger",
+            title: "刪除所有商品失敗囉！",
+          });
         });
     },
     createOrder() {
@@ -331,14 +338,11 @@ export default {
         )
         .then((res) => {
           const { orderId } = res.data;
-          // console.log(res);
           this.$refs.form.resetForm();
-          // this.getCart();
-          // this.emitter.emit("get-cart");
           this.$router.push(`/checkout/${orderId}`);
         })
-        .catch((err) => {
-          alert(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
   },

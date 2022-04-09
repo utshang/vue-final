@@ -61,20 +61,7 @@
 <script>
 import CouponModal from "@/components/CouponModal.vue";
 import DelModal from "@/components/DelModal.vue";
-// function pushMessageState(response, title = '更新') {
-//   if (response.data.success) {
-//     this.emitter.emit('push-message', {
-//       style: 'success',
-//       title: `${title}成功`,
-//     });
-//   } else {
-//     this.emitter.emit('push-message', {
-//       style: 'danger',
-//       title: `${title}失敗`,
-//       content: response.data.message.join('、'),
-//     });
-//   }
-// }
+
 export default {
   components: { CouponModal, DelModal },
   props: {
@@ -160,7 +147,7 @@ export default {
         })
         .catch((error) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "刪除優惠券");
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
   },

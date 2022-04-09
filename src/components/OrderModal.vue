@@ -160,7 +160,7 @@ export default {
   },
   emits: ["update-paid"],
   mixins: [modalMixin],
-  // inject: ["emitter"],
+
   watch: {
     order() {
       this.tempOrder = this.order;

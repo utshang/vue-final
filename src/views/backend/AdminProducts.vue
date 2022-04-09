@@ -84,6 +84,7 @@ export default {
     PaginationCom,
   },
   props: ["token"],
+
   data() {
     return {
       products: [],
@@ -113,8 +114,8 @@ export default {
           this.pagination = response.data.pagination;
           console.log(this.products);
         })
-        .catch(() => {
-          // console.dir(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
 

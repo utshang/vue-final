@@ -3,18 +3,6 @@
     <div class="product mb-5 mb-md-8">
       <div class="row">
         <div class="product-img text-xl-end col-md-7">
-          <!-- v-for="(img, index) in product.imagesUrl" :key="img + index" -->
-          <!-- <div
-            v-if="!product.imagesUrl"
-            class="swiper-slide-inner"
-            style="
-              height: 30rem;
-              background-position: center center;
-              background-size: cover;
-            "
-            :style="{ backgroundImage: `url(${product.imageUrl})` }"
-          ></div> -->
-
           <div
             v-if="!product.imagesUrl"
             style="
@@ -24,14 +12,6 @@
             "
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
           ></div>
-
-          <!-- <div >
-            <img
-              class="rounded-3 shadow"
-              :src="product.imageUrl"
-              alt="product.title"
-            />
-          </div> -->
 
           <ProductSwiper v-else :product="product"></ProductSwiper>
         </div>
@@ -215,7 +195,6 @@ export default {
   },
   methods: {
     getProduct() {
-      console.log(this.$route);
       const { id } = this.$route.params;
       this.$http
         .get(
@@ -223,10 +202,9 @@ export default {
         )
         .then((res) => {
           this.product = res.data.product;
-          console.log(res);
         })
-        .catch(() => {
-          // console.log(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
     updateCartItem(item) {
@@ -237,14 +215,12 @@ export default {
             data: { product_id: item.id, qty: item.qty },
           }
         )
-        .then((res) => {
-          console.log(res);
-
+        .then(() => {
           this.getCart();
           //讀取完後清空
         })
-        .catch((err) => {
-          alert(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
     addCart(id, qty = 1) {
@@ -256,16 +232,14 @@ export default {
           }
         )
         .then(() => {
-          //讀取完後清空
-
           this.emitter.emit("push-message", {
             style: "success",
             title: "成功加入購物車囉！",
           });
           this.emitter.emit("get-cart");
         })
-        .catch(() => {
-          // console.log(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
   },

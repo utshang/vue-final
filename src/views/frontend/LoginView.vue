@@ -48,6 +48,7 @@ export default {
       },
     };
   },
+  inject: ["emitter"],
   methods: {
     signIn() {
       this.$http
@@ -60,8 +61,11 @@ export default {
           )};`;
           this.$router.push("/admin/products");
         })
-        .catch((err) => {
-          alert(err.response.data.message);
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "登入失敗，請重新登入！",
+          });
           this.$router.push("/login");
           // handle error
         });

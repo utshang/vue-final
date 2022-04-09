@@ -1,6 +1,4 @@
 <template>
-  <!-- 產品頁上方要放一張圖，原navbar背景透明，往下滑動後加上白背景，待做 -->
-
   <div class="main container">
     <!-- 麵包屑導航 -->
 
@@ -117,18 +115,11 @@
   </div>
 
   <VeeLoading :active="isLoading"></VeeLoading>
-  <!-- <UserProductModal
-    ref="userProductModal"
-    :product="product"
-    @add-cart="addCart"
-  ></UserProductModal> -->
 </template>
 
 <script>
 import PaginationCom from "@/components/PaginationCom.vue";
-// import UserProductModal from "@/components/UserProductModal.vue";
 
-// import emitter from "@/libs/emitter";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
 export default {
   data() {
@@ -160,12 +151,17 @@ export default {
       }
       this.isLoading = true;
 
-      this.$http.get(url).then((res) => {
-        this.products = res.data.products;
-        this.pagination = res.data.pagination;
-        this.isLoading = false;
-        console.log(res.data);
-      });
+      this.$http
+        .get(url)
+        .then((res) => {
+          this.products = res.data.products;
+          this.pagination = res.data.pagination;
+          this.isLoading = false;
+          console.log(res.data);
+        })
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
+        });
     },
 
     addCart(id, qty = 1) {
@@ -181,7 +177,7 @@ export default {
         .then(() => {
           //讀取完後清空
           this.loadingStatus.loadingItem = "";
-          // this.$refs.userProductModal.hideModal();
+
           this.isLoading = false;
           this.emitter.emit("push-message", {
             style: "success",
@@ -190,16 +186,16 @@ export default {
           this.emitter.emit("get-cart");
         })
         .catch(() => {
-          // console.log(err);
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "加入購物車失敗囉，請重新加入！",
+          });
         });
     },
   },
 
   mounted() {
     this.getProductsList();
-    // this.emitter.on("get-cart", () => {
-    //   this.getCart();
-    // });
   },
 };
 </script>

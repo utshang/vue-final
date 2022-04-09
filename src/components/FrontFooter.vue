@@ -33,7 +33,7 @@
     </div>
 
     <p class="slogan bg-success text-center text-white">
-      Beauty, Romance, and Everything nice.
+      Beauty, Romance, and Everything Nice.
     </p>
     <p class="footer_end-p bg-success text-center text-white pb-3 pt-2">
       © The Florist
@@ -48,12 +48,6 @@
     padding-right: 10rem;
   }
 }
-// @media screen and (min-width: 769px) {
-//   .footer_body {
-//     padding-left: 13rem;
-//     padding-right: 13rem;
-//   }
-// }
 
 .footer_body li {
   font-size: 0.875rem;

@@ -1,12 +1,12 @@
 <template>
-  <FrontNav></FrontNav>
-  <router-view></router-view>
-  <FrontFooter></FrontFooter>
+  <FrontNav />
+  <router-view />
+  <FrontFooter />
   <transition name="fade">
     <a
       class="go-to-top bg-white text-center text-secondary position-fixed shadow rounded-circle"
       v-if="GoToTop"
-      @click="goToTop"
+      @click.prevent="goToTop"
     >
       <span
         class="material-icons-outlined position-absolute top-50 start-50 translate-middle"
