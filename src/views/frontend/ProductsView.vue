@@ -194,7 +194,6 @@ export default {
 
   mounted() {
     this.getProductsList();
-    //將favorite傳過去FrontNav.vue
     this.emitter.emit("get-fav", this.favorite);
   },
 };
