@@ -28,7 +28,7 @@ export default {
           title: "已經移除最愛囉！",
         });
       }
-      this.emitter.emit("get-fav", this.favorite);
+      // this.emitter.emit("get-fav", this.favorite);
     },
   },
   watch: {
