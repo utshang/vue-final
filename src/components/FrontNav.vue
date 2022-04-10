@@ -10,18 +10,21 @@
         <div class="naverbar-item">
           <ul class="d-flex align-items-center">
             <li>
-              <router-link class="home text-secondary" to="/">
+              <router-link class="home text-secondary" to="/favorite">
                 <span class="material-icons px-3 text-secondary">
                   favorite
                 </span>
                 <span
                   class="favorite-num rounded-pill bg-danger position-absolute"
-                ></span>
+                >
+                  {{ product.length }}</span
+                >
               </router-link>
             </li>
 
             <li>
               <a
+                @click.prevent
                 class="home text-secondary"
                 data-bs-toggle="offcanvas"
                 href="#offcanvasExample"
@@ -73,7 +76,7 @@
                       highlight_off
                     </span>
 
-                    <div class="cart-img mx-3">
+                    <div class="mx-3">
                       <img
                         class="cart-img rounded-3"
                         :src="item.product.imageUrl"
@@ -171,10 +174,14 @@
 
 <script>
 import Offcanvas from "bootstrap/js/dist/offcanvas";
+import FavoriteMixin from "@/mixins/FavoriteMixin";
 export default {
+  mixins: [FavoriteMixin],
   inject: ["emitter"],
   data() {
     return {
+      products: [],
+      product: [],
       cartData: {
         carts: [],
       },
@@ -229,12 +236,35 @@ export default {
     hideOffcanvas() {
       this.offcanvas.hide();
     },
+    getProductsList() {
+      this.isLoading = true;
+      this.$http
+        .get(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`
+        )
+        .then((res) => {
+          this.products = res.data.products;
+          this.isLoading = false;
+          this.getFavoriteProducts();
+        })
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
+        });
+    },
+    getFavoriteProducts() {
+      this.product = this.products.filter((item) =>
+        this.favorite.includes(item.id)
+      );
+    },
   },
   mounted() {
     this.offcanvas = new Offcanvas(this.$refs.offcanvas);
     this.getCart();
     this.emitter.on("get-cart", () => {
       this.getCart();
+    });
+    this.emitter.on("get-fav", () => {
+      this.getFavoriteProducts();
     });
   },
 };

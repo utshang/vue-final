@@ -275,8 +275,6 @@ export default {
         )
         .then((res) => {
           this.cartData = res.data.data;
-
-          console.log(this.cartData);
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");

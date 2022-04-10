@@ -48,13 +48,13 @@
                 @click="toggleFav(item.id)"
               >
                 <span
-                  class="material-icons-outlined favorite position-absolute"
+                  class="material-icons-outlined favorite position-absolute text-white"
                   v-if="favorite.includes(item.id)"
                 >
                   favorite
                 </span>
                 <span
-                  class="material-icons-outlined favorite position-absolute"
+                  class="material-icons-outlined favorite position-absolute text-white"
                   v-else
                 >
                   favorite_border
@@ -138,10 +138,9 @@ export default {
   mixins: [FavoriteMixin],
   inject: ["emitter"],
   components: {
-    // UserProductModal,
     PaginationCom,
   },
-  // https://vue3-course-api.hexschool.io/v2/api/utshang216/products?page=${page}&category=${category}'
+
   methods: {
     getProductsList(category, page = 1) {
       this.currentPage = page;
@@ -157,7 +156,6 @@ export default {
           this.products = res.data.products;
           this.pagination = res.data.pagination;
           this.isLoading = false;
-          console.log(res.data);
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");
@@ -205,10 +203,6 @@ export default {
   margin-top: 60px;
   margin-bottom: 60px;
 }
-
-// .col-md-6 {
-//   padding: 0;
-// }
 
 .breadcrumb {
   padding-left: 0rem;
@@ -346,7 +340,7 @@ del {
   top: 21%;
   left: 20%;
   transition: all 0.3s ease;
-  color: #fffafa;
+  // color: #fffafa;
 }
 
 @keyframes fav-animation {

@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div
-      class="banner"
+      class="banner mt-3"
       :style="{
         backgroundImage:
           'url(' + require('@/assets/images/front/faq.jpg') + ')',
       }"
     ></div>
     <div class="body my-5">
-      <h2 class="slogan text-secondary fw-bold lh-lg">你可能會想問...</h2>
+      <p class="slogan text-secondary fw-bold">你可能會想問...</p>
 
       <div
         class="accordion rounded-3 shadow mt-4"
@@ -136,7 +136,7 @@
 
 <style lang="scss" scoped>
 .banner {
-  height: calc(100vh - 300px);
+  height: calc(100vh - 500px);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -148,7 +148,7 @@
 
 @media screen and (min-width: 769px) {
   .slogan {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div
-      class="banner"
+      class="banner mt-3"
       :style="{
         backgroundImage:
           'url(' + require('@/assets/images/front/aboutus.jpg') + ')',
@@ -30,7 +30,7 @@
 
 <style lang="scss" scoped>
 .banner {
-  height: calc(100vh - 300px);
+  height: calc(100vh - 500px);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
