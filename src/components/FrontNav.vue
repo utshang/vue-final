@@ -264,9 +264,9 @@ export default {
     this.emitter.on("get-cart", () => {
       this.getCart();
     });
-    this.emitter.on("get-fav", (favorite) => {
+    this.emitter.on("get-fav", (fav) => {
       this.getFavoriteProducts();
-      this.favorite = favorite;
+      this.favorite = fav;
     });
   },
 };
