@@ -3,44 +3,44 @@ import { createRouter, createWebHashHistory } from "vue-router";
 const routes = [
   {
     path: "/",
-    component: () => import("../views/FrontEnd/FrontView.vue"),
+    component: () => import("../views/frontend/FrontView.vue"),
     children: [
       {
         path: "",
-        component: () => import("../views/FrontEnd/HomeView.vue"),
+        component: () => import("../views/frontend/HomeView.vue"),
       },
       // 前台產品列表
       {
         path: "products",
-        component: () => import("../views/FrontEnd/ProductsView.vue"),
+        component: () => import("../views/frontend/ProductsView.vue"),
       },
       {
         path: "product/:id",
-        component: () => import("../views/FrontEnd/ProductView.vue"),
+        component: () => import("../views/frontend/ProductView.vue"),
       },
       {
         path: "favorite",
-        component: () => import("../views/FrontEnd/FavoriteView.vue"),
+        component: () => import("../views/frontend/FavoriteView.vue"),
       },
       {
         path: "cart",
-        component: () => import("../views/FrontEnd/CartView.vue"),
+        component: () => import("../views/frontend/CartView.vue"),
       },
       {
         path: "checkout/:id",
-        component: () => import("../views/FrontEnd/CheckOut.vue"),
+        component: () => import("../views/frontend/CheckOut.vue"),
       },
       {
         path: "orderfinished",
-        component: () => import("../views/FrontEnd/OrderFinished.vue"),
+        component: () => import("../views/frontend/OrderFinished.vue"),
       },
       {
         path: "about",
-        component: () => import("../views/FrontEnd/AboutUs.vue"),
+        component: () => import("../views/frontend/AboutUs.vue"),
       },
       {
         path: "faq",
-        component: () => import("../views/FrontEnd/AskedQuestion.vue"),
+        component: () => import("../views/frontend/AskedQuestion.vue"),
       },
     ],
   },
@@ -54,20 +54,20 @@ const routes = [
   //後台
   {
     path: "/admin",
-    component: () => import("../views/BackEnd/DashboardView.vue"),
+    component: () => import("../views/backend/DashboardView.vue"),
     children: [
       // 前台產品列表
       {
         path: "products",
-        component: () => import("../views/BackEnd/AdminProducts.vue"),
+        component: () => import("../views/backend/AdminProducts.vue"),
       },
       {
         path: "coupon",
-        component: () => import("../views/BackEnd/AdminCoupon.vue"),
+        component: () => import("../views/backend/AdminCoupon.vue"),
       },
       {
         path: "order",
-        component: () => import("../views/BackEnd/AdminOrder.vue"),
+        component: () => import("../views/backend/AdminOrder.vue"),
       },
     ],
   },

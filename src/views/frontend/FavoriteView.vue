@@ -34,11 +34,13 @@
         <div v-for="item in product" :key="item.id">
           <div class="fav-item rounded-3 shadow p-4 mb-4 d-flex row">
             <div class="col-sm-5 col-md-3">
-              <img
-                class="fav-item-img rounded-3"
-                :src="item.imageUrl"
-                alt="item.title"
-              />
+              <router-link :to="`/product/${item.id}`">
+                <img
+                  class="fav-item-img rounded-3"
+                  :src="item.imageUrl"
+                  alt="item.title"
+                />
+              </router-link>
             </div>
             <div
               class="col-sm-7 col-md-9 mt-4 mt-sm-1 d-flex flex-column justify-content-between"
@@ -87,6 +89,7 @@
               </div>
               <div class="d-md-flex flex-md-column align-self-md-end">
                 <button
+                  @click="addCart(item.id)"
                   type="button"
                   class="add-cart-btn btn bg-secondary rounded-3 text-white align-self-end mt-3"
                 >
@@ -141,9 +144,39 @@ export default {
       );
       this.emitter.emit("get-fav");
     },
+    addCart(id, qty = 1) {
+      this.isLoading = true;
+      this.loadingStatus.loadingItem = id;
+      this.$http
+        .post(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`,
+          {
+            data: { product_id: id, qty },
+          }
+        )
+        .then(() => {
+          //讀取完後清空
+          this.loadingStatus.loadingItem = "";
+
+          this.isLoading = false;
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "成功加入購物車囉！",
+          });
+          this.emitter.emit("get-cart");
+        })
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "加入購物車失敗囉，請重新加入！",
+          });
+        });
+    },
   },
+
   mounted() {
     this.getProductsList();
+    this.emitter.emit("get-fav", this.favorite);
   },
 };
 </script>

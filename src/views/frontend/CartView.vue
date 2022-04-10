@@ -56,13 +56,14 @@
                         </option>
                       </select>
                     </div>
-
-                    <p class="d-block d-sm-none fw-bold fs-5">
-                      NT$ {{ item.product.price * item.qty }}
-                    </p>
-                    <del class="d-block d-sm-none fw-bold fs-7 text-muted">
-                      NT$ {{ item.product.origin_price * item.qty }}
-                    </del>
+                    <div class="d-sm-none d-flex align-items-end">
+                      <p class="fw-bold fs-7 mt-3">
+                        NT$ {{ item.product.price * item.qty }}
+                      </p>
+                      <del class="fs-8 text-muted ms-2">
+                        NT$ {{ item.product.origin_price * item.qty }}
+                      </del>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -77,12 +78,12 @@
                       delete
                     </span>
                   </a>
-                  <div>
-                    <p class="d-none d-sm-block mb-2 fw-bold fs-5">
+                  <div class="d-none d-sm-block">
+                    <p class="mb-2 fw-bold fs-5">
                       NT$ {{ item.product.price * item.qty }}
                     </p>
                     <del
-                      class="d-none d-sm-block fw-bold fs-7 text-muted text-end"
+                      class="fs-7 text-muted d-flex flex-column align-items-end"
                     >
                       NT$ {{ item.product.origin_price * item.qty }}
                     </del>

@@ -17,18 +17,35 @@
         </div>
 
         <div class="product-body col-md-5 mt-4 mt-md-0">
-          <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item">
-              <router-link to="/">首頁</router-link>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-              <router-link to="/products">全部產品</router-link>
-            </li>
+          <div class="d-flex justify-content-between">
+            <ol class="breadcrumb mb-4 mt-1">
+              <li class="breadcrumb-item">
+                <router-link to="/">首頁</router-link>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <router-link to="/products">全部產品</router-link>
+              </li>
 
-            <li class="breadcrumb-item active" aria-current="page">
-              {{ product.category }}
-            </li>
-          </ol>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{ product.category }}
+              </li>
+            </ol>
+
+            <div class="fav-icon" @click="toggleFav(product.id)">
+              <span
+                class="material-icons-outlined favorite text-primary"
+                v-if="favorite.includes(product.id)"
+              >
+                favorite
+              </span>
+              <span
+                class="material-icons-outlined favorite text-primary"
+                v-else
+              >
+                favorite_border
+              </span>
+            </div>
+          </div>
           <h2 class="product-title fw-bold mb-4">
             {{ product.title }}
           </h2>
@@ -182,9 +199,10 @@
 
 <script>
 import ProductSwiper from "@/components/ImageSwiper.vue";
-// import ProductSwiper from "@/components/productSwiper.vue";
+import FavoriteMixin from "@/mixins/FavoriteMixin";
 export default {
   components: { ProductSwiper },
+  mixins: [FavoriteMixin],
   inject: ["emitter"],
   data() {
     return {
@@ -245,6 +263,7 @@ export default {
   },
   mounted() {
     this.getProduct();
+    this.emitter.emit("get-fav", this.favorite);
   },
 };
 </script>

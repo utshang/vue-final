@@ -258,13 +258,15 @@ export default {
     },
   },
   mounted() {
+    this.getProductsList();
     this.offcanvas = new Offcanvas(this.$refs.offcanvas);
     this.getCart();
     this.emitter.on("get-cart", () => {
       this.getCart();
     });
-    this.emitter.on("get-fav", () => {
+    this.emitter.on("get-fav", (favorite) => {
       this.getFavoriteProducts();
+      this.favorite = favorite;
     });
   },
 };
@@ -294,6 +296,14 @@ export default {
   padding: 0.1rem 0.5rem 0.2rem;
   top: 6px;
   right: 88px;
+}
+
+.favorite-num {
+  font-size: 0.75rem;
+  color: #fffafa;
+  padding: 0.1rem 0.4rem 0.2rem;
+  top: 12px;
+  right: 175px;
 }
 
 @media screen and (min-width: 769px) {
