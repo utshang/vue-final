@@ -264,9 +264,9 @@ export default {
     this.emitter.on("get-cart", () => {
       this.getCart();
     });
-    this.emitter.on("get-fav", (fav) => {
+    this.emitter.on("get-fav", (favorite) => {
       this.getFavoriteProducts();
-      this.favorite = fav;
+      this.favorite = favorite;
     });
   },
 };
@@ -293,28 +293,39 @@ export default {
 .cart-num {
   font-size: 0.75rem;
   color: #fffafa;
-  padding: 0.1rem 0.5rem 0.2rem;
+  padding: 0.1rem 0.4rem 0.3rem;
   top: 6px;
   right: 88px;
-}
-
-.favorite-num {
-  font-size: 0.75rem;
-  color: #fffafa;
-  padding: 0.1rem 0.4rem 0.2rem;
-  top: 12px;
-  right: 175px;
 }
 
 @media screen and (min-width: 769px) {
   .cart-num {
     font-size: 0.75rem;
     color: #fffafa;
-    padding: 0.1rem 0.4rem 0.2rem;
+    padding: 0.1rem 0.4rem 0.3rem;
     top: 12px;
     right: 114px;
   }
 }
+
+.favorite-num {
+  font-size: 0.75rem;
+  color: #fffafa;
+  padding: 0.1rem 0.4rem 0.3rem;
+  top: 6px;
+  right: 149px;
+}
+
+@media screen and (min-width: 769px) {
+  .favorite-num {
+    font-size: 0.75rem;
+    color: #fffafa;
+    padding: 0.1rem 0.4rem 0.3rem;
+    top: 12px;
+    right: 175px;
+  }
+}
+
 .cart-img {
   height: 7.5rem;
   width: 7.5rem;

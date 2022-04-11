@@ -8,9 +8,7 @@
         'url(' + require('@/assets/images/front/banner.jpg') + ')',
     }"
   >
-    <h1
-      class="title text-white position-absolute top-50 start-50 translate-middle"
-    >
+    <h1 class="title text-white position-absolute start-50 translate-middle">
       The Florist
     </h1>
     <p
@@ -18,6 +16,13 @@
     >
       希望你的生活，有 The Florist 花閣的陪伴
     </p>
+    <router-link to="/products">
+      <button
+        class="cta-btn btn fs-5 text-white position-absolute start-50 translate-middle border-white border-3 rounded-3 px-4"
+      >
+        來去逛逛吧！
+      </button>
+    </router-link>
   </div>
 
   <!-- 商品分類 -->
@@ -134,46 +139,19 @@
   </div>
 
   <!-- 精選商品 輪播 -->
-  <div class="container my-6">
-    <div>
-      <h2 class="fs-2 text-secondary fw-bold my-5">
-        精選商品 <span class="fs-5">Selected</span>
-      </h2>
 
-      <swiper
-        :modules="modules"
-        :slides-per-view="3"
-        :space-between="50"
-        autoplay
-        :breakpoints="swiper.breakpoints"
-      >
-        <swiper-slide v-for="item in products" :key="item.id">
-          <div
-            class="swiper-slide-inner"
-            style="
-              height: 30rem;
-              background-position: center center;
-              background-size: cover;
-            "
-            :style="{ backgroundImage: `url(${item.imageUrl})` }"
-          ></div>
-        </swiper-slide>
-      </swiper>
-    </div>
-    <div class="text-center mt-4 my-sm-5">
-      <router-link
-        class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
-        to="/products"
-        >查看更多</router-link
-      >
-    </div>
+  <div class="container my-6">
+    <h2 class="fs-2 text-secondary fw-bold my-5">
+      精選商品 <span class="fs-5">Selected</span>
+    </h2>
+    <RandomSwiper></RandomSwiper>
   </div>
 
   <!-- 關於我們-->
-  <div class="container mb-4 mb-sm-5">
-    <div class="row align-items-center g-3">
+  <div class="container mb-4 mb-sm-5 d-none d-md-block">
+    <div class="row align-items-center g-2">
       <div
-        class="about-des col-md-6 col-xl-7 d-flex justify-content-center align-items-center flex-column"
+        class="about-des col-md-6 d-flex justify-content-center align-items-center flex-column"
       >
         <h2 class="fs-2 text-secondary fw-bold mb-5">
           關於我們 <span class="fs-5">About us</span>
@@ -186,7 +164,7 @@
         </p>
       </div>
       <div
-        class="about-img col-md-6 col-xl-5"
+        class="about-img col-md-6 ms-xl-5"
         :style="{
           backgroundImage:
             'url(' + require('@/assets/images/front/about.jpg') + ')',
@@ -197,74 +175,69 @@
 </template>
 
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from "swiper";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
+import RandomSwiper from "@/components/RandomSwiper.vue";
 export default {
-  components: { Swiper, SwiperSlide },
+  components: { RandomSwiper },
 
   data() {
     return {
+      // randomProducts: [],
       loadingStatus: {
         loadingItem: "",
       },
       isLoading: false,
-      products: [],
-      modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
-      swiper: {
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        breakpoints: {
-          0: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        },
-      },
     };
-  },
-  methods: {
-    getProductsList() {
-      this.$http
-        .get(
-          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`
-        )
-        .then((res) => {
-          this.products = res.data.products;
-        })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
-        });
-    },
-  },
-  mounted() {
-    this.getProductsList();
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .banner {
-  height: calc(100vh - 72px);
+  height: calc(100vh - 200px);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  .title {
+    font-size: 60px;
+    font-family: "Sansita Swashed", cursive;
+    text-align: center;
+    font-weight: 600;
+    top: 40%;
+  }
+  .slogan {
+    top: 52%;
+    width: 300px;
+    text-shadow: 1px 1px 5px #696969;
+  }
+  .cta-btn {
+    top: 62%;
+    text-shadow: 1px 1px 5px #696969;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .title {
+    font-size: 78px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .slogan {
+    top: 48%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .cta-btn {
+    top: 60%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .cta-btn {
+    top: 58%;
+  }
 }
 
 h2 {
@@ -274,79 +247,37 @@ h2 {
   }
 }
 
-.title {
-  font-size: 60px;
-  font-family: "Sansita Swashed", cursive;
-  text-align: center;
-  font-weight: 600;
-}
-
-@media screen and (min-width: 768px) {
-  .title {
-    font-size: 78px;
-  }
-}
-
-.slogan {
-  top: 60%;
-  width: 300px;
-  text-shadow: 1px 1px 5px #696969;
-}
-
-@media screen and (min-width: 568px) {
-  .slogan {
-    top: 57%;
-  }
-}
-
-.swiper-slide-inner {
-  box-shadow: 1px 1px 10px #696969;
-  border-radius: 1rem;
-  &:hover {
-    opacity: 0.7;
-  }
-}
-
-.see-more {
-  letter-spacing: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-.see-more:hover {
-  -webkit-animation: pulse 1s;
-  animation: pulse 1s;
-  color: #ad795d;
-  background-color: #fffafa;
-  border: #ad795d 3px solid;
-}
-
 .category-img {
   height: 25rem;
   border-radius: 1rem;
-  // background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   box-shadow: 1px 1px 10px #696969;
 }
 
-.about-img {
-  height: 35rem;
-  border-radius: 1rem;
-  // background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  box-shadow: 1px 1px 10px #696969;
-}
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .category-img {
     height: 30rem;
   }
 }
 
-.about-img img {
+.about-img {
+  height: 28rem;
+  width: 33rem;
   border-radius: 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 1px 1px 10px #696969;
+  img {
+    border-radius: 1rem;
+  }
+}
+@media screen and (min-width: 769px) {
+  .about-img {
+    height: 24rem;
+    width: 29rem;
+  }
 }
 </style>

@@ -5,18 +5,18 @@
     >
       <div class="menu ps-4">
         <ul>
-          <li class="mb-3 mb-sm-4">
+          <li class="mb-3 mb-sm-4 fs-7">
             <router-link class="text-white text-decoration-none" to="/products">
               全部產品</router-link
             >
           </li>
 
-          <li class="mb-3 mb-sm-4">
+          <li class="mb-3 mb-sm-4 fs-7">
             <router-link class="text-white text-decoration-none" to="/about"
               >關於我們</router-link
             >
           </li>
-          <li class="mb-3 mb-sm-4">
+          <li class="mb-3 mb-sm-4 fs-7">
             <router-link class="text-white text-decoration-none" to="/faq"
               >常見問答</router-link
             >
@@ -25,13 +25,16 @@
       </div>
       <div class="contact ps-4 ps-md-0">
         <ul>
-          <li class="mb-3 mb-sm-4">service@theflorist.com.tw</li>
-          <li class="mb-3 mb-sm-4">MON.-FRI. 09:00-12:00 / 13:00-18:00</li>
-          <li class="mb-3 mb-sm-4">台北市信義區松壽路1號</li>
+          <li class="mb-3 mb-sm-4 fs-7">service@theflorist.com.tw</li>
+          <li class="mb-3 mb-sm-4 fs-7">MON.-FRI. 09:00-12:00 / 13:00-18:00</li>
+          <li class="mb-3 mb-sm-4 fs-7">台北市信義區松壽路1號</li>
         </ul>
       </div>
     </div>
 
+    <p class="fs-7 bg-success text-center text-white pb-2">
+      本網站僅供個人作品使用，不提供任何商業用途
+    </p>
     <p class="slogan bg-success text-center text-white">
       Beauty, Romance, and Everything Nice.
     </p>
@@ -49,17 +52,16 @@
   }
 }
 
-.footer_body li {
-  font-size: 0.875rem;
+ul {
+  padding-left: 0;
 }
-.footer_end-p {
-  font-size: 0.8rem;
-  font-family: "Sansita Swashed", cursive;
-}
+
 .slogan {
   font-family: "Sansita Swashed", cursive;
 }
-ul {
-  padding-left: 0;
+
+.footer_end-p {
+  font-size: 0.8rem;
+  font-family: "Sansita Swashed", cursive;
 }
 </style>

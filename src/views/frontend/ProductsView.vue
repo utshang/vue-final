@@ -83,10 +83,10 @@
                     NT$ {{ item.price }} 元
                   </div>
                   <div class="origin-price d-flex align-items-end mt-3" v-else>
-                    <div class="fs-6 pe-2 text-secondary fs-5 fw-bold">
+                    <p class="fs-6 pe-2 text-secondary fs-5 fw-bold">
                       NT$ {{ item.price }} 元
-                    </div>
-                    <del class="text-decoration-line-through">
+                    </p>
+                    <del class="fs-7 text-muted">
                       NT$ {{ item.origin_price }} 元</del
                     >
                   </div>
@@ -266,6 +266,14 @@ h1 {
   right: 0;
 }
 
+@media screen and (min-width: 769px) {
+  .category {
+    position: sticky;
+    top: 118px;
+    height: calc(100vh - 118px);
+  }
+}
+
 .card {
   box-shadow: 0 2px 15px -2px rgb(0 0 0 / 12%), 0 2px 6px -2px rgb(0 0 0 / 5%);
   border-radius: 1rem;
@@ -279,34 +287,43 @@ h1 {
       transition: all 0.3s ease;
     }
   }
-}
+  .card-img {
+    height: 22rem;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+  }
+  .card-title {
+    color: #000000;
+  }
+  .cart-icon {
+    height: 2rem;
+    width: 2rem;
+    color: #fffafa;
 
-.card-img {
-  height: 22rem;
-  background-size: cover;
-  background-position: center;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
-}
+    &:hover {
+      color: #ad795d;
+      background-color: #fffafa !important;
+      border: 3px solid #ad795d;
+    }
+  }
+  .fav-icon {
+    top: 3%;
+    right: 3%;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
 
-.card-title {
-  color: #000000;
-}
-
-del {
-  color: #6c757d;
-  font-size: 12px;
-}
-
-.cart-icon {
-  height: 2rem;
-  width: 2rem;
-  color: #fffafa;
-
-  &:hover {
-    color: #ad795d;
-    background-color: #fffafa !important;
-    border: 3px solid #ad795d;
+    .favorite {
+      top: 21%;
+      left: 20%;
+      transition: all 0.3s ease;
+      // color: #fffafa;
+    }
   }
 }
 
@@ -317,31 +334,6 @@ del {
   &-bar {
     padding-right: 1rem;
   }
-}
-
-@media screen and (min-width: 769px) {
-  .category {
-    position: sticky;
-    top: 118px;
-    height: calc(100vh - 118px);
-  }
-}
-
-.fav-icon {
-  top: 3%;
-  right: 3%;
-  height: 2.5rem;
-  width: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 50%;
-  cursor: pointer;
-  display: none;
-}
-.favorite {
-  top: 21%;
-  left: 20%;
-  transition: all 0.3s ease;
-  // color: #fffafa;
 }
 
 @keyframes fav-animation {

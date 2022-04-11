@@ -6,7 +6,7 @@
           <div
             v-if="!product.imagesUrl"
             style="
-              height: 50rem;
+              height: 45rem;
               background-position: center center;
               background-size: cover;
             "

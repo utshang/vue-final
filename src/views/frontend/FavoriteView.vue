@@ -52,7 +52,10 @@
                   >
                     {{ item.category }}</span
                   >
-                  <div class="fav-icon text-end" @click="toggleFav(item.id)">
+                  <div
+                    class="fav-icon text-end"
+                    @click="toggleFav(item.id), getProductsList()"
+                  >
                     <span
                       class="material-icons-outlined text-primary favorite"
                       v-if="favorite.includes(item.id)"
@@ -100,7 +103,6 @@
           </div>
         </div>
       </div>
-      {{ product.length }}
     </template>
   </div>
   <VeeLoading :active="isLoading"></VeeLoading>
@@ -142,7 +144,6 @@ export default {
       this.product = this.products.filter((item) =>
         this.favorite.includes(item.id)
       );
-      this.emitter.emit("get-fav");
     },
     addCart(id, qty = 1) {
       this.isLoading = true;

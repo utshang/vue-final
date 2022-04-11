@@ -28,20 +28,19 @@ export default {
           title: "已經移除最愛囉！",
         });
       }
-      // this.emitter.emit("get-fav", this.favorite);
+      this.emitter.emit("get-fav", this.favorite);
     },
   },
   watch: {
     favorite: {
+      //深層監聽
+      deep: true,
       //handler控制器
       handler() {
         //localStorage自訂欄位"favorite"
         //監聽favorite，favorite有變動時有變動時就寫入
         localStorage.setItem("favorite", JSON.stringify(this.favorite));
       },
-      //深層監聽
-      deep: true,
     },
   },
-  mounted() {},
 };
