@@ -1,7 +1,14 @@
 <template>
+  <div
+    class="banner mt-3 d-md-none d-block"
+    :style="{
+      backgroundImage:
+        'url(' + require('@/assets/images/front/aboutus.jpg') + ')',
+    }"
+  ></div>
   <div class="container">
     <div
-      class="banner mt-3"
+      class="banner mt-3 d-md-block d-none"
       :style="{
         backgroundImage:
           'url(' + require('@/assets/images/front/aboutus.jpg') + ')',

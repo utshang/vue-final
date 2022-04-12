@@ -58,5 +58,6 @@ export default {
   width: 50px;
   height: 50px;
   transition: 0.3s;
+  cursor: pointer;
 }
 </style>

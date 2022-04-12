@@ -145,6 +145,13 @@
       精選商品 <span class="fs-5">Selected</span>
     </h2>
     <RandomSwiper></RandomSwiper>
+    <div class="text-center mt-4 my-sm-5">
+      <router-link
+        class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
+        to="/products"
+        >查看更多</router-link
+      >
+    </div>
   </div>
 
   <!-- 關於我們-->
@@ -260,6 +267,12 @@ h2 {
   .category-img {
     height: 30rem;
   }
+}
+
+.see-more {
+  letter-spacing: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .about-img {

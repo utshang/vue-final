@@ -4,6 +4,7 @@
       <div class="row">
         <div class="product-img text-xl-end col-md-7">
           <div
+            class="product-img-img"
             v-if="!product.imagesUrl"
             style="
               height: 45rem;
@@ -192,16 +193,24 @@
         有任何問題都可以【聯繫我們】，我們會在看到你的來訊/來信的時候盡快回覆你的訊息！
       </div>
     </div>
+    <!-- 精選商品 輪播 -->
+    <div class="mt-6">
+      <h2 class="fs-3 text-secondary fw-bold mb-4">
+        推薦商品 <span class="fs-5">About us</span>
+      </h2>
+      <RandomSwiper></RandomSwiper>
+    </div>
   </div>
 
   <span></span>
 </template>
 
 <script>
+import RandomSwiper from "@/components/RandomSwiper.vue";
 import ProductSwiper from "@/components/ImageSwiper.vue";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
 export default {
-  components: { ProductSwiper },
+  components: { ProductSwiper, RandomSwiper },
   mixins: [FavoriteMixin],
   inject: ["emitter"],
   data() {
@@ -209,10 +218,15 @@ export default {
       product: [],
       productId: "",
       qty: 1,
+      loadingStatus: {
+        loadingItem: "",
+      },
+      isLoading: false,
     };
   },
   methods: {
     getProduct() {
+      this.isLoading = true;
       const { id } = this.$route.params;
       this.$http
         .get(
@@ -220,6 +234,8 @@ export default {
         )
         .then((res) => {
           this.product = res.data.product;
+
+          this.isLoading = false;
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");
@@ -260,8 +276,25 @@ export default {
           this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
+    imageCheck() {
+      const imgID = document.querySelectorAll(".product-img-img");
+
+      const defaultImg = "https://i.imgur.com/cFOdLy8.png";
+
+      imgID.forEach((item) => {
+        const imgUrl = item.style.backgroundImage.split("(")[1].split(")")[0]; // 取的 url
+        const image = new Image();
+        // eslint-disable-next-line
+        image.src = imgUrl.replace(/\"/g, ""); // 背景圖取得出來之後會有雙引號，因此要去除這個雙引號
+        if (!image.complete) {
+          item.style.backgroundImage = `url(${defaultImg})`;
+        }
+        image.onload = () => (item.style.backgroundImage = `url(${imgUrl})`);
+      });
+    },
   },
   mounted() {
+    this.imageCheck();
     this.getProduct();
     this.emitter.emit("get-fav", this.favorite);
   },
@@ -357,5 +390,11 @@ del {
 
 .nav .active {
   border-bottom: 2px solid #e6ccab;
+}
+
+h2 {
+  span {
+    font-family: "Sansita Swashed", cursive;
+  }
 }
 </style>

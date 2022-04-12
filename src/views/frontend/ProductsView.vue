@@ -301,6 +301,7 @@ h1 {
     height: 2rem;
     width: 2rem;
     color: #fffafa;
+    cursor: pointer;
 
     &:hover {
       color: #ad795d;

@@ -13,30 +13,27 @@
         :key="item.id"
         class="swiper-slide"
       >
-        <div class="card border-width h-100">
-          <div
-            class="swiper-slide-inner"
-            style="
-              height: 18rem;
-              background-position: center center;
-              background-size: cover;
-            "
-            :style="{ backgroundImage: `url(${item.imageUrl})` }"
-          ></div>
-          <div class="card-body d-flex justify-content-between">
-            <h2 class="fw-bold">{{ item.title }}</h2>
-            <p class="fw-bold fs-5 text-secondary">NT$ {{ item.price }}</p>
+        <router-link :to="`/product/${item.id}`">
+          <div class="card border-width h-100">
+            <div
+              class="swiper-slide-inner"
+              style="
+                height: 18rem;
+                background-position: center center;
+                background-size: cover;
+              "
+              :style="{ backgroundImage: `url(${item.imageUrl})` }"
+            ></div>
+            <div class="card-body d-flex justify-content-between">
+              <h2 class="product-title fw-bold">{{ item.title }}</h2>
+              <p class="product-price fw-bold text-secondary">
+                NT$ {{ item.price }}
+              </p>
+            </div>
           </div>
-        </div>
+        </router-link>
       </swiper-slide>
     </swiper>
-  </div>
-  <div class="text-center mt-4 my-sm-5">
-    <router-link
-      class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
-      to="/products"
-      >查看更多</router-link
-    >
   </div>
 </template>
 
@@ -129,9 +126,23 @@ export default {
   }
 }
 
-.see-more {
-  letter-spacing: 5px;
-  padding-left: 30px;
-  padding-right: 30px;
+.product-title {
+  font-size: 0.75rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .product-title {
+    font-size: 0.875rem;
+  }
+}
+
+.product-price {
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .product-price {
+    font-size: 1rem;
+  }
 }
 </style>

@@ -33,7 +33,7 @@
     </div>
 
     <p class="fs-7 bg-success text-center text-white pb-2">
-      本網站僅供個人作品使用，不提供任何商業用途
+      本網站僅供個人作品使用，不做任何商業用途
     </p>
     <p class="slogan bg-success text-center text-white">
       Beauty, Romance, and Everything Nice.
