@@ -4,6 +4,7 @@ const routes = [
   {
     path: "/",
     component: () => import("../views/frontend/FrontView.vue"),
+    redirect: "",
     children: [
       {
         path: "",
@@ -55,6 +56,7 @@ const routes = [
   {
     path: "/admin",
     component: () => import("../views/backend/DashboardView.vue"),
+    redirect: "/admin/products",
     children: [
       // 前台產品列表
       {
