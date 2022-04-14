@@ -35,8 +35,8 @@
                 >
                   <div
                     class="accordion-body lh-lg border-top border-1 border-primary d-flex justify-content-between"
-                    v-for="(item, index) in order.products"
-                    :key="index"
+                    v-for="item in order.products"
+                    :key="item.id"
                   >
                     <div>
                       <p class="text-start fw-bold">{{ item.product.title }}</p>
@@ -75,9 +75,11 @@
             <button
               type="button"
               class="btn text-muted w-45 fs-5 border border-2"
+              @click="goToPreviousPage()"
             >
               返回
             </button>
+
             <button
               type="submit"
               class="btn btn-secondary text-white w-45 fs-5"
@@ -112,7 +114,6 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/order/${id}`
         )
         .then((res) => {
-          console.log(res.data.order);
           this.order = res.data.order;
           this.user = res.data.order.user;
         })
@@ -127,8 +128,7 @@ export default {
         .post(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/pay/${id}`
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.emitter.emit("get-cart");
           this.$router.push(`/orderfinished`);
         })
@@ -138,6 +138,13 @@ export default {
             title: "付款失敗，請重新付款！",
           });
         });
+    },
+    goToPreviousPage() {
+      this.$router.push("/cart");
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
   },
   mounted() {
@@ -150,8 +157,8 @@ export default {
 .row {
   margin-top: 50px;
   margin-bottom: 100px;
-}
-.shopping_bag {
-  font-size: 3rem;
+  .shopping_bag {
+    font-size: 3rem;
+  }
 }
 </style>

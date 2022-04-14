@@ -1,6 +1,5 @@
 <template>
   <!-- banner -->
-  <VeeLoading :active="isLoading"></VeeLoading>
   <div
     class="banner"
     :style="{
@@ -144,7 +143,7 @@
     <h2 class="fs-2 text-secondary fw-bold my-5">
       精選商品 <span class="fs-5">Selected</span>
     </h2>
-    <RandomSwiper></RandomSwiper>
+    <RandomSwiper />
     <div class="text-center mt-4 my-sm-5">
       <router-link
         class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
@@ -185,15 +184,8 @@
 import RandomSwiper from "@/components/RandomSwiper.vue";
 export default {
   components: { RandomSwiper },
-
-  data() {
-    return {
-      // randomProducts: [],
-      loadingStatus: {
-        loadingItem: "",
-      },
-      isLoading: false,
-    };
+  mounted() {
+    document.documentElement.scrollTop = 0;
   },
 };
 </script>

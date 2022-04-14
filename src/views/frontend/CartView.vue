@@ -222,7 +222,6 @@ export default {
   inject: ["emitter"],
   data() {
     return {
-      isActive: true,
       loadingStatus: {
         loadingItem: "",
       },
@@ -270,12 +269,18 @@ export default {
         });
     },
     getCart() {
+      document.documentElement.scrollTop = 0;
+      this.isLoading = true;
       this.$http
         .get(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`
         )
         .then((res) => {
           this.cartData = res.data.data;
+          this.isLoading = false;
+          if (this.cartData.carts.length === 0) {
+            this.$router.push("/products");
+          }
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");
@@ -329,6 +334,7 @@ export default {
         });
     },
     createOrder() {
+      this.isLoading = true;
       const order = this.form;
       this.$http
         .post(
@@ -339,10 +345,18 @@ export default {
           const { orderId } = res.data;
           this.$refs.form.resetForm();
           this.$router.push(`/checkout/${orderId}`);
+          this.isLoading = false;
+          this.goToTop();
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");
         });
+    },
+    goToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
   },
   mounted() {

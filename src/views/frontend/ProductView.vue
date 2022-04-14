@@ -196,13 +196,13 @@
     <!-- 精選商品 輪播 -->
     <div class="mt-6">
       <h2 class="fs-3 text-secondary fw-bold mb-4">
-        推薦商品 <span class="fs-5">About us</span>
+        推薦商品 <span class="fs-5">Recommend</span>
       </h2>
-      <RandomSwiper></RandomSwiper>
+      <RandomSwiper />
     </div>
   </div>
 
-  <span></span>
+  <VeeLoading :active="isLoading"></VeeLoading>
 </template>
 
 <script>
@@ -215,7 +215,10 @@ export default {
   inject: ["emitter"],
   data() {
     return {
-      product: [],
+      product: {
+        imageUrl: "",
+      },
+
       productId: "",
       qty: 1,
       loadingStatus: {
@@ -234,7 +237,6 @@ export default {
         )
         .then((res) => {
           this.product = res.data.product;
-
           this.isLoading = false;
         })
         .catch((error) => {
@@ -251,7 +253,6 @@ export default {
         )
         .then(() => {
           this.getCart();
-          //讀取完後清空
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");
@@ -272,29 +273,34 @@ export default {
           });
           this.emitter.emit("get-cart");
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "加入購物車失敗囉，請重新加入！",
+          });
         });
     },
-    imageCheck() {
-      const imgID = document.querySelectorAll(".product-img-img");
-
-      const defaultImg = "https://i.imgur.com/cFOdLy8.png";
-
-      imgID.forEach((item) => {
-        const imgUrl = item.style.backgroundImage.split("(")[1].split(")")[0]; // 取的 url
-        const image = new Image();
-        // eslint-disable-next-line
-        image.src = imgUrl.replace(/\"/g, ""); // 背景圖取得出來之後會有雙引號，因此要去除這個雙引號
-        if (!image.complete) {
-          item.style.backgroundImage = `url(${defaultImg})`;
-        }
-        image.onload = () => (item.style.backgroundImage = `url(${imgUrl})`);
+    goToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
     },
   },
+  //因為不會再重新跑一次mounted，需要監聽$route，當路徑改變，前往該頁面
+  watch: {
+    $route: {
+      deep: true,
+      handler(to) {
+        if (to.params.id) {
+          this.getProduct(`${to.params.id}`);
+          this.goToTop();
+        }
+      },
+    },
+  },
+
   mounted() {
-    this.imageCheck();
     this.getProduct();
     this.emitter.emit("get-fav", this.favorite);
   },

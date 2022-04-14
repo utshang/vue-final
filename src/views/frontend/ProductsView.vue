@@ -143,6 +143,7 @@ export default {
 
   methods: {
     getProductsList(category, page = 1) {
+      document.documentElement.scrollTop = 0;
       this.currentPage = page;
       let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
       if (category) {
