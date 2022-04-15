@@ -14,7 +14,7 @@
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
           ></div>
 
-          <ProductSwiper v-else :product="product"></ProductSwiper>
+          <ProductSwiper v-else :product="product" />
         </div>
 
         <div class="product-body col-md-5 mt-4 mt-md-0">
@@ -202,7 +202,7 @@
     </div>
   </div>
 
-  <VeeLoading :active="isLoading"></VeeLoading>
+  <VeeLoading :active="isLoading" />
 </template>
 
 <script>

@@ -111,7 +111,7 @@
       class="d-flex justify-content-md-end justify-content-center mt-5"
       :pages="pagination"
       @emit-pages="getProductsList()"
-    ></PaginationCom>
+    />
   </div>
 
   <VeeLoading :active="isLoading"></VeeLoading>

@@ -213,7 +213,7 @@
       </div>
     </div>
   </div>
-  <VeeLoading :active="isLoading"></VeeLoading>
+  <VeeLoading :active="isLoading" />
 </template>
 
 <script>
