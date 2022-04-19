@@ -19,7 +19,6 @@
               <div class="accordion-item">
                 <div
                   class="accordion-button"
-                  type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#order-items"
                   aria-expanded="true"
@@ -27,7 +26,6 @@
                 >
                   訂購商品
                 </div>
-
                 <div
                   id="order-items"
                   class="accordion-collapse collapse"
@@ -49,18 +47,21 @@
                         </del>
                       </div>
                     </div>
-                    <div>x {{ item.product.num }} {{ item.product.unit }}</div>
+                    <div>x {{ item.qty }} {{ item.product.unit }}</div>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="order-form my-4">
               <ul>
                 <li class="fw-bold py-1">訂單編號：{{ order.id }}</li>
                 <li class="fw-bold py-1">姓名：{{ user.name }}</li>
-                <li class="fw-bold py-1">聯絡電話：{{ user.tel }}</li>
-                <li class="fw-bold py-1">Email：{{ user.email }}</li>
+                <li class="fw-bold py-1">
+                  聯絡電話：<a href="tel:${{ user.tel }}"></a>
+                </li>
+                <li class="fw-bold py-1">
+                  Email：<a href="mailto:{{ user.email }}"></a>
+                </li>
                 <li class="fw-bold py-1">寄送地址：{{ user.address }}</li>
                 <li class="fw-bold py-1">備註：{{ order.message }}</li>
                 <li class="fw-bold py-1">
@@ -73,16 +74,8 @@
           </div>
           <div class="btn d-flex justify-content-around">
             <button
-              type="button"
-              class="btn text-muted w-45 fs-5 border border-2"
-              @click="goToPreviousPage()"
-            >
-              返回
-            </button>
-
-            <button
               type="submit"
-              class="btn btn-secondary text-white w-45 fs-5"
+              class="btn btn-secondary text-white w-100 fs-5"
               @click="getPay(order.id)"
             >
               確認付款
@@ -108,7 +101,6 @@ export default {
   methods: {
     getOrder(id) {
       // console.log(this.$route);
-
       this.$http
         .get(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/order/${id}`
@@ -122,8 +114,6 @@ export default {
         });
     },
     getPay(id) {
-      // console.log(this.$route);
-
       this.$http
         .post(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/pay/${id}`
@@ -138,13 +128,6 @@ export default {
             title: "付款失敗，請重新付款！",
           });
         });
-    },
-    goToPreviousPage() {
-      this.$router.push("/cart");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
     },
   },
   mounted() {

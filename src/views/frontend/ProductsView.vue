@@ -1,41 +1,35 @@
 <template>
   <div class="main container">
     <!-- 麵包屑導航 -->
-
     <ol class="breadcrumb mb-5">
-      <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
+      <li class="breadcrumb-item"><RouterLink to="/">首頁</RouterLink></li>
       <li class="breadcrumb-item active" aria-current="page">
-        <router-link to="/products" @click="getProductsList('')"
-          >全部產品</router-link
+        <RouterLink to="/products" @click="getProductsList"
+          >全部產品</RouterLink
         >
       </li>
     </ol>
-
     <!-- 產品 -->
-
     <div class="menu row">
       <div class="category ps-md-5 col-md-6 col-lg-3">
         <h3
           class="mb-4 fs-4 fw-bold text-secondary d-flex align-items-center"
-          @click="getProductsList('')"
+          @click="getCategory('')"
         >
           全部商品<span class="ms-2 material-icons-outlined">
             local_florist
           </span>
         </h3>
-
         <ul class="category d-flex d-md-block justify-content-evenly mt-3">
-          <li class="mb-4" @click="getProductsList('花束')">
-            <a><span>花束</span></a>
-          </li>
-          <li class="mb-4" @click="getProductsList('花籃')">
-            <a><span>花籃</span></a>
-          </li>
-          <li class="mb-4" @click="getProductsList('花材')">
-            <a><span>花材</span></a>
-          </li>
-          <li class="mb-4" @click="getProductsList('器皿')">
-            <a><span>器皿</span></a>
+          <li
+            class="mb-4"
+            v-for="item in categories"
+            :key="`類別_${item}`"
+            @click="getCategory(item)"
+          >
+            <a
+              ><span>{{ item }}</span></a
+            >
           </li>
         </ul>
       </div>
@@ -60,22 +54,22 @@
                   favorite_border
                 </span>
               </div>
-              <router-link :to="`/product/${item.id}`">
+              <RouterLink :to="`/product/${item.id}`">
                 <div
                   class="card-img"
                   :style="{ backgroundImage: `url(${item.imageUrl})` }"
                 ></div
-              ></router-link>
+              ></RouterLink>
               <div
                 class="card-body d-flex align-items-end justify-content-between"
               >
                 <div class="card-body-content">
-                  <router-link
+                  <RouterLink
                     class="card-title fs-5 fw-bold lh-base mb-2"
                     :to="`/product/${item.id}`"
                   >
                     {{ item.title }}
-                  </router-link>
+                  </RouterLink>
                   <div
                     class="price fs-6 fw-bold text-secondary mt-3"
                     v-if="item.origin_price === item.price"
@@ -110,23 +104,25 @@
     <PaginationCom
       class="d-flex justify-content-md-end justify-content-center mt-5"
       :pages="pagination"
-      @emit-pages="getProductsList()"
+      @emit-pages="getProductsList"
     />
   </div>
-
-  <VeeLoading :active="isLoading"></VeeLoading>
+  <VeeLoading :active="isLoading" />
 </template>
 
 <script>
 import PaginationCom from "@/components/PaginationCom.vue";
-
 import FavoriteMixin from "@/mixins/FavoriteMixin";
+
 export default {
   data() {
     return {
       product: {},
       products: [],
+      allProducts: [],
       pagination: {},
+      category: "",
+      categories: [],
       cartData: {},
       loadingStatus: {
         loadingItem: "",
@@ -140,15 +136,11 @@ export default {
   components: {
     PaginationCom,
   },
-
   methods: {
-    getProductsList(category, page = 1) {
+    getProductsList(page = 1) {
       document.documentElement.scrollTop = 0;
-      this.currentPage = page;
-      let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}`;
-      if (category) {
-        url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?category=${category}&page=${page}`;
-      }
+      let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}&category=${this.category}`;
+
       this.isLoading = true;
 
       this.$http
@@ -162,7 +154,6 @@ export default {
           this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
-
     addCart(id, qty = 1) {
       this.isLoading = true;
       this.loadingStatus.loadingItem = id;
@@ -186,21 +177,51 @@ export default {
         })
         .catch(() => {
           this.emitter.emit("push-message", {
-            style: "success",
+            style: "danger",
             title: "加入購物車失敗囉，請重新加入！",
           });
         });
     },
+    getAllProducts() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`;
+      this.$http
+        .get(url)
+        .then((res) => {
+          this.allProducts = res.data.products;
+          this.isLoading = false;
+          this.getCategories();
+        })
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
+        });
+    },
+    getCategories() {
+      //取出 allProducts 所有產品的 category
+      const MapCategories = this.allProducts.map((item) => item.category);
+      //使用 set 過濾重複的元素，並轉成陣列
+      this.categories = new Set(MapCategories);
+    },
+    getCategory(category) {
+      this.category = category;
+    },
   },
-
+  watch: {
+    category() {
+      this.getProductsList();
+    },
+  },
   mounted() {
     this.getProductsList();
+    this.getAllProducts();
     this.emitter.emit("get-fav", this.favorite);
   },
 };
 </script>
 
 <style lang="scss" scoped>
+$secondary: #ad795d;
+
 .main {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -228,7 +249,7 @@ h1 {
 }
 
 .router-link-exact-active {
-  color: #ad795d;
+  color: $secondary;
   font-weight: bold;
   &:hover {
     color: #e6ccab;
@@ -305,9 +326,9 @@ h1 {
     cursor: pointer;
 
     &:hover {
-      color: #ad795d;
+      color: $secondary;
       background-color: #fffafa !important;
-      border: 3px solid #ad795d;
+      border: 3px solid $secondary;
     }
   }
   .fav-icon {

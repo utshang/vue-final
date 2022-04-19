@@ -1,12 +1,12 @@
 <template>
   <div class="nav">
-    <router-link to="/">回到前台</router-link>
+    <RouterLink to="/">回到前台</RouterLink>
     |
-    <router-link to="/admin/products">後台產品列表</router-link>
+    <RouterLink to="/admin/products">後台產品列表</RouterLink>
     |
-    <router-link to="/admin/coupon">後台優惠卷</router-link>
+    <RouterLink to="/admin/coupon">後台優惠卷</RouterLink>
     |
-    <router-link to="/admin/order">後台訂單</router-link>
+    <RouterLink to="/admin/order">後台訂單</RouterLink>
     |
     <a href="" @click.prevent="signOut">登出</a>
   </div>

@@ -51,11 +51,8 @@
         </tr>
       </tbody>
     </table>
-    <VeeLoading :active="isLoading"></VeeLoading>
-    <PaginationCom
-      :pages="pagination"
-      @emit-pages="getProductsList"
-    ></PaginationCom>
+    <VeeLoading :active="isLoading" />
+    <PaginationCom :pages="pagination" @emit-pages="getProductsList" />
     <!-- ProductModal -->
     <ProductModal
       @update-product="updateProduct"
@@ -64,11 +61,7 @@
       ref="productModal"
     />
     <!-- DelModal -->
-    <DelModal
-      :item="tempProduct"
-      ref="delModal"
-      @del-item="delProduct"
-    ></DelModal>
+    <DelModal :item="tempProduct" ref="delModal" @del-item="delProduct" />
   </div>
 </template>
 
@@ -118,7 +111,6 @@ export default {
           this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
-
     openModal(isNew, item) {
       if (isNew) {
         this.tempProduct = {};
@@ -130,7 +122,6 @@ export default {
       const productComponent = this.$refs.productModal;
       productComponent.openModal();
     },
-
     updateProduct(item) {
       this.tempProduct = item;
       let api = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/product`;
@@ -156,13 +147,11 @@ export default {
           this.$httpMessageState(error.response, status);
         });
     },
-
     openDelProductModal(item) {
       this.tempProduct = { ...item };
       const delComponent = this.$refs.delModal;
       delComponent.openModal();
     },
-
     delProduct() {
       const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
       this.isLoading = true;

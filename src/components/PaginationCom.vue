@@ -14,8 +14,8 @@
         </a>
       </li>
       <li
-        v-for="(item, index) in pages.total_pages"
-        :key="index"
+        v-for="item in pages.total_pages"
+        :key="item + 'page'"
         class="page-item"
         :class="{ active: item === pages.current_page }"
       >

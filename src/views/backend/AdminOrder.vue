@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading" :z-index="1060"></Loading>
+  <VeeLoading :active="isLoading" />
   <table class="table mt-4">
     <thead>
       <tr>
@@ -62,13 +62,9 @@
       </template>
     </tbody>
   </table>
-  <OrderModal
-    :order="tempOrder"
-    ref="orderModal"
-    @update-paid="updatePaid"
-  ></OrderModal>
-  <DelModal :item="tempOrder" ref="delModal" @del-item="delOrder"></DelModal>
-  <PaginationCom :pages="pagination" @emitPages="getOrders"></PaginationCom>
+  <OrderModal :order="tempOrder" ref="orderModal" @update-paid="updatePaid" />
+  <DelModal :item="tempOrder" ref="delModal" @del-item="delOrder" />
+  <PaginationCom :pages="pagination" @emitPages="getOrders" />
 </template>
 
 <script>
