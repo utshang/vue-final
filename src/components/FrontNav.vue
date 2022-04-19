@@ -157,7 +157,7 @@
             <li class="d-md-none d-block">
               <div class="dropdown">
                 <a
-                  class="home btn text-secondary p-0 active"
+                  class="home btn text-secondary p-0"
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
