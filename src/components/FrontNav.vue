@@ -70,6 +70,7 @@
             <!-- offcanvas -->
             <div
               class="offcanvas offcanvas-end"
+              data-bs-scroll="true"
               data-bs-backdrop="false"
               id="offcanvasExample"
               aria-labelledby="offcanvasExampleLabel"
