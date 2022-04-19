@@ -3,7 +3,6 @@
     <swiper
       :modules="modules"
       :space-between="50"
-      autoplay
       :breakpoints="swiper.breakpoints"
     >
       <swiper-slide
@@ -11,7 +10,7 @@
         :key="item.id"
         class="swiper-slide"
       >
-        <div class="card border-width h-100">
+        <div class="card h-100">
           <RouterLink :to="`/product/${item.id}`">
             <div
               class="swiper-slide-inner"
@@ -24,10 +23,20 @@
             ></div>
           </RouterLink>
           <div class="card-body d-flex justify-content-between">
-            <h2 class="product-title fw-bold">{{ item.title }}</h2>
-            <p class="product-price fw-bold text-secondary">
-              NT$ {{ item.price }}
-            </p>
+            <div>
+              <h2 class="product-title fw-bold mb-2">{{ item.title }}</h2>
+              <p class="product-price fw-bold text-secondary">
+                NT$ {{ item.price }}
+              </p>
+            </div>
+            <div class="align-self-end">
+              <a
+                class="cart-icon bg-secondary pt-3 pb-1 px-2 rounded-circle"
+                @click="addCart(item.id)"
+              >
+                <span class="material-icons-outlined"> add_shopping_cart </span>
+              </a>
+            </div>
           </div>
         </div>
       </swiper-slide>
@@ -44,9 +53,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 export default {
+  emits: ["get-cart"],
   components: { Swiper, SwiperSlide },
+  inject: ["emitter"],
   data() {
     return {
+      loadingStatus: {
+        loadingItem: "",
+      },
+      isLoading: false,
       products: [],
       randomProducts: [],
       modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
@@ -97,7 +112,32 @@ export default {
         ];
       }
       //從索引值0開始刪除後面10個元素，並把刪除的元素通通傳回來
-      this.randomProducts = this.randomProducts.splice(0, 10);
+      this.randomProducts = this.randomProducts.splice(1, 10);
+    },
+    addCart(id, qty = 1) {
+      this.isLoading = true;
+      this.$http
+        .post(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`,
+          {
+            data: { product_id: id, qty },
+          }
+        )
+        .then(() => {
+          this.isLoading = false;
+          this.emitter.emit("get-cart");
+          this.emitter.emit("add-cart");
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "成功加入購物車囉！",
+          });
+        })
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "加入購物車失敗囉，請重新加入！",
+          });
+        });
     },
   },
   mounted() {
@@ -108,7 +148,7 @@ export default {
 
 <style lang="scss" scoped>
 .swiper-slide {
-  height: 21rem;
+  height: 22rem;
   .card {
     background-color: #ffffff;
     border-radius: 1rem;
@@ -117,6 +157,17 @@ export default {
       border-top-right-radius: 1em;
       &:hover {
         opacity: 0.7;
+      }
+    }
+    .cart-icon {
+      height: 2rem;
+      width: 2rem;
+      color: #fffafa;
+      cursor: pointer;
+      &:hover {
+        color: #ad795d;
+        background-color: #fffafa !important;
+        border: 3px solid #ad795d;
       }
     }
   }

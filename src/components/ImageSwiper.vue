@@ -24,7 +24,6 @@
       <div
         style="
           height: 30rem;
-
           background-position: center center;
           background-size: cover;
         "
@@ -81,13 +80,11 @@ import {
   EffectCoverflow,
   Thumbs,
 } from "swiper";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
-
 export default {
   props: {
     product: Object,

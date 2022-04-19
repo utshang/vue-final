@@ -3,14 +3,42 @@
     class="main-nav px-4 pt-2 pb-1 px-md-5 py-md-3 bg-white position-sticky top-0"
   >
     <div class="nav justify-content-between">
-      <router-link class="home text-secondary fs-3 mt-1" to="/"
-        >The Florist</router-link
-      >
-      <div class="naverbar">
+      <div class="d-flex">
+        <RouterLink class="home text-secondary fs-3 mt-1" to="/"
+          >The Florist</RouterLink
+        >
+        <div class="d-md-block d-none">
+          <div class="d-flex mt-3">
+            <li>
+              <RouterLink
+                class="pb-3 ms-4 fs-7 fw-bold text-standard"
+                to="/products"
+              >
+                全部產品</RouterLink
+              >
+            </li>
+
+            <li>
+              <RouterLink
+                class="pb-3 ms-3 fs-7 fw-bold text-standard"
+                to="/about"
+                >關於我們</RouterLink
+              >
+            </li>
+            <li>
+              <RouterLink class="ms-3 fs-7 fw-bold text-standard" to="/faq"
+                >常見問答</RouterLink
+              >
+            </li>
+          </div>
+        </div>
+      </div>
+
+      <div class="naverbar d-flex align-items-end">
         <div class="naverbar-item">
           <ul class="d-flex align-items-center">
             <li>
-              <router-link class="home text-secondary" to="/favorite">
+              <RouterLink class="home text-secondary" to="/favorite">
                 <span class="material-icons px-3 text-secondary">
                   favorite
                 </span>
@@ -19,16 +47,14 @@
                 >
                   {{ product.length }}</span
                 >
-              </router-link>
+              </RouterLink>
             </li>
 
             <li>
               <a
-                @click.prevent
                 class="home text-secondary"
                 data-bs-toggle="offcanvas"
                 href="#offcanvasExample"
-                role="button"
                 aria-controls="offcanvasExample"
               >
                 <span class="material-icons px-3 text-secondary">
@@ -44,7 +70,7 @@
             <!-- offcanvas -->
             <div
               class="offcanvas offcanvas-end"
-              tabindex="-1"
+              data-bs-backdrop="false"
               id="offcanvasExample"
               aria-labelledby="offcanvasExampleLabel"
               ref="offcanvas"
@@ -70,17 +96,16 @@
                     :to="`/product/${item.product.id}`"
                   >
                     <span
-                      class="material-icons-outlined align-self-center text-muted"
+                      class="material-icons-outlined align-self-center text-muted del-icon"
                       @click="delProduct(item.id)"
                     >
                       highlight_off
                     </span>
-
                     <div class="mx-3">
                       <img
                         class="cart-img rounded-3"
                         :src="item.product.imageUrl"
-                        alt="item.title"
+                        :alt="item.title"
                       />
                     </div>
                     <div
@@ -97,7 +122,6 @@
                           NT$ {{ item.product.origin_price * item.qty }}
                         </del>
                       </div>
-
                       <p class="fs-7">
                         數量：{{ item.qty }} {{ item.product.unit }}
                       </p>
@@ -105,6 +129,7 @@
                   </div>
                 </div>
                 <button
+                  type="button"
                   class="btn btn-secondary text-white mt-4 w-100"
                   @click="goToCart"
                 >
@@ -119,8 +144,8 @@
                     sentiment_dissatisfied
                   </span>
                   <p>購物車空空的唷！</p>
-
                   <button
+                    type="button"
                     class="btn btn-secondary text-white mt-4 w-100"
                     @click="goToProducts"
                   >
@@ -129,11 +154,10 @@
                 </div>
               </template>
             </div>
-
-            <li>
+            <li class="d-md-none d-block">
               <div class="dropdown">
                 <a
-                  class="home btn text-secondary p-0"
+                  class="home btn text-secondary p-0 active"
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -147,19 +171,18 @@
                   aria-labelledby="dropdownMenuLink"
                 >
                   <li class="pb-3">
-                    <router-link class="dropdown-item" to="/products">
-                      全部產品</router-link
+                    <RouterLink class="dropdown-item" to="/products">
+                      全部產品</RouterLink
                     >
                   </li>
-
                   <li class="pb-3">
-                    <router-link class="dropdown-item" to="/about"
-                      >關於我們</router-link
+                    <RouterLink class="dropdown-item" to="/about"
+                      >關於我們</RouterLink
                     >
                   </li>
                   <li>
-                    <router-link class="dropdown-item" to="/faq"
-                      >常見問答</router-link
+                    <RouterLink class="dropdown-item" to="/faq"
+                      >常見問答</RouterLink
                     >
                   </li>
                 </ul>
@@ -171,7 +194,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import Offcanvas from "bootstrap/js/dist/offcanvas";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
@@ -197,8 +219,8 @@ export default {
         .then((res) => {
           this.cartData = res.data.data;
         })
-        .catch((err) => {
-          alert(err);
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
         });
     },
     delProduct(id) {
@@ -210,7 +232,6 @@ export default {
           if (this.cartData.carts.length === 0) {
             this.hideOffcanvas();
           }
-
           this.getCart();
           this.emitter.emit("get-cart");
           this.emitter.emit("push-message", {
@@ -257,6 +278,11 @@ export default {
       );
     },
   },
+  computed: {
+    mobile() {
+      return this.$vuetify.breakpoint.sm;
+    },
+  },
   mounted() {
     this.getProductsList();
     this.offcanvas = new Offcanvas(this.$refs.offcanvas);
@@ -271,12 +297,11 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
+$secondary: #ad795d;
 .main-nav {
   z-index: 1000;
 }
-
 .home {
   font-family: "Sansita Swashed", cursive;
   font-weight: 600;
@@ -284,55 +309,53 @@ export default {
 .material-icons {
   font-size: 1.8rem;
 }
-
-.dropdown-item.active,
-.dropdown-item:active {
-  color: #ad795d;
-}
-
 .cart-num {
   font-size: 0.75rem;
   color: #fffafa;
   padding: 0.1rem 0.4rem 0.3rem;
   top: 6px;
-  right: 88px;
+  right: 92px;
 }
-
 @media screen and (min-width: 769px) {
   .cart-num {
     font-size: 0.75rem;
     color: #fffafa;
     padding: 0.1rem 0.4rem 0.3rem;
-    top: 12px;
-    right: 114px;
+    top: 9px;
+    right: 55px;
   }
 }
-
 .favorite-num {
   font-size: 0.75rem;
   color: #fffafa;
   padding: 0.1rem 0.4rem 0.3rem;
   top: 6px;
-  right: 149px;
+  right: 152px;
 }
-
 @media screen and (min-width: 769px) {
   .favorite-num {
     font-size: 0.75rem;
     color: #fffafa;
     padding: 0.1rem 0.4rem 0.3rem;
-    top: 12px;
-    right: 175px;
+    top: 9px;
+    right: 114px;
   }
 }
-
 .cart-img {
   height: 7.5rem;
   width: 7.5rem;
   object-fit: cover;
 }
-
 .sentiment_dissatisfied {
   font-size: 3rem;
+}
+.del-icon {
+  cursor: pointer;
+}
+a:link {
+  color: $secondary;
+}
+a:active {
+  color: $secondary;
 }
 </style>

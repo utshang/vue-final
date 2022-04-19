@@ -49,7 +49,7 @@ export default {
     // 監聽 接收資料
     this.emitter.on("push-message", (message) => {
       //解構
-      //預設style是success
+      //預設 style 是 success
       const { style = "success", title } = message;
       this.messages.push({ style, title });
       this.toastShow();

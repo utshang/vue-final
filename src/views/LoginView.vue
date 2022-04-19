@@ -55,7 +55,7 @@ export default {
         .post(`${process.env.VUE_APP_API}/v2/admin/signin`, this.user)
         .then((res) => {
           const { token, expired } = res.data;
-          //把token存到cookie中後，畫面導向/admin/products
+          //把 token 存到 cookie 中後，畫面導向 /admin/products
           document.cookie = `TheFloristToken=${token}; expires=${new Date(
             expired
           )};`;

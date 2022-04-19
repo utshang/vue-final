@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Loading :active="isLoading" :z-index="1060"></Loading>
+    <VeeLoading :active="isLoading" />
     <div class="text-end mt-4">
       <button
         class="btn btn-primary"
@@ -32,12 +32,14 @@
           <td>
             <div class="btn-group">
               <button
+                type="button"
                 class="btn btn-outline-primary btn-sm"
                 @click="openCouponModal(false, item)"
               >
                 編輯
               </button>
               <button
+                type="button"
                 class="btn btn-outline-danger btn-sm"
                 @click="openDelCouponModal(item)"
               >
@@ -61,7 +63,6 @@
 <script>
 import CouponModal from "@/components/CouponModal.vue";
 import DelModal from "@/components/DelModal.vue";
-
 export default {
   components: { CouponModal, DelModal },
   props: {

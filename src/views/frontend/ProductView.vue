@@ -1,6 +1,6 @@
 <template>
-  <div class="container mt-5">
-    <div class="product mb-5 mb-md-8">
+  <div class="container my-5">
+    <div class="product mb-5">
       <div class="row">
         <div class="product-img text-xl-end col-md-7">
           <div
@@ -13,25 +13,21 @@
             "
             :style="{ backgroundImage: `url(${product.imageUrl})` }"
           ></div>
-
           <ProductSwiper v-else :product="product" />
         </div>
-
         <div class="product-body col-md-5 mt-4 mt-md-0">
           <div class="d-flex justify-content-between">
             <ol class="breadcrumb mb-4 mt-1">
               <li class="breadcrumb-item">
-                <router-link to="/">首頁</router-link>
+                <RouterLink to="/">首頁</RouterLink>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                <router-link to="/products">全部產品</router-link>
+                <RouterLink to="/products">全部產品</RouterLink>
               </li>
-
               <li class="breadcrumb-item active" aria-current="page">
                 {{ product.category }}
               </li>
             </ol>
-
             <div class="fav-icon" @click="toggleFav(product.id)">
               <span
                 class="material-icons-outlined favorite text-primary"
@@ -67,23 +63,6 @@
           <p class="product-description lh-lg mt-4 p-3 rounded-3">
             {{ product.description }}
           </p>
-
-          <input
-            type="number"
-            class="form-control mt-4"
-            min="1"
-            max="5"
-            v-model.number="qty"
-          />
-
-          <button
-            type="button"
-            class="btn btn-success text-white w-100 mt-4"
-            @click="addCart(product.id, qty)"
-          >
-            加入購物車
-          </button>
-
           <!-- 產品詳細說明 -->
           <div
             class="accordion rounded-3 shadow mt-4"
@@ -91,7 +70,7 @@
           >
             <div class="accordion-item">
               <div
-                class="accordion-button"
+                class="accordion-button text-standard"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseOne"
                 aria-expanded="true"
@@ -99,7 +78,6 @@
               >
                 產品詳細說明
               </div>
-
               <div
                 id="panelsStayOpen-collapseOne"
                 class="accordion-collapse collapse show"
@@ -110,15 +88,15 @@
                 >
                   <ul>
                     <li class="fs-7" v-if="product.specification">
-                      <p class="text-secondary">規格：</p>
+                      <p class="text-standard">規格：</p>
                       {{ product.specification }}
                     </li>
                     <li class="fs-7 mt-3" v-if="product.color">
-                      <p class="text-secondary">花朵色系：</p>
+                      <p class="text-standard">花朵色系：</p>
                       {{ product.color }}
                     </li>
                     <li class="fs-7 mt-3" v-if="product.notice">
-                      <p class="text-secondary">注意事項：</p>
+                      <p class="text-standard">注意事項：</p>
                       {{ product.notice }}
                     </li>
                   </ul>
@@ -126,12 +104,24 @@
               </div>
             </div>
           </div>
+          <input
+            type="number"
+            class="form-control mt-4"
+            min="1"
+            max="5"
+            v-model.number="qty"
+          />
+          <button
+            type="button"
+            class="btn btn-success text-white w-100 mt-4"
+            @click="addCart(product.id, qty)"
+          >
+            加入購物車
+          </button>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container mb-5">
     <!-- Nav tabs -->
     <ul
       class="nav nav-tabs d-flex justify-content-around mb-3"
@@ -218,7 +208,6 @@ export default {
       product: {
         imageUrl: "",
       },
-
       productId: "",
       qty: 1,
       loadingStatus: {
@@ -229,6 +218,7 @@ export default {
   },
   methods: {
     getProduct() {
+      document.documentElement.scrollTop = 0;
       this.isLoading = true;
       const { id } = this.$route.params;
       this.$http
@@ -280,26 +270,15 @@ export default {
           });
         });
     },
-    goToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    },
   },
-  //因為不會再重新跑一次mounted，需要監聽$route，當路徑改變，前往該頁面
+  //因為不會再重新跑一次 mounted，需要監聽 $route，當路徑改變，前往該頁面
   watch: {
-    $route: {
-      deep: true,
-      handler(to) {
-        if (to.params.id) {
-          this.getProduct(`${to.params.id}`);
-          this.goToTop();
-        }
-      },
+    $route(to) {
+      if (this.$route.name === "product") {
+        this.getProduct(`${to.params.id}`);
+      }
     },
   },
-
   mounted() {
     this.getProduct();
     this.emitter.emit("get-fav", this.favorite);
@@ -308,6 +287,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$secondary: #ad795d;
 .breadcrumb-item {
   font-size: 0.75rem;
 }
@@ -319,23 +299,19 @@ export default {
 .product-title {
   font-size: 1.5rem;
 }
-
 @media screen and (min-width: 769px) {
   .product-title {
     font-size: 2rem;
   }
 }
-
 .origin-price {
   font-size: 1.2rem;
 }
-
 @media screen and (min-width: 769px) {
   .origin-price {
     font-size: 1.5rem;
   }
 }
-
 del {
   color: #6c757d;
   font-size: 0.75rem;
@@ -345,29 +321,22 @@ del {
     font-size: 1rem;
   }
 }
-
 .product-img {
-  // height: 10rem;
-  // width: 8rem;
   object-fit: cover;
 }
-
 @media screen and (min-width: 1200px) {
   .product-img {
     object-fit: cover;
     padding-right: 4rem;
   }
 }
-
 .product-description {
   background-color: #e6ccab57;
   border-left: 3px solid #e6ccab;
 }
-
 .form-control {
   border: 3px solid #e6ccab;
 }
-
 @media screen and (min-width: 769px) {
   .accordion-body ul li,
   p {
@@ -383,24 +352,23 @@ del {
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #ad795d;
+  color: $secondary;
 }
-
 .nav-tabs {
   border-bottom: 1px solid #ced4da;
 }
-
 .nav-link {
   color: #495057;
 }
-
 .nav .active {
   border-bottom: 2px solid #e6ccab;
 }
-
 h2 {
   span {
     font-family: "Sansita Swashed", cursive;
   }
+}
+.accordion-button {
+  color: $secondary;
 }
 </style>

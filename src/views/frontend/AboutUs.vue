@@ -2,16 +2,14 @@
   <div
     class="banner mt-3 d-md-none d-block"
     :style="{
-      backgroundImage:
-        'url(' + require('@/assets/images/front/aboutus.jpg') + ')',
+      backgroundImage: `url(${require('@/assets/images/front/aboutus.jpg')} )`,
     }"
   ></div>
   <div class="container">
     <div
       class="banner mt-3 d-md-block d-none"
       :style="{
-        backgroundImage:
-          'url(' + require('@/assets/images/front/aboutus.jpg') + ')',
+        backgroundImage: `url(${require('@/assets/images/front/aboutus.jpg')} )`,
       }"
     ></div>
     <div class="body my-5">
@@ -29,7 +27,7 @@
         The florist 花閣 讓花成為你生活中的陪伴<br />
         花，除了可以為生活帶來氛圍，也是一種傳遞愛的媒介，<br />
         希望可以透過花朵，創造生活的儀式感，激發你的浪漫因子，<br />
-        希望你能和花朵一起綻放，希望你的生活，有The Florist 花閣的陪伴。
+        希望你能和花朵一起綻放，希望你的生活，有 The Florist 花閣的陪伴。
       </p>
     </div>
   </div>
@@ -51,11 +49,9 @@ export default {
   background-size: cover;
   background-position: center center;
 }
-
 .slogan {
   font-size: 1.125rem;
 }
-
 @media screen and (min-width: 769px) {
   .slogan {
     font-size: 30px;
@@ -66,17 +62,14 @@ export default {
     padding: 0 8rem;
   }
 }
-
 @media screen and (min-width: 769px) {
   h3 {
     font-size: 1.5rem;
   }
 }
-
 p {
   font-size: 0.875rem;
 }
-
 @media screen and (min-width: 576px) {
   p {
     font-size: 1rem;

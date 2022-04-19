@@ -4,13 +4,11 @@ const routes = [
   {
     path: "/",
     component: () => import("../views/frontend/FrontView.vue"),
-    redirect: "",
     children: [
       {
         path: "",
         component: () => import("../views/frontend/HomeView.vue"),
       },
-      // 前台產品列表
       {
         path: "products",
         component: () => import("../views/frontend/ProductsView.vue"),
@@ -32,6 +30,10 @@ const routes = [
         component: () => import("../views/frontend/CheckOut.vue"),
       },
       {
+        path: "checkorder",
+        component: () => import("../views/frontend/CheckOrder.vue"),
+      },
+      {
         path: "orderfinished",
         component: () => import("../views/frontend/OrderFinished.vue"),
       },
@@ -46,19 +48,15 @@ const routes = [
     ],
   },
 
-  //登入註冊
   {
     path: "/login",
     component: () => import("../views/LoginView.vue"),
   },
 
-  //後台
   {
     path: "/admin",
     component: () => import("../views/backend/DashboardView.vue"),
-    redirect: "/admin/products",
     children: [
-      // 前台產品列表
       {
         path: "products",
         component: () => import("../views/backend/AdminProducts.vue"),
@@ -72,6 +70,10 @@ const routes = [
         component: () => import("../views/backend/AdminOrder.vue"),
       },
     ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
   },
 ];
 

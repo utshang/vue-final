@@ -1,6 +1,6 @@
 <template>
-  <ToastMessages></ToastMessages>
-  <router-view />
+  <ToastMessages />
+  <RouterView />
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
   components: {
     ToastMessages,
   },
-  //提供emitter 可以在其他地方用inject注入(在app.vue提供，前後台都可以使用emitter)
+  //提供 emitter 可以在其他地方用 inject注入(在 app.vue 提供，前後台都可以使用 emitter)
   provide() {
     return {
       emitter,

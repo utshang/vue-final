@@ -2,16 +2,14 @@
   <div
     class="banner mt-3 d-md-none d-block"
     :style="{
-      backgroundImage:
-        'url(' + require('@/assets/images/front/favorite.jpg') + ')',
+      backgroundImage: `url(${require('@/assets/images/front/favorite.jpg')} )`,
     }"
   ></div>
   <div class="container">
     <div
       class="banner mt-3 d-md-block d-none"
       :style="{
-        backgroundImage:
-          'url(' + require('@/assets/images/front/favorite.jpg') + ')',
+        backgroundImage: `url(${require('@/assets/images/front/favorite.jpg')} )`,
       }"
     ></div>
     <p class="title text-secondary fw-bold text-center mt-5">我的最愛</p>
@@ -22,10 +20,10 @@
         </span>
         <p class="text-muted mb-4">我的最愛空空的唷！</p>
 
-        <router-link
+        <RouterLink
           to="/products"
           class="bg-secondary text-white py-2 px-5 rounded-3"
-          >來去逛逛！</router-link
+          >來去逛逛！</RouterLink
         >
       </div>
     </template>
@@ -34,13 +32,13 @@
         <div v-for="item in product" :key="item.id">
           <div class="fav-item rounded-3 shadow p-4 mb-4 d-flex row">
             <div class="col-sm-5 col-md-3">
-              <router-link :to="`/product/${item.id}`">
+              <RouterLink :to="`/product/${item.id}`">
                 <img
                   class="fav-item-img rounded-3"
                   :src="item.imageUrl"
-                  alt="item.title"
+                  :alt="item.title"
                 />
-              </router-link>
+              </RouterLink>
             </div>
             <div
               class="col-sm-7 col-md-9 mt-4 mt-sm-1 d-flex flex-column justify-content-between"
@@ -54,7 +52,7 @@
                   >
                   <div
                     class="fav-icon text-end"
-                    @click="toggleFav(item.id), getProductsList()"
+                    @click="toggleFav(item.id), getFavoriteProducts()"
                   >
                     <span
                       class="material-icons-outlined text-primary favorite"
@@ -70,15 +68,14 @@
                     </span>
                   </div>
                 </div>
-
                 <div class="fav-body mt-sm-1">
-                  <router-link :to="`/product/${item.id}`">
+                  <RouterLink :to="`/product/${item.id}`">
                     <h2
                       class="fav-item-title text-secondary fw-bold mb-3 lh-base"
                     >
                       {{ item.title }}
                     </h2>
-                  </router-link>
+                  </RouterLink>
                   <p class="fav-item-description fs-7 text-muted mb-4 lh-base">
                     {{ item.description }}
                   </p>
@@ -110,7 +107,6 @@
 
 <script>
 import FavoriteMixin from "@/mixins/FavoriteMixin";
-
 export default {
   mixins: [FavoriteMixin],
   inject: ["emitter"],
@@ -156,9 +152,7 @@ export default {
           }
         )
         .then(() => {
-          //讀取完後清空
           this.loadingStatus.loadingItem = "";
-
           this.isLoading = false;
           this.emitter.emit("push-message", {
             style: "success",
@@ -174,7 +168,6 @@ export default {
         });
     },
   },
-
   mounted() {
     this.getProductsList();
     this.emitter.emit("get-fav", this.favorite);
@@ -193,11 +186,9 @@ export default {
 .title {
   font-size: 1.875rem;
 }
-
 .heart_broken {
   font-size: 5rem;
 }
-
 @media screen and (min-width: 769px) {
   .row {
     padding: 0 7.5rem;
@@ -208,7 +199,6 @@ export default {
     padding: 0 7.5rem;
   }
 }
-
 .fav-item {
   margin: 0 auto;
   &-img {
@@ -216,7 +206,6 @@ export default {
     width: 100%;
     object-fit: cover;
   }
-
   &-title {
     font-size: 1.5rem;
   }
@@ -230,18 +219,15 @@ export default {
     cursor: pointer;
   }
 }
-
 @media screen and (min-width: 576px) {
   .fav-img {
     height: 15rem;
     width: 15rem;
   }
 }
-
 .add-cart-btn {
   width: 8rem;
 }
-
 @media screen and (min-width: 769px) {
   .fav-item-description {
     display: block;

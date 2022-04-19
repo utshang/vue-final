@@ -139,6 +139,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import modalMixin from "@/mixins/modalMixin";
 export default {
@@ -160,7 +161,6 @@ export default {
   },
   emits: ["update-paid"],
   mixins: [modalMixin],
-
   watch: {
     order() {
       this.tempOrder = this.order;

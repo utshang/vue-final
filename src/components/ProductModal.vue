@@ -35,7 +35,6 @@
                   placeholder="請輸入圖片連結"
                 />
               </div>
-
               <div class="mb-3">
                 <label for="customFile" class="form-label"
                   >或 上傳圖片
@@ -52,18 +51,17 @@
                   @change="uploadFile"
                 />
               </div>
-
               <img
                 class="img-fluid"
                 :src="tempProduct.imageUrl"
-                alt="tempProduct.title"
+                :alt="tempProduct.title"
               />
               <!-- 延伸技巧，多圖 -->
               <div class="mt-5" v-if="tempProduct.imagesUrl">
                 <div
-                  v-for="(image, key) in tempProduct.imagesUrl"
+                  v-for="(image, index) in tempProduct.imagesUrl"
                   class="mb-3"
-                  :key="key"
+                  :key="`多圖_${index}`"
                 >
                   <input
                     type="url"
@@ -89,6 +87,7 @@
                   "
                 >
                   <button
+                    type="button"
                     class="btn btn-outline-primary btn-sm d-block w-100"
                     @click="tempProduct.imagesUrl.push('')"
                   >
@@ -108,7 +107,6 @@
                   placeholder="請輸入標題"
                 />
               </div>
-
               <div class="row gx-2">
                 <div class="mb-3 col-md-6">
                   <label for="category" class="form-label">分類</label>
@@ -131,7 +129,6 @@
                   />
                 </div>
               </div>
-
               <div class="row gx-2">
                 <div class="mb-3 col-md-6">
                   <label for="origin_price" class="form-label">原價</label>
@@ -157,7 +154,6 @@
                 </div>
               </div>
               <hr />
-
               <div class="mb-3">
                 <div class="mb-3">
                   <label for="content" class="form-label">說明</label>
@@ -250,9 +246,9 @@
     </div>
   </div>
 </template>
+
 <script>
 import modalMixin from "@/mixins/modalMixin";
-
 export default {
   props: {
     product: {
@@ -277,19 +273,6 @@ export default {
   emits: ["update-product"],
   mixins: [modalMixin],
   inject: ["emitter"],
-  watch: {
-    //監聽props的product
-    product() {
-      //使用tempProduct去接收外層的資料product
-      this.tempProduct = this.product;
-      if (!this.tempProduct.imagesUrl) {
-        this.tempProduct.imagesUrl = [];
-      }
-      if (!this.tempProduct.imageUrl) {
-        this.tempProduct.imageUrl = "";
-      }
-    },
-  },
   methods: {
     uploadFile() {
       const uploadedFile = this.$refs.fileInput.files[0];
@@ -329,6 +312,19 @@ export default {
           this.status.fileUploading = false;
           this.$httpMessageState(error.response, "圖片失敗");
         });
+    },
+  },
+  watch: {
+    //監聽props的product
+    product() {
+      //使用tempProduct去接收外層的資料product
+      this.tempProduct = this.product;
+      if (!this.tempProduct.imagesUrl) {
+        this.tempProduct.imagesUrl = [];
+      }
+      if (!this.tempProduct.imageUrl) {
+        this.tempProduct.imageUrl = "";
+      }
     },
   },
 };

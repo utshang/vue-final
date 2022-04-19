@@ -6,19 +6,19 @@
       <div class="menu ps-4">
         <ul>
           <li class="mb-3 mb-sm-4 fs-7">
-            <router-link class="text-white text-decoration-none" to="/products">
-              全部產品</router-link
+            <RouterLink class="text-white text-decoration-none" to="/products">
+              全部產品</RouterLink
             >
           </li>
 
           <li class="mb-3 mb-sm-4 fs-7">
-            <router-link class="text-white text-decoration-none" to="/about"
-              >關於我們</router-link
+            <RouterLink class="text-white text-decoration-none" to="/about"
+              >關於我們</RouterLink
             >
           </li>
           <li class="mb-3 mb-sm-4 fs-7">
-            <router-link class="text-white text-decoration-none" to="/faq"
-              >常見問答</router-link
+            <RouterLink class="text-white text-decoration-none" to="/faq"
+              >常見問答</RouterLink
             >
           </li>
         </ul>
@@ -51,15 +51,12 @@
     padding-right: 10rem;
   }
 }
-
 ul {
   padding-left: 0;
 }
-
 .slogan {
   font-family: "Sansita Swashed", cursive;
 }
-
 .footer_end-p {
   font-size: 0.8rem;
   font-family: "Sansita Swashed", cursive;

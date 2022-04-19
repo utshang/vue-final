@@ -1,6 +1,6 @@
 <template>
   <FrontNav />
-  <router-view />
+  <RouterView />
   <FrontFooter />
   <transition name="fade">
     <a

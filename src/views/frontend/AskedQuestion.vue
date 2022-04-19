@@ -2,28 +2,25 @@
   <div
     class="banner mt-3 d-md-none d-block"
     :style="{
-      backgroundImage: 'url(' + require('@/assets/images/front/faq.jpg') + ')',
+      backgroundImage: `url(${require('@/assets/images/front/faq.jpg')} )`,
     }"
   ></div>
   <div class="container">
     <div
       class="banner mt-3 d-md-block d-none"
       :style="{
-        backgroundImage:
-          'url(' + require('@/assets/images/front/faq.jpg') + ')',
+        backgroundImage: `url(${require('@/assets/images/front/faq.jpg')} )`,
       }"
     ></div>
     <div class="body my-5">
       <p class="slogan text-secondary fw-bold">你可能會想問...</p>
-
       <div
         class="accordion rounded-3 shadow mt-4"
         id="accordionPanelsStayOpenExample"
       >
         <div class="accordion-item">
           <div
-            class="accordion-button"
-            type="button"
+            class="accordion-button text-standard"
             data-bs-toggle="collapse"
             data-bs-target="#faq-1"
             aria-expanded="true"
@@ -31,7 +28,6 @@
           >
             商品都是現貨還是預購呢？
           </div>
-
           <div
             id="faq-1"
             class="accordion-collapse collapse show"
@@ -53,8 +49,7 @@
       >
         <div class="accordion-item">
           <div
-            class="accordion-button"
-            type="button"
+            class="accordion-button text-standard"
             data-bs-toggle="collapse"
             data-bs-target="#faq-2"
             aria-expanded="true"
@@ -62,7 +57,6 @@
           >
             收到貨後發現花朵受損的話怎麼辦呢？
           </div>
-
           <div
             id="faq-2"
             class="accordion-collapse collapse"
@@ -84,8 +78,7 @@
       >
         <div class="accordion-item">
           <div
-            class="accordion-button"
-            type="button"
+            class="accordion-button text-standard"
             data-bs-toggle="collapse"
             data-bs-target="#faq-3"
             aria-expanded="true"
@@ -93,7 +86,6 @@
           >
             器皿有鑑賞期限嗎？
           </div>
-
           <div
             id="faq-3"
             class="accordion-collapse collapse"
@@ -113,8 +105,7 @@
       >
         <div class="accordion-item">
           <div
-            class="accordion-button"
-            type="button"
+            class="accordion-button text-standard"
             data-bs-toggle="collapse"
             data-bs-target="#faq-4"
             aria-expanded="true"
@@ -122,7 +113,6 @@
           >
             如果還有其他問題怎麼聯絡你們呢？
           </div>
-
           <div
             id="faq-4"
             class="accordion-collapse collapse"
@@ -159,7 +149,6 @@ export default {
 .slogan {
   font-size: 1.125rem;
 }
-
 @media screen and (min-width: 769px) {
   .slogan {
     font-size: 1.875rem;

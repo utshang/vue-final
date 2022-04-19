@@ -5,7 +5,7 @@
     <ul class="pagination">
       <li class="page-item" :class="{ disabled: !pages.has_pre }">
         <a
-          class="page-link"
+          class="page-link text-standard"
           href="#"
           aria-label="Previous"
           @click.prevent="emitPages(pages.current_page - 1)"
@@ -14,21 +14,27 @@
         </a>
       </li>
       <li
-        v-for="(item, index) in pages.total_pages"
-        :key="index"
+        v-for="item in pages.total_pages"
+        :key="item + 'page'"
         class="page-item"
         :class="{ active: item === pages.current_page }"
       >
-        <span class="page-link" v-if="item === pages.current_page">{{
-          item
-        }}</span>
-        <a class="page-link" href="#" v-else @click.prevent="emitPages(item)">{{
-          item
-        }}</a>
+        <span
+          class="page-link text-standard"
+          v-if="item === pages.current_page"
+          >{{ item }}</span
+        >
+        <a
+          class="page-link text-standard"
+          href="#"
+          v-else
+          @click.prevent="emitPages(item)"
+          >{{ item }}</a
+        >
       </li>
       <li class="page-item" :class="{ disabled: !pages.has_next }">
         <a
-          class="page-link"
+          class="page-link text-standard"
           href="#"
           aria-label="Next"
           @click.prevent="emitPages(pages.current_page + 1)"
