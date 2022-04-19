@@ -18,13 +18,15 @@
         <div class="product-body col-md-5 mt-4 mt-md-0">
           <div class="d-flex justify-content-between">
             <ol class="breadcrumb mb-4 mt-1">
-              <li class="breadcrumb-item">
-                <RouterLink to="/">首頁</RouterLink>
+              <li class="breadcrumb-item fs-7 fw-bold">
+                <RouterLink class="text-standard" to="/">首頁</RouterLink>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
-                <RouterLink to="/products">全部產品</RouterLink>
+              <li class="breadcrumb-item fs-7 fw-bold" aria-current="page">
+                <RouterLink class="text-standard" to="/products"
+                  >全部產品</RouterLink
+                >
               </li>
-              <li class="breadcrumb-item active" aria-current="page">
+              <li class="breadcrumb-item fs-7 fw-bold" aria-current="page">
                 {{ product.category }}
               </li>
             </ol>
@@ -289,6 +291,7 @@ export default {
 
 <style lang="scss" scoped>
 $secondary: #ad795d;
+$standard: #704e3c;
 
 .breadcrumb-item {
   font-size: 0.75rem;
@@ -354,7 +357,7 @@ del {
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: $secondary;
+  color: $standard;
 }
 .nav-tabs {
   border-bottom: 1px solid #ced4da;

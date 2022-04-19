@@ -107,6 +107,7 @@
 
 <script>
 import FavoriteMixin from "@/mixins/FavoriteMixin";
+
 export default {
   mixins: [FavoriteMixin],
   inject: ["emitter"],

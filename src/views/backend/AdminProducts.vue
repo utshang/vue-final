@@ -69,6 +69,7 @@
 import ProductModal from "@/components/ProductModal.vue";
 import DelModal from "@/components/DelModal.vue";
 import PaginationCom from "@/components/PaginationCom.vue";
+
 export default {
   components: {
     ProductModal,

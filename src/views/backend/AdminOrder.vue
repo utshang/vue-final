@@ -71,6 +71,7 @@
 import DelModal from "@/components/DelModal.vue";
 import OrderModal from "@/components/OrderModal.vue";
 import PaginationCom from "@/components/PaginationCom.vue";
+
 export default {
   data() {
     return {

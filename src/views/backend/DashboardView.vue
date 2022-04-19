@@ -6,6 +6,7 @@
 
 <script>
 import DashboardNav from "@/components/DashboardNav.vue";
+
 export default {
   inject: ["emitter"],
   components: {

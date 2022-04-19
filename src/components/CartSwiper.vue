@@ -4,6 +4,7 @@
       :modules="modules"
       :space-between="50"
       :breakpoints="swiper.breakpoints"
+      autoplay
     >
       <swiper-slide
         v-for="item in randomProducts"
@@ -52,6 +53,7 @@ import { Navigation, Pagination, Autoplay, EffectCoverflow } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 export default {
   emits: ["get-cart"],
   components: { Swiper, SwiperSlide },

@@ -63,6 +63,7 @@
 <script>
 import CouponModal from "@/components/CouponModal.vue";
 import DelModal from "@/components/DelModal.vue";
+
 export default {
   components: { CouponModal, DelModal },
   props: {

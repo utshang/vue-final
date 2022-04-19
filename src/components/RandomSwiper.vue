@@ -43,6 +43,7 @@ import { Navigation, Pagination, Autoplay, EffectCoverflow } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 export default {
   components: { Swiper, SwiperSlide },
   data() {

@@ -4,7 +4,10 @@
     <ol class="breadcrumb mb-5">
       <li class="breadcrumb-item"><RouterLink to="/">首頁</RouterLink></li>
       <li class="breadcrumb-item active" aria-current="page">
-        <RouterLink to="/products" @click="getProductsList"
+        <RouterLink
+          class="text-standard"
+          to="/products"
+          @click="getProductsList"
           >全部產品</RouterLink
         >
       </li>
@@ -332,6 +335,7 @@ h1 {
     }
   }
 }
+
 .menu {
   h3 {
     cursor: pointer;
@@ -340,6 +344,7 @@ h1 {
     padding-right: 1rem;
   }
 }
+
 @keyframes fav-animation {
   from {
     top: 0;

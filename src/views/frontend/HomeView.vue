@@ -38,16 +38,14 @@
       <div
         class="category-img mb-5 mt-md-5"
         :style="{
-          backgroundImage:
-            'url(' + require('@/assets/images/front/bouquet.jpg') + ')',
+          backgroundImage: `url(${require('@/assets/images/front/bouquet.jpg')} )`,
         }"
       ></div>
       <!-- 花籃 -->
       <div
         class="category-img d-none d-md-block"
         :style="{
-          backgroundImage:
-            'url(' + require('@/assets/images/front/basket.jpg') + ')',
+          backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
         }"
       ></div>
       <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
@@ -61,8 +59,7 @@
       <div
         class="category-img d-md-none d-block"
         :style="{
-          backgroundImage:
-            'url(' + require('@/assets/images/front/basket.jpg') + ')',
+          backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
         }"
       ></div>
       <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
@@ -85,16 +82,14 @@
       <div
         class="category-img mb-5 mt-md-5"
         :style="{
-          backgroundImage:
-            'url(' + require('@/assets/images/front/material.jpg') + ')',
+          backgroundImage: `url(${require('@/assets/images/front/material.jpg')} )`,
         }"
       ></div>
       <!-- 器皿 -->
       <div
         class="category-img d-none d-md-block"
         :style="{
-          backgroundImage:
-            'url(' + require('@/assets/images/front/vase.jpg') + ')',
+          backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
         }"
       ></div>
       <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
@@ -108,8 +103,7 @@
       <div
         class="category-img d-md-none d-block"
         :style="{
-          backgroundImage:
-            'url(' + require('@/assets/images/front/vase.jpg') + ')',
+          backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
         }"
       ></div>
       <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
