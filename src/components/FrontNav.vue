@@ -197,6 +197,7 @@
 <script>
 import Offcanvas from "bootstrap/js/dist/offcanvas";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
+
 export default {
   mixins: [FavoriteMixin],
   inject: ["emitter"],

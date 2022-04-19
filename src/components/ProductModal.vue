@@ -273,6 +273,10 @@ export default {
   emits: ["update-product"],
   mixins: [modalMixin],
   inject: ["emitter"],
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8190598e3897c87204ba60198d2fe3cb0075e0d6
   methods: {
     uploadFile() {
       const uploadedFile = this.$refs.fileInput.files[0];

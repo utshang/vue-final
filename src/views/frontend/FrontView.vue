@@ -20,6 +20,7 @@
 <script>
 import FrontNav from "@/components/FrontNav.vue";
 import FrontFooter from "@/components/FrontFooter.vue";
+
 export default {
   components: {
     FrontNav,

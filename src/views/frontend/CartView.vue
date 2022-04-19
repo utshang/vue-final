@@ -129,6 +129,7 @@
 <script>
 import ProgressBar from "@/components/ProgressBar.vue";
 import CartSwiper from "@/components/CartSwiper.vue";
+
 export default {
   components: { CartSwiper, ProgressBar },
   inject: ["emitter"],
@@ -257,6 +258,14 @@ export default {
 .select-num {
   width: 120px;
 }
+.material-icons-outlined {
+  cursor: pointer;
+}
+
+.select-num {
+  width: 120px;
+}
+
 h2 {
   span {
     font-family: "Sansita Swashed", cursive;

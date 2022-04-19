@@ -199,6 +199,7 @@
 import RandomSwiper from "@/components/RandomSwiper.vue";
 import ProductSwiper from "@/components/ImageSwiper.vue";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
+
 export default {
   components: { ProductSwiper, RandomSwiper },
   mixins: [FavoriteMixin],
@@ -288,6 +289,7 @@ export default {
 
 <style lang="scss" scoped>
 $secondary: #ad795d;
+
 .breadcrumb-item {
   font-size: 0.75rem;
 }

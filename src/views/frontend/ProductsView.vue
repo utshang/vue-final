@@ -113,6 +113,7 @@
 <script>
 import PaginationCom from "@/components/PaginationCom.vue";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
+
 export default {
   data() {
     return {

@@ -36,7 +36,7 @@ app.config.globalProperties.$filters = {
   currency,
 };
 
-//掛載在global下
+//掛載在 global 下
 app.config.globalProperties.$httpMessageState = $httpMessageState;
 
 app.use(router);

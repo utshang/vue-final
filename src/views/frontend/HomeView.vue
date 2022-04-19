@@ -167,6 +167,7 @@
 
 <script>
 import RandomSwiper from "@/components/RandomSwiper.vue";
+
 export default {
   data() {
     return {
