@@ -121,11 +121,12 @@
       <h2 class="fs-3 text-secondary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
-      <CartSwiper @get-cart="getCart" />
+      <CartSwiper :products="randomProducts" @get-cart="getCart" />
     </div>
   </div>
   <VeeLoading :active="isLoading" />
 </template>
+
 <script>
 import ProgressBar from "@/components/ProgressBar.vue";
 import CartSwiper from "@/components/CartSwiper.vue";
@@ -135,6 +136,8 @@ export default {
   inject: ["emitter"],
   data() {
     return {
+      products: [],
+      randomProducts: [],
       loadingStatus: {
         loadingItem: "",
       },
@@ -144,6 +147,38 @@ export default {
     };
   },
   methods: {
+    getProductsList() {
+      this.$http
+        .get(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`
+        )
+        .then((res) => {
+          this.products = res.data.products;
+          this.getCart();
+        })
+        .catch((error) => {
+          this.$httpMessageState(error.response, "錯誤訊息");
+        });
+    },
+    getRandomProducts() {
+      // 取得購物車內產品 id
+      const cartItemsId = this.cartData.carts.map((item) => item.product_id);
+      const filterId = [...cartItemsId];
+      // 篩選 filterId 以外所有商品，存進 randomProducts 中
+      this.randomProducts = this.products.filter(
+        (item) => !filterId.includes(item.id)
+      );
+      // 用 randomProducts 隨機排序 Fisher-Yates Shuffle
+      for (let i = this.randomProducts.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [this.randomProducts[i], this.randomProducts[j]] = [
+          this.randomProducts[j],
+          this.randomProducts[i],
+        ];
+      }
+      //從索引值0開始刪除後面10個元素，並把刪除的元素通通傳回來
+      this.randomProducts = this.randomProducts.splice(0, 10);
+    },
     updateCartItem(item) {
       this.loadingStatus.loadingItem = item.id;
       this.$http
@@ -234,8 +269,13 @@ export default {
       this.$router.push("/checkorder");
     },
   },
+  watch: {
+    cartData() {
+      this.getRandomProducts();
+    },
+  },
   mounted() {
-    this.getCart();
+    this.getProductsList();
     //CartSwiper
     this.emitter.on("add-cart", () => {
       this.getCart();
@@ -243,6 +283,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .cart-img {
   height: 7.5rem;

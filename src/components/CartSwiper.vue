@@ -1,16 +1,12 @@
 <template>
   <div>
-    <swiper
+    <Swiper
       :modules="modules"
       :space-between="50"
       :breakpoints="swiper.breakpoints"
       autoplay
     >
-      <swiper-slide
-        v-for="item in randomProducts"
-        :key="item.id"
-        class="swiper-slide"
-      >
+      <SwiperSlide v-for="item in products" :key="item.id" class="swiper-slide">
         <div class="card h-100">
           <RouterLink :to="`/product/${item.id}`">
             <div
@@ -40,8 +36,8 @@
             </div>
           </div>
         </div>
-      </swiper-slide>
-    </swiper>
+      </SwiperSlide>
+    </Swiper>
   </div>
 </template>
 
@@ -55,6 +51,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default {
+  props: {
+    products: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
   emits: ["get-cart"],
   components: { Swiper, SwiperSlide },
   inject: ["emitter"],
@@ -64,7 +68,7 @@ export default {
         loadingItem: "",
       },
       isLoading: false,
-      products: [],
+
       randomProducts: [],
       modules: [Navigation, Pagination, Autoplay, EffectCoverflow],
       swiper: {
@@ -89,33 +93,6 @@ export default {
     };
   },
   methods: {
-    getProductsList() {
-      this.$http
-        .get(
-          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`
-        )
-        .then((res) => {
-          this.products = res.data.products;
-          this.getRandomProducts();
-        })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
-        });
-    },
-    //Fisher-Yates Shuffle
-    getRandomProducts() {
-      //將 products 賦予到 randomProducts，用 randomProducts 隨機排序
-      this.randomProducts = this.products;
-      for (let i = this.randomProducts.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [this.randomProducts[i], this.randomProducts[j]] = [
-          this.randomProducts[j],
-          this.randomProducts[i],
-        ];
-      }
-      //從索引值0開始刪除後面10個元素，並把刪除的元素通通傳回來
-      this.randomProducts = this.randomProducts.splice(1, 10);
-    },
     addCart(id, qty = 1) {
       this.isLoading = true;
       this.$http
@@ -142,9 +119,7 @@ export default {
         });
     },
   },
-  mounted() {
-    this.getProductsList();
-  },
+  mounted() {},
 };
 </script>
 

@@ -171,7 +171,7 @@ export default {
           this.isLoading = false;
           this.emitter.emit("push-message", {
             style: "success",
-            title: "成功加入購物車囉！",
+            title: "成 功加入購物車囉！",
           });
           this.emitter.emit("get-cart");
         })
@@ -330,8 +330,6 @@ h1 {
     .favorite {
       top: 21%;
       left: 20%;
-      transition: all 0.3s ease;
-      // color: #fffafa;
     }
   }
 }
