@@ -56,12 +56,8 @@
               <ul>
                 <li class="fw-bold py-1">訂單編號：{{ order.id }}</li>
                 <li class="fw-bold py-1">姓名：{{ user.name }}</li>
-                <li class="fw-bold py-1">
-                  聯絡電話：<a href="tel:${{ user.tel }}"></a>
-                </li>
-                <li class="fw-bold py-1">
-                  Email：<a href="mailto:{{ user.email }}"></a>
-                </li>
+                <li class="fw-bold py-1">聯絡電話：{{ user.tel }}"></li>
+                <li class="fw-bold py-1">Email：{{ user.email }}></li>
                 <li class="fw-bold py-1">寄送地址：{{ user.address }}</li>
                 <li class="fw-bold py-1">備註：{{ order.message }}</li>
                 <li class="fw-bold py-1">

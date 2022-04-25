@@ -54,8 +54,8 @@
               <a
                 class="home text-secondary"
                 data-bs-toggle="offcanvas"
-                href="#offcanvasExample"
-                aria-controls="offcanvasExample"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
               >
                 <span class="material-icons px-3 text-secondary">
                   shopping_cart
@@ -70,16 +70,15 @@
             <!-- offcanvas -->
             <div
               class="offcanvas offcanvas-end"
-              data-bs-scroll="true"
-              data-bs-backdrop="false"
-              id="offcanvasExample"
-              aria-labelledby="offcanvasExampleLabel"
+              tabindex="-1"
+              id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel"
               ref="offcanvas"
             >
               <div class="offcanvas-header p-4">
                 <h5
                   class="offcanvas-title fs-4 fw-bold"
-                  id="offcanvasExampleLabel"
+                  id="offcanvasRightLabel"
                 >
                   購物車
                 </h5>
@@ -132,6 +131,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary text-white mt-4 w-100"
+                  data-bs-dismiss="offcanvas"
                   @click="goToCart"
                 >
                   前往購物車
@@ -148,6 +148,7 @@
                   <button
                     type="button"
                     class="btn btn-secondary text-white mt-4 w-100"
+                    data-bs-dismiss="offcanvas"
                     @click="goToProducts"
                   >
                     來去逛逛！
@@ -196,7 +197,7 @@
   </div>
 </template>
 <script>
-import Offcanvas from "bootstrap/js/dist/offcanvas";
+// import Offcanvas from "bootstrap/js/dist/offcanvas";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
 
 export default {
@@ -250,15 +251,11 @@ export default {
     },
     goToCart() {
       this.$router.push("/cart");
-      this.hideOffcanvas();
     },
     goToProducts() {
       this.$router.push("/products");
-      this.hideOffcanvas();
     },
-    hideOffcanvas() {
-      this.offcanvas.hide();
-    },
+
     getProductsList() {
       this.isLoading = true;
       this.$http
@@ -287,7 +284,7 @@ export default {
   },
   mounted() {
     this.getProductsList();
-    this.offcanvas = new Offcanvas(this.$refs.offcanvas);
+    // this.offcanvas = new Offcanvas(this.$refs.offcanvas);
     this.getCart();
     this.emitter.on("get-cart", () => {
       this.getCart();
