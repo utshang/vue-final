@@ -84,16 +84,36 @@
               </div>
             </div>
           </div>
-          <div v-if="cartData.carts?.length">
-            <p class="text-end fw-bold text-secondary fs-4 mt-5">
-              總金額 NT$ {{ cartData.final_total }}
-            </p>
-          </div>
+
           <div class="d-flex flex-column align-items-end mt-5">
+            <div>
+              <p class="text-end fw-bold text-secondary fs-6">
+                總金額 NT$ {{ cartData.final_total }} {{ cartData.total }}
+              </p>
+              <div v-if="success === true" class="fs-7">
+                <p></p>
+              </div>
+            </div>
+            <div class="d-flex apply my-3">
+              <input
+                type="text "
+                class="form-control border border-2 apply-input fs-7"
+                v-model="couponCode"
+                :placeholder="message"
+              />
+
+              <button
+                class="btn btn-outline-secondary text-white apply-btn fs-7"
+                type="button"
+                @click="ApplyCoupon"
+              >
+                套用
+              </button>
+            </div>
             <button
               type="button"
               to="/checkOrder"
-              class="btn btn-secondary text-white fs-5 py-2 px-4"
+              class="btn btn-secondary text-white chekout-btn fs-7"
               @click="goToCheckOrder()"
             >
               前往結帳
@@ -124,6 +144,7 @@
       <CartSwiper :products="randomProducts" @get-cart="getCart" />
     </div>
   </div>
+
   <VeeLoading :active="isLoading" />
 </template>
 
@@ -136,6 +157,9 @@ export default {
   inject: ["emitter"],
   data() {
     return {
+      couponCode: "",
+      success: "",
+      message: "",
       products: [],
       randomProducts: [],
       loadingStatus: {
@@ -268,6 +292,32 @@ export default {
     goToCheckOrder() {
       this.$router.push("/checkorder");
     },
+    ApplyCoupon() {
+      const data = {
+        code: this.couponCode,
+      };
+      this.$http
+        .post(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/coupon`,
+          { data }
+        )
+        .then((res) => {
+          this.success = res.data.success;
+          this.message = res.data.message;
+          this.couponCode = "";
+          this.getCart();
+          this.emitter.emit("push-message", {
+            style: "success",
+            title: "優惠碼套用成功！",
+          });
+        })
+        .catch(() => {
+          this.emitter.emit("push-message", {
+            style: "danger",
+            title: "優惠碼不存在！",
+          });
+        });
+    },
   },
   watch: {
     cartData() {
@@ -285,6 +335,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$white: #fffafa;
+$gray-600: #6c757d;
 .cart-img {
   height: 7.5rem;
   width: 7.5rem;
@@ -310,6 +362,29 @@ export default {
 h2 {
   span {
     font-family: "Sansita Swashed", cursive;
+  }
+}
+
+.apply {
+  width: 100%;
+  &-btn {
+    width: 5rem;
+    background-color: $gray-600;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .apply {
+    width: 15rem;
+  }
+}
+.chekout-btn {
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .chekout-btn {
+    width: 15rem;
   }
 }
 </style>
