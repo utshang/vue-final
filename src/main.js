@@ -11,13 +11,13 @@ import AllRules from "@vee-validate/rules";
 import { localize, setLocale } from "@vee-validate/i18n";
 import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
 
-import $httpMessageState from "@/libs/pushMessageState";
+import $httpMessageState from "@/libs/PushMessageState";
 import "material-icons/iconfont/material-icons.css";
 import "animate.css";
 
 import App from "./App.vue";
 import router from "./router";
-import { date, currency } from "./libs/filters";
+import { date, currency, priceAddComma } from "./libs/filters";
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
@@ -34,9 +34,9 @@ const app = createApp(App);
 app.config.globalProperties.$filters = {
   date,
   currency,
+  priceAddComma,
 };
 
-//掛載在 global 下
 app.config.globalProperties.$httpMessageState = $httpMessageState;
 
 app.use(router);

@@ -26,7 +26,7 @@
           <div class="card-body d-flex justify-content-between">
             <h2 class="product-title fw-bold">{{ item.title }}</h2>
             <p class="product-price fw-bold text-secondary">
-              NT$ {{ item.price }}
+              NT$ {{ $filters.priceAddComma(item.price) }}
             </p>
           </div>
         </div>

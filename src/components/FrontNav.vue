@@ -116,10 +116,20 @@
                       </h3>
                       <div class="d-flex align-items-end mb-3">
                         <p class="fw-bold fs-5">
-                          NT$ {{ item.product.price * item.qty }}
+                          NT$
+                          {{
+                            $filters.priceAddComma(
+                              item.product.price * item.qty
+                            )
+                          }}
                         </p>
                         <del class="fw-bold fs-7 ms-2 text-muted">
-                          NT$ {{ item.product.origin_price * item.qty }}
+                          NT$
+                          {{
+                            $filters.priceAddComma(
+                              item.product.origin_price * item.qty
+                            )
+                          }}
                         </del>
                       </div>
                       <p class="fs-7">

@@ -52,10 +52,18 @@
                   </div>
                   <div class="d-sm-none d-flex align-items-end">
                     <p class="fw-bold fs-7 mt-3">
-                      NT$ {{ item.product.price * item.qty }}
+                      NT$
+                      {{
+                        $filters.priceAddComma(item.product.price * item.qty)
+                      }}
                     </p>
                     <del class="fs-8 text-muted ms-2">
-                      NT$ {{ item.product.origin_price * item.qty }}
+                      NT$
+                      {{
+                        $filters.priceAddComma(
+                          item.product.origin_price * item.qty
+                        )
+                      }}
                     </del>
                   </div>
                 </div>
@@ -85,24 +93,40 @@
             </div>
           </div>
 
-          <div class="d-flex flex-column align-items-end mt-5">
+          <div class="d-flex flex-column align-items-end mt-4 pt-4">
             <div>
-              <div v-if="success === true">
-                <p class="text-end fw-bold text-secondary fs-5">
-                  總金額 NT$ {{ cartData.final_total }}
-                </p>
-                <p
-                  class="fs-7 text-muted mt-3 d-flex flex-column align-items-end"
+              <ul class="price-group">
+                <li
+                  class="text-end text-muted fs-6 d-flex justify-content-between"
                 >
-                  你已省下 {{ cartData.total - cartData.final_total }} 元囉！
-                </p>
-              </div>
-              <div v-else>
-                <p class="text-end fw-bold text-secondary fs-5">
-                  總金額 NT${{ cartData.total }}
-                </p>
-              </div>
+                  原售價
+                  <span> NT$ {{ $filters.priceAddComma(cartData.total) }}</span>
+                </li>
+                <li
+                  class="text-end text-muted fs-6 d-flex justify-content-between mt-2"
+                >
+                  優惠卷
+                  <span
+                    >-NT$
+                    {{
+                      $filters.priceAddComma(
+                        cartData.total - cartData.final_total
+                      )
+                    }}</span
+                  >
+                </li>
+                <li
+                  class="text-end fw-bold text-secondary fs-6 d-flex justify-content-between border-top border-2 pt-3 mt-3"
+                >
+                  總金額
+                  <span class="fs-4"
+                    >NT$
+                    {{ $filters.priceAddComma(cartData.final_total) }}</span
+                  >
+                </li>
+              </ul>
             </div>
+
             <div class="d-flex apply my-3">
               <input
                 type="text "
@@ -372,6 +396,10 @@ h2 {
   span {
     font-family: "Sansita Swashed", cursive;
   }
+}
+
+.price-group {
+  width: 16rem;
 }
 
 .apply {

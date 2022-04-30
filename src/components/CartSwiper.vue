@@ -23,7 +23,7 @@
             <div>
               <h2 class="product-title fw-bold mb-2">{{ item.title }}</h2>
               <p class="product-price fw-bold text-secondary">
-                NT$ {{ item.price }}
+                NT$ {{ $filters.priceAddComma(item.price) }}
               </p>
             </div>
             <div class="align-self-end">

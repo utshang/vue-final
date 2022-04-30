@@ -77,14 +77,15 @@
                     class="price fs-6 fw-bold text-secondary mt-3"
                     v-if="item.origin_price === item.price"
                   >
-                    NT$ {{ item.price }} 元
+                    NT$ {{ $filters.priceAddComma(item.price) }} 元
                   </div>
                   <div class="origin-price d-flex align-items-end mt-3" v-else>
                     <p class="fs-6 pe-2 text-secondary fs-5 fw-bold">
-                      NT$ {{ item.price }} 元
+                      NT$ {{ $filters.priceAddComma(item.price) }} 元
                     </p>
                     <del class="fs-7 text-muted">
-                      NT$ {{ item.origin_price }} 元</del
+                      NT$
+                      {{ $filters.priceAddComma(item.origin_price) }} 元</del
                     >
                   </div>
                 </div>

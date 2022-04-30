@@ -80,9 +80,11 @@
                     {{ item.description }}
                   </p>
                   <div class="d-flex align-items-end fw-bold">
-                    <p class="fs-5 text-black me-2">NT$ {{ item.price }}</p>
+                    <p class="fs-5 text-black me-2">
+                      NT$ {{ $filters.priceAddComma(item.price) }}
+                    </p>
                     <del class="fs-7 text-muted"
-                      >NT$ {{ item.origin_price }}</del
+                      >NT$ {{ $filters.priceAddComma(item.origin_price) }}</del
                     >
                   </div>
                 </div>

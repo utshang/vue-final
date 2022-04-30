@@ -40,10 +40,20 @@
                       <p class="text-start fw-bold">{{ item.product.title }}</p>
                       <div class="d-flex align-items-end">
                         <p class="fw-bold">
-                          NT$ {{ item.product.price * item.qty }}
+                          NT$
+                          {{
+                            $filters.priceAddComma(
+                              item.product.price * item.qty
+                            )
+                          }}
                         </p>
                         <del class="fw-bold fs-7 text-muted ms-2">
-                          NT$ {{ item.product.origin_price * item.qty }}
+                          NT$
+                          {{
+                            $filters.priceAddComma(
+                              item.product.origin_price * item.qty
+                            )
+                          }}
                         </del>
                       </div>
                     </div>

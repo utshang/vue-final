@@ -28,10 +28,18 @@
                   <p>數量：{{ item.qty }} {{ item.product.unit }}</p>
                   <div class="d-sm-none d-flex align-items-end">
                     <p class="fw-bold fs-7 mt-3">
-                      NT$ {{ item.product.price * item.qty }}
+                      NT$
+                      {{
+                        $filters.priceAddComma(item.product.price * item.qty)
+                      }}
                     </p>
                     <del class="fs-8 text-muted ms-2">
-                      NT$ {{ item.product.origin_price * item.qty }}
+                      NT$
+                      {{
+                        $filters.priceAddComma(
+                          item.product.origin_price * item.qty
+                        )
+                      }}
                     </del>
                   </div>
                 </div>
@@ -39,12 +47,18 @@
               <div class="d-sm-flex flex-sm-column mt-1">
                 <div class="d-none d-sm-block">
                   <p class="mb-2 fw-bold fs-5">
-                    NT$ {{ item.product.price * item.qty }}
+                    NT$
+                    {{ $filters.priceAddComma(item.product.price * item.qty) }}
                   </p>
                   <del
                     class="fs-7 text-muted d-flex flex-column align-items-end"
                   >
-                    NT$ {{ item.product.origin_price * item.qty }}
+                    NT$
+                    {{
+                      $filters.priceAddComma(
+                        item.product.origin_price * item.qty
+                      )
+                    }}
                   </del>
                 </div>
               </div>
@@ -52,7 +66,7 @@
           </div>
           <div v-if="cartData.carts?.length">
             <p class="text-end fw-bold text-secondary fs-4 mt-5">
-              總金額 NT$ {{ cartData.final_total }}
+              總金額 NT$ {{ $filters.priceAddComma(cartData.final_total) }}
             </p>
           </div>
         </div>
