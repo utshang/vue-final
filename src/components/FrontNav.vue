@@ -117,16 +117,12 @@
                       <div class="d-flex align-items-end mb-3">
                         <p class="fw-bold fs-5">
                           NT$
-                          {{
-                            $filters.priceAddComma(
-                              item.product.price * item.qty
-                            )
-                          }}
+                          {{ $filters.currency(item.product.price * item.qty) }}
                         </p>
                         <del class="fw-bold fs-7 ms-2 text-muted">
                           NT$
                           {{
-                            $filters.priceAddComma(
+                            $filters.currency(
                               item.product.origin_price * item.qty
                             )
                           }}

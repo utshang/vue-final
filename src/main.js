@@ -17,7 +17,7 @@ import "animate.css";
 
 import App from "./App.vue";
 import router from "./router";
-import { date, currency, priceAddComma } from "./libs/filters";
+import { date, currency } from "./libs/filters";
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule]);
@@ -34,7 +34,6 @@ const app = createApp(App);
 app.config.globalProperties.$filters = {
   date,
   currency,
-  priceAddComma,
 };
 
 app.config.globalProperties.$httpMessageState = $httpMessageState;

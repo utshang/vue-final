@@ -52,14 +52,14 @@
             class="price fw-bold text-secondary mt-3"
             v-if="product.origin_price === product.price"
           >
-            NT$ {{ $filters.priceAddComma(product.price) }} 元
+            NT$ {{ $filters.currency(product.price) }} 元
           </div>
           <div v-else class="origin-price d-flex align-items-end">
             <div class="pe-2 text-secondary fw-bold">
-              NT$ {{ $filters.priceAddComma(product.price) }} 元
+              NT$ {{ $filters.currency(product.price) }} 元
             </div>
             <del class="text-decoration-line-through ps-2">
-              NT$ {{ $filters.priceAddComma(product.origin_price) }} 元</del
+              NT$ {{ $filters.currency(product.origin_price) }} 元</del
             >
           </div>
           <p class="product-description lh-lg mt-4 p-3 rounded-3">

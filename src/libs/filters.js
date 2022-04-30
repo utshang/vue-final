@@ -13,8 +13,3 @@ export function date(time) {
   const localDate = new Date(time * 1000);
   return localDate.toLocaleDateString();
 }
-
-export function priceAddComma(num) {
-  let comma = /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g;
-  return num.toString().replace(comma, ",");
-}

@@ -53,16 +53,12 @@
                   <div class="d-sm-none d-flex align-items-end">
                     <p class="fw-bold fs-7 mt-3">
                       NT$
-                      {{
-                        $filters.priceAddComma(item.product.price * item.qty)
-                      }}
+                      {{ $filters.currency(item.product.price * item.qty) }}
                     </p>
                     <del class="fs-8 text-muted ms-2">
                       NT$
                       {{
-                        $filters.priceAddComma(
-                          item.product.origin_price * item.qty
-                        )
+                        $filters.currency(item.product.origin_price * item.qty)
                       }}
                     </del>
                   </div>
@@ -81,12 +77,15 @@
                 </a>
                 <div class="d-none d-sm-block">
                   <p class="mb-2 fw-bold fs-5">
-                    NT$ {{ item.product.price * item.qty }}
+                    NT$ {{ $filters.currency(item.product.price * item.qty) }}
                   </p>
                   <del
                     class="fs-7 text-muted d-flex flex-column align-items-end"
                   >
-                    NT$ {{ item.product.origin_price * item.qty }}
+                    NT$
+                    {{
+                      $filters.currency(item.product.origin_price * item.qty)
+                    }}
                   </del>
                 </div>
               </div>
@@ -100,7 +99,7 @@
                   class="text-end text-muted fs-6 d-flex justify-content-between"
                 >
                   原售價
-                  <span> NT$ {{ $filters.priceAddComma(cartData.total) }}</span>
+                  <span> NT$ {{ $filters.currency(cartData.total) }}</span>
                 </li>
                 <li
                   class="text-end text-muted fs-6 d-flex justify-content-between mt-2"
@@ -109,9 +108,7 @@
                   <span
                     >-NT$
                     {{
-                      $filters.priceAddComma(
-                        cartData.total - cartData.final_total
-                      )
+                      $filters.currency(cartData.total - cartData.final_total)
                     }}</span
                   >
                 </li>
@@ -120,8 +117,7 @@
                 >
                   總金額
                   <span class="fs-4"
-                    >NT$
-                    {{ $filters.priceAddComma(cartData.final_total) }}</span
+                    >NT$ {{ $filters.currency(cartData.final_total) }}</span
                   >
                 </li>
               </ul>
