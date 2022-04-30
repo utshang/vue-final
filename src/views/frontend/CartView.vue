@@ -87,11 +87,20 @@
 
           <div class="d-flex flex-column align-items-end mt-5">
             <div>
-              <p class="text-end fw-bold text-secondary fs-6">
-                總金額 NT$ {{ cartData.final_total }} {{ cartData.total }}
-              </p>
-              <div v-if="success === true" class="fs-7">
-                <p></p>
+              <div v-if="success === true">
+                <p class="text-end fw-bold text-secondary fs-5">
+                  總金額 NT$ {{ cartData.final_total }}
+                </p>
+                <p
+                  class="fs-7 text-muted mt-3 d-flex flex-column align-items-end"
+                >
+                  你已省下 {{ cartData.total - cartData.final_total }} 元囉！
+                </p>
+              </div>
+              <div v-else>
+                <p class="text-end fw-bold text-secondary fs-5">
+                  總金額 NT${{ cartData.total }}
+                </p>
               </div>
             </div>
             <div class="d-flex apply my-3">
@@ -113,7 +122,7 @@
             <button
               type="button"
               to="/checkOrder"
-              class="btn btn-secondary text-white chekout-btn fs-7"
+              class="btn btn-secondary text-white chekout-btn fs-6"
               @click="goToCheckOrder()"
             >
               前往結帳
@@ -375,7 +384,7 @@ h2 {
 
 @media screen and (min-width: 576px) {
   .apply {
-    width: 15rem;
+    width: 16rem;
   }
 }
 .chekout-btn {
@@ -384,7 +393,7 @@ h2 {
 
 @media screen and (min-width: 576px) {
   .chekout-btn {
-    width: 15rem;
+    width: 16rem;
   }
 }
 </style>
