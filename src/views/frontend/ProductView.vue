@@ -277,7 +277,9 @@ export default {
   //因為不會再重新跑一次 mounted，需要監聽 $route，當路徑改變，前往該頁面
   watch: {
     $route(to) {
-      this.getProduct(`${to.params.id}`);
+      if (this.$route.name === "product") {
+        this.getProduct(`${to.params.id}`);
+      }
     },
   },
   mounted() {
