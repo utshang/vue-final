@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <p class="slogan text-secondary fw-bold">你可能會想問...</p>
+      <h2 class="slogan text-secondary fw-bold">常見問答</h2>
       <div
         class="accordion rounded-3 shadow mt-4"
         id="accordionPanelsStayOpenExample"
@@ -145,6 +145,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+}
+@media screen and (min-width: 769px) {
+  .body {
+    padding: 0 8rem;
+  }
 }
 .slogan {
   font-size: 1.125rem;

@@ -143,7 +143,7 @@
               v-model="form.message"
             ></textarea>
           </div>
-          <div class="btn d-flex justify-content-around p-0 mt-4">
+          <div class="d-flex justify-content-around p-0 mt-4">
             <button
               type="button"
               class="btn text-muted w-50 fs-5 border border-2 me-3"

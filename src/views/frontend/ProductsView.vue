@@ -172,7 +172,7 @@ export default {
           this.isLoading = false;
           this.emitter.emit("push-message", {
             style: "success",
-            title: "成 功加入購物車囉！",
+            title: "成功加入購物車囉！",
           });
           this.emitter.emit("get-cart");
         })

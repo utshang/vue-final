@@ -17,6 +17,11 @@
             >
           </li>
           <li class="mb-3 mb-sm-4 fs-7">
+            <RouterLink class="text-white text-decoration-none" to="/contact"
+              >聯絡我們</RouterLink
+            >
+          </li>
+          <li class="mb-3 mb-sm-4 fs-7">
             <RouterLink class="text-white text-decoration-none" to="/faq"
               >常見問答</RouterLink
             >

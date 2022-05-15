@@ -13,10 +13,10 @@
       }"
     ></div>
     <div class="body my-5">
-      <h2 class="slogan text-secondary fw-bold text-center lh-lg">
+      <h2 class="slogan text-secondary fw-bold lh-lg">
         " 希望你的生活，有 The Florist 的陪伴 "
       </h2>
-      <h3 class="fw-bold my-4">花，帶給人什麼樣的感覺？</h3>
+      <h3 class="fw-bold mt-5 mb-4">花，帶給人什麼樣的感覺？</h3>
       <p class="lh-lg">
         很久以前，有一項研究發現，花的力量可以維持60秒，<br />
         最新研究卻發現，花朵帶來的良好體驗遠遠不止60秒。正是這種「好感覺」讓人對花朵始終情有獨鍾。<br />

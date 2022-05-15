@@ -10,23 +10,22 @@
         <div class="d-md-block d-none">
           <div class="d-flex mt-3">
             <li>
-              <RouterLink
-                class="pb-3 ms-4 fs-7 fw-bold text-standard"
-                to="/products"
-              >
+              <RouterLink class="link pb-3 ms-4 fs-7 fw-bold" to="/products">
                 全部產品</RouterLink
               >
             </li>
-
             <li>
-              <RouterLink
-                class="pb-3 ms-3 fs-7 fw-bold text-standard"
-                to="/about"
+              <RouterLink class="link pb-3 ms-3 fs-7 fw-bold" to="/about"
                 >關於我們</RouterLink
               >
             </li>
             <li>
-              <RouterLink class="ms-3 fs-7 fw-bold text-standard" to="/faq"
+              <RouterLink class="link pb-3 ms-3 fs-7 fw-bold" to="/contact"
+                >聯絡我們</RouterLink
+              >
+            </li>
+            <li>
+              <RouterLink class="link ms-3 fs-7 fw-bold" to="/faq"
                 >常見問答</RouterLink
               >
             </li>
@@ -179,17 +178,22 @@
                   aria-labelledby="dropdownMenuLink"
                 >
                   <li class="pb-3">
-                    <RouterLink class="dropdown-item" to="/products">
+                    <RouterLink class="dropdown-item link" to="/products">
                       全部產品</RouterLink
                     >
                   </li>
                   <li class="pb-3">
-                    <RouterLink class="dropdown-item" to="/about"
+                    <RouterLink class="dropdown-item link" to="/about"
                       >關於我們</RouterLink
                     >
                   </li>
+                  <li class="pb-3">
+                    <RouterLink class="dropdown-item link" to="/contact"
+                      >聯絡我們</RouterLink
+                    >
+                  </li>
                   <li>
-                    <RouterLink class="dropdown-item" to="/faq"
+                    <RouterLink class="dropdown-item link" to="/faq"
                       >常見問答</RouterLink
                     >
                   </li>
@@ -304,6 +308,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 $secondary: #ad795d;
+$black: #000;
+$gray-600: #6c757d;
 .main-nav {
   z-index: 1000;
 }
@@ -357,10 +363,10 @@ $secondary: #ad795d;
 .del-icon {
   cursor: pointer;
 }
-a:link {
+.link {
   color: $secondary;
 }
-a:active {
-  color: $secondary;
+.link:active {
+  color: $gray-600;
 }
 </style>
