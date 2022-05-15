@@ -4,7 +4,7 @@
   >
     <div class="nav justify-content-between">
       <div class="d-flex">
-        <RouterLink class="home text-secondary fs-3 mt-1" to="/"
+        <RouterLink class="home text-primary fs-3 mt-1" to="/"
           >The Florist</RouterLink
         >
         <div class="d-md-block d-none">
@@ -37,10 +37,8 @@
         <div class="naverbar-item">
           <ul class="d-flex align-items-center">
             <li>
-              <RouterLink class="home text-secondary" to="/favorite">
-                <span class="material-icons px-3 text-secondary">
-                  favorite
-                </span>
+              <RouterLink class="home text-primary" to="/favorite">
+                <span class="material-icons px-3 text-primary"> favorite </span>
                 <span
                   class="favorite-num rounded-pill bg-danger position-absolute"
                 >
@@ -51,12 +49,12 @@
 
             <li>
               <a
-                class="home text-secondary"
+                class="home text-primary"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"
               >
-                <span class="material-icons px-3 text-secondary">
+                <span class="material-icons px-3 text-primary">
                   shopping_cart
                 </span>
                 <span
@@ -135,7 +133,7 @@
                 </div>
                 <button
                   type="button"
-                  class="btn btn-secondary text-white mt-4 w-100"
+                  class="btn btn-primary text-white mt-4 w-100"
                   data-bs-dismiss="offcanvas"
                   @click="goToCart"
                 >
@@ -152,7 +150,7 @@
                   <p>購物車空空的唷！</p>
                   <button
                     type="button"
-                    class="btn btn-secondary text-white mt-4 w-100"
+                    class="btn btn-primary text-white mt-4 w-100"
                     data-bs-dismiss="offcanvas"
                     @click="goToProducts"
                   >
@@ -164,12 +162,12 @@
             <li class="d-md-none d-block">
               <div class="dropdown">
                 <a
-                  class="home btn text-secondary p-0"
+                  class="home btn text-primary p-0"
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span class="material-icons mt-1 px-3 text-secondary">
+                  <span class="material-icons mt-1 px-3 text-primary">
                     menu
                   </span></a
                 >
@@ -307,7 +305,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$secondary: #ad795d;
+$primary: #ad795d;
 $black: #000;
 $gray-600: #6c757d;
 .main-nav {
@@ -364,7 +362,7 @@ $gray-600: #6c757d;
   cursor: pointer;
 }
 .link {
-  color: $secondary;
+  color: $primary;
 }
 .link:active {
   color: $gray-600;

@@ -51,7 +51,8 @@ export default {
 <style lang="scss" scoped>
 $white: #fffafa;
 $gray-600: #6c757d;
-$secondary: #ad795d;
+$primary: #ad795d;
+
 .circle {
   width: 30px;
   height: 30px;
@@ -74,7 +75,7 @@ $secondary: #ad795d;
   z-index: -1;
 }
 .progress-li-active + .progress-li-active:after {
-  background-color: $secondary;
+  background-color: $primary;
 }
 .progress-li:first-child:after {
   content: none;
@@ -85,10 +86,10 @@ $secondary: #ad795d;
   color: $gray-600;
 }
 .progress-active {
-  background-color: $secondary;
+  background-color: $primary;
   color: #fff;
   position: relative;
-  border: 1px solid $secondary;
+  border: 1px solid $primary;
 }
 .font {
   color: $gray-600;

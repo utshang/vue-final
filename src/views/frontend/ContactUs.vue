@@ -20,7 +20,7 @@
           v-slot="{ errors }"
           @submit="getSubscription"
         >
-          <h2 class="slogan text-secondary fw-bold text-center">聯絡我們</h2>
+          <h2 class="slogan text-primary fw-bold text-center">聯絡我們</h2>
           <p class="text-center lh-lg text-muted pt-3 fs-7">
             若有任何問題，歡迎透過表單與我們聯繫，我們將於服務時段儘速聯絡你！<br />你也可以試著在
             <RouterLink class="faq text-decoration-underline" to="/faq"
@@ -93,7 +93,7 @@
             </p>
             <button
               type="submit"
-              class="btn btn-secondary text-white fs-7"
+              class="btn btn-primary text-white fs-7"
               :disabled="Object.keys(errors).length > 0"
             >
               送出
@@ -150,7 +150,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$secondary: #ad795d;
+$primary: #ad795d;
 $gray-600: #6c757d;
 
 .banner {
@@ -184,6 +184,6 @@ $gray-600: #6c757d;
 }
 
 .faq:active {
-  color: $secondary;
+  color: $primary;
 }
 </style>

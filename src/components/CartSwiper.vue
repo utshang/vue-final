@@ -22,13 +22,13 @@
           <div class="card-body d-flex justify-content-between">
             <div>
               <h2 class="product-title fw-bold mb-2">{{ item.title }}</h2>
-              <p class="product-price fw-bold text-secondary">
+              <p class="product-price fw-bold text-primary">
                 NT$ {{ $filters.currency(item.price) }}
               </p>
             </div>
             <div class="align-self-end">
               <a
-                class="cart-icon bg-secondary pt-3 pb-1 px-2 rounded-circle"
+                class="cart-icon bg-primary pt-3 pb-1 px-2 rounded-circle"
                 @click="addCart(item.id)"
               >
                 <span class="material-icons-outlined"> add_shopping_cart </span>

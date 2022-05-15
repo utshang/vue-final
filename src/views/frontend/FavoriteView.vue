@@ -12,7 +12,7 @@
         backgroundImage: `url(${require('@/assets/images/front/favorite.jpg')} )`,
       }"
     ></div>
-    <p class="title text-secondary fw-bold text-center mt-5">我的最愛</p>
+    <p class="title text-primary fw-bold text-center mt-5">我的最愛</p>
     <template v-if="product.length === 0">
       <div class="p-5 text-center">
         <span class="material-icons-outlined heart_broken text-primary mb-3">
@@ -22,7 +22,7 @@
 
         <RouterLink
           to="/products"
-          class="bg-secondary text-white py-2 px-5 rounded-3"
+          class="bg-primary text-white py-2 px-5 rounded-3"
           >來去逛逛！</RouterLink
         >
       </div>
@@ -46,7 +46,7 @@
               <div>
                 <div class="d-flex justify-content-between">
                   <span
-                    class="badge bg-secondary fav-item-tag mb-3 d-flex align-items-center justify-content-center"
+                    class="badge bg-primary fav-item-tag mb-3 d-flex align-items-center justify-content-center"
                   >
                     {{ item.category }}</span
                   >
@@ -71,7 +71,7 @@
                 <div class="fav-body mt-sm-1">
                   <RouterLink :to="`/product/${item.id}`">
                     <h2
-                      class="fav-item-title text-secondary fw-bold mb-3 lh-base"
+                      class="fav-item-title text-primary fw-bold mb-3 lh-base"
                     >
                       {{ item.title }}
                     </h2>
@@ -93,7 +93,7 @@
                 <button
                   @click="addCart(item.id)"
                   type="button"
-                  class="add-cart-btn btn bg-secondary rounded-3 text-white align-self-end mt-3"
+                  class="add-cart-btn btn bg-primary rounded-3 text-white align-self-end mt-3"
                 >
                   加入購物車
                 </button>

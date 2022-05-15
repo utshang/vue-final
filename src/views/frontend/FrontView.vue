@@ -4,7 +4,7 @@
   <FrontFooter />
   <transition name="fade">
     <a
-      class="go-to-top bg-white text-center text-secondary position-fixed shadow rounded-circle"
+      class="go-to-top bg-white text-center text-primary position-fixed shadow rounded-circle"
       v-if="GoToTop"
       @click.prevent="goToTop"
     >

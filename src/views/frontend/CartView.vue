@@ -113,7 +113,7 @@
                   >
                 </li>
                 <li
-                  class="text-end fw-bold text-secondary fs-6 d-flex justify-content-between border-top border-2 pt-3 mt-3"
+                  class="text-end fw-bold text-primary fs-6 d-flex justify-content-between border-top border-2 pt-3 mt-3"
                 >
                   總金額
                   <span class="fs-4"
@@ -132,7 +132,7 @@
               />
 
               <button
-                class="btn btn-outline-secondary text-white apply-btn fs-7"
+                class="btn btn-outline-primary text-white apply-btn fs-7"
                 type="button"
                 @click="ApplyCoupon"
               >
@@ -142,7 +142,7 @@
             <button
               type="button"
               to="/checkOrder"
-              class="btn btn-secondary text-white chekout-btn fs-6"
+              class="btn btn-primary text-white chekout-btn fs-6"
               @click="goToCheckOrder()"
             >
               前往結帳
@@ -159,7 +159,7 @@
             <p class="text-muted mb-4">購物車空空的唷！</p>
             <RouterLink
               to="/products"
-              class="bg-secondary text-white py-2 px-5 rounded-3"
+              class="bg-primary text-white py-2 px-5 rounded-3"
               >來去挑選商品！</RouterLink
             >
           </div>
@@ -167,7 +167,7 @@
       </div>
     </div>
     <div class="my-6">
-      <h2 class="fs-3 text-secondary fw-bold mb-4">
+      <h2 class="fs-3 text-primary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
       <CartSwiper :products="randomProducts" @get-cart="getCart" />

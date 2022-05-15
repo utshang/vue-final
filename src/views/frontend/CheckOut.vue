@@ -67,7 +67,7 @@
                 <li class="fw-bold py-1">寄送地址：{{ user.address }}</li>
                 <li class="fw-bold py-1">備註：{{ order.message }}</li>
                 <li class="fw-bold py-1">
-                  總金額：<span class="text-secondary"
+                  總金額：<span class="text-primary"
                     >NTD$ {{ order.total }} 元</span
                   >
                 </li>
@@ -77,7 +77,7 @@
           <div class="btn d-flex justify-content-around">
             <button
               type="submit"
-              class="btn btn-secondary text-white w-100 fs-5"
+              class="btn btn-primary text-white w-100 fs-5"
               @click="getPay(order.id)"
             >
               確認付款

@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <h2 class="slogan text-secondary fw-bold">常見問答</h2>
+      <h2 class="slogan text-primary fw-bold">常見問答</h2>
       <div
         class="accordion rounded-3 shadow mt-4"
         id="accordionPanelsStayOpenExample"

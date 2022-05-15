@@ -59,7 +59,7 @@
             </div>
           </div>
           <div v-if="cartData.carts?.length">
-            <p class="text-end fw-bold text-secondary fs-4 mt-5">
+            <p class="text-end fw-bold text-primary fs-4 mt-5">
               總金額 NT$ {{ $filters.currency(cartData.final_total) }}
             </p>
           </div>
@@ -153,7 +153,7 @@
             </button>
             <button
               type="submit"
-              class="btn btn-secondary text-white w-50 fs-5"
+              class="btn btn-primary text-white w-50 fs-5"
               :disabled="Object.keys(errors).length > 0"
             >
               前往付款

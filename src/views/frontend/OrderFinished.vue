@@ -16,7 +16,7 @@
 
           <RouterLink
             to="/products"
-            class="bg-secondary text-white py-2 px-5 rounded-3"
+            class="bg-primary text-white py-2 px-5 rounded-3"
             >繼續購物</RouterLink
           >
         </div>

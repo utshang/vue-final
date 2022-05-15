@@ -16,7 +16,7 @@
     <div class="menu row">
       <div class="category ps-md-5 col-md-6 col-lg-3">
         <h3
-          class="mb-4 fs-4 fw-bold text-secondary d-flex align-items-center"
+          class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center"
           @click="getCategory('')"
         >
           全部商品<span class="ms-2 material-icons-outlined">
@@ -74,13 +74,13 @@
                     {{ item.title }}
                   </RouterLink>
                   <div
-                    class="price fs-6 fw-bold text-secondary mt-3"
+                    class="price fs-6 fw-bold text-primary mt-3"
                     v-if="item.origin_price === item.price"
                   >
                     NT$ {{ $filters.currency(item.price) }} 元
                   </div>
                   <div class="origin-price d-flex align-items-end mt-3" v-else>
-                    <p class="fs-6 pe-2 text-secondary fs-5 fw-bold">
+                    <p class="fs-6 pe-2 text-primary fs-5 fw-bold">
                       NT$ {{ $filters.currency(item.price) }} 元
                     </p>
                     <del class="fs-7 text-muted">
@@ -91,7 +91,7 @@
                 </div>
                 <div>
                   <a
-                    class="cart-icon bg-secondary pt-3 pb-1 px-2 rounded-circle"
+                    class="cart-icon bg-primary pt-3 pb-1 px-2 rounded-circle"
                     @click="addCart(item.id), pushMessageState"
                   >
                     <span class="material-icons-outlined">
@@ -221,7 +221,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$secondary: #ad795d;
+$primary: #ad795d;
 
 .main {
   margin-top: 60px;
@@ -245,7 +245,7 @@ h1 {
   }
 }
 .router-link-exact-active {
-  color: $secondary;
+  color: $primary;
   font-weight: bold;
   &:hover {
     color: #e6ccab;
@@ -314,9 +314,9 @@ h1 {
     color: #fffafa;
     cursor: pointer;
     &:hover {
-      color: $secondary;
+      color: $primary;
       background-color: #fffafa !important;
-      border: 3px solid $secondary;
+      border: 3px solid $primary;
     }
   }
   .fav-icon {

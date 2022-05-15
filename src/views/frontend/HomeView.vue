@@ -27,7 +27,7 @@
     <div class="row row-cols-1 row-cols-md-2 align-items-center mx-1">
       <!-- 花束 -->
       <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
-        <h2 class="fs-2 text-secondary fw-bold mb-3">
+        <h2 class="fs-2 text-primary fw-bold mb-3">
           花束 <span class="fs-5">Bouquet</span>
         </h2>
         <p class="text-light lh-lg">
@@ -49,7 +49,7 @@
         }"
       ></div>
       <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
-        <h2 class="fs-2 text-secondary fw-bold mb-3">
+        <h2 class="fs-2 text-primary fw-bold mb-3">
           花籃 <span class="fs-5">Flower Basket</span>
         </h2>
         <p class="text-light lh-lg">
@@ -63,7 +63,7 @@
         }"
       ></div>
       <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
-        <h2 class="fs-2 text-secondary fw-bold mb-3">
+        <h2 class="fs-2 text-primary fw-bold mb-3">
           花籃 <span class="fs-5">Flower Basket</span>
         </h2>
         <p class="text-light lh-lg">
@@ -72,7 +72,7 @@
       </div>
       <!-- 花材 -->
       <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
-        <h2 class="fs-2 text-secondary fw-bold mb-3">
+        <h2 class="fs-2 text-primary fw-bold mb-3">
           花材 <span class="fs-5">Materials</span>
         </h2>
         <p class="text-light lh-lg">
@@ -93,7 +93,7 @@
         }"
       ></div>
       <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
-        <h2 class="fs-2 text-secondary fw-bold mb-3">
+        <h2 class="fs-2 text-primary fw-bold mb-3">
           器皿 <span class="fs-5">Vase</span>
         </h2>
         <p class="text-light lh-lg">
@@ -107,7 +107,7 @@
         }"
       ></div>
       <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
-        <h2 class="fs-2 text-secondary fw-bold mb-3">
+        <h2 class="fs-2 text-primary fw-bold mb-3">
           器皿 <span class="fs-5">Vase</span>
         </h2>
         <p class="text-light lh-lg">
@@ -120,13 +120,13 @@
   <!-- 精選商品 輪播 -->
 
   <div class="container my-6">
-    <h2 class="fs-2 text-secondary fw-bold my-5">
+    <h2 class="fs-2 text-primary fw-bold my-5">
       精選商品 <span class="fs-5">Selected</span>
     </h2>
     <RandomSwiper />
     <div class="text-center mt-4 my-sm-5">
       <RouterLink
-        class="see-more fs-6 bg-secondary text-white d-inline-block py-3 rounded-3"
+        class="see-more fs-6 bg-primary text-white d-inline-block py-3 rounded-3"
         to="/products"
         >查看更多</RouterLink
       >
@@ -139,7 +139,7 @@
       <div
         class="about-des col-md-6 d-flex justify-content-center align-items-center flex-column"
       >
-        <h2 class="fs-2 text-secondary fw-bold mb-5">
+        <h2 class="fs-2 text-primary fw-bold mb-5">
           關於我們 <span class="fs-5">About us</span>
         </h2>
         <p class="text-light lh-lg">

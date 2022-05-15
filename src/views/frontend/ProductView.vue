@@ -49,13 +49,13 @@
             {{ product.title }}
           </h2>
           <div
-            class="price fw-bold text-secondary mt-3"
+            class="price fw-bold text-primary mt-3"
             v-if="product.origin_price === product.price"
           >
             NT$ {{ $filters.currency(product.price) }} 元
           </div>
           <div v-else class="origin-price d-flex align-items-end">
-            <div class="pe-2 text-secondary fw-bold">
+            <div class="pe-2 text-primary fw-bold">
               NT$ {{ $filters.currency(product.price) }} 元
             </div>
             <del class="text-decoration-line-through ps-2">
@@ -187,7 +187,7 @@
     </div>
     <!-- 精選商品 輪播 -->
     <div class="mt-6">
-      <h2 class="fs-3 text-secondary fw-bold mb-4">
+      <h2 class="fs-3 text-primary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
       <RandomSwiper />
@@ -277,9 +277,7 @@ export default {
   //因為不會再重新跑一次 mounted，需要監聽 $route，當路徑改變，前往該頁面
   watch: {
     $route(to) {
-      if (this.$route.name === "product") {
-        this.getProduct(`${to.params.id}`);
-      }
+      this.getProduct(`${to.params.id}`);
     },
   },
   mounted() {
@@ -290,7 +288,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$secondary: #ad795d;
+$primary: #ad795d;
 $standard: #704e3c;
 
 .breadcrumb-item {
@@ -374,6 +372,9 @@ h2 {
   }
 }
 .accordion-button {
-  color: $secondary;
+  color: $primary;
+}
+.fav-icon {
+  cursor: pointer;
 }
 </style>

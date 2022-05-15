@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <h2 class="slogan text-secondary fw-bold lh-lg">
+      <h2 class="slogan text-primary fw-bold lh-lg">
         " 希望你的生活，有 The Florist 的陪伴 "
       </h2>
       <h3 class="fw-bold mt-5 mb-4">花，帶給人什麼樣的感覺？</h3>
