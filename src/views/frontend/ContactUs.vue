@@ -151,6 +151,7 @@ export default {
 
 <style lang="scss" scoped>
 $primary: #ad795d;
+$gray-300: #dee2e6;
 $gray-600: #6c757d;
 
 .banner {
@@ -176,7 +177,7 @@ $gray-600: #6c757d;
   }
 }
 .form-control {
-  border: 1px solid #dee2e6;
+  border: 1px solid $gray-300;
 }
 
 .faq {

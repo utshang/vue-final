@@ -241,6 +241,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$gray-300: #dee2e6;
+
 .cart-img {
   height: 7.5rem;
   width: 7.5rem;
@@ -253,6 +255,6 @@ export default {
   }
 }
 .form-control {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid $gray-300;
 }
 </style>

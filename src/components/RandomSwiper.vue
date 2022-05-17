@@ -114,8 +114,7 @@ export default {
     background-color: #ffffff;
     border-radius: 1rem;
     .swiper-slide-inner {
-      border-top-left-radius: 1em;
-      border-top-right-radius: 1em;
+      border-radius: 1rem;
       &:hover {
         opacity: 0.7;
       }

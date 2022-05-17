@@ -306,8 +306,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 $primary: #ad795d;
+$white: #fffafa;
 $black: #000;
 $gray-600: #6c757d;
+
 .main-nav {
   z-index: 1000;
 }
@@ -317,10 +319,11 @@ $gray-600: #6c757d;
 }
 .material-icons {
   font-size: 1.8rem;
+  cursor: pointer;
 }
 .cart-num {
   font-size: 0.75rem;
-  color: #fffafa;
+  color: $white;
   padding: 0.1rem 0.4rem 0.3rem;
   top: 6px;
   right: 92px;
@@ -328,7 +331,7 @@ $gray-600: #6c757d;
 @media screen and (min-width: 769px) {
   .cart-num {
     font-size: 0.75rem;
-    color: #fffafa;
+    color: $white;
     padding: 0.1rem 0.4rem 0.3rem;
     top: 9px;
     right: 55px;
@@ -336,7 +339,7 @@ $gray-600: #6c757d;
 }
 .favorite-num {
   font-size: 0.75rem;
-  color: #fffafa;
+  color: $white;
   padding: 0.1rem 0.4rem 0.3rem;
   top: 6px;
   right: 152px;
@@ -344,7 +347,7 @@ $gray-600: #6c757d;
 @media screen and (min-width: 769px) {
   .favorite-num {
     font-size: 0.75rem;
-    color: #fffafa;
+    color: $white;
     padding: 0.1rem 0.4rem 0.3rem;
     top: 9px;
     right: 114px;

@@ -49,9 +49,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$white: #fffafa;
-$gray-600: #6c757d;
 $primary: #ad795d;
+$white: #fffafa;
+$gray-400: #ced4da;
+$gray-600: #6c757d;
+$black: #000;
 
 .circle {
   width: 30px;
@@ -68,8 +70,8 @@ $primary: #ad795d;
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
-  background-color: #ddd;
+  height: 1px;
+  background-color: $gray-400;
   top: 15px;
   left: -50%;
   z-index: -1;
@@ -81,13 +83,13 @@ $primary: #ad795d;
   content: none;
 }
 .progress {
-  border: 1px solid #ddd;
+  border: 1px solid $gray-400;
   background-color: $white;
   color: $gray-600;
 }
 .progress-active {
   background-color: $primary;
-  color: #fff;
+  color: $white;
   position: relative;
   border: 1px solid $primary;
 }
@@ -95,6 +97,6 @@ $primary: #ad795d;
   color: $gray-600;
 }
 .font-active {
-  color: #000000;
+  color: $black;
 }
 </style>

@@ -36,14 +36,14 @@
         </p>
       </div>
       <div
-        class="category-img mb-5 mt-md-5"
+        class="category-img shadow mb-5 mt-md-5"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/bouquet.jpg')} )`,
         }"
       ></div>
       <!-- 花籃 -->
       <div
-        class="category-img d-none d-md-block"
+        class="category-img shadow d-none d-md-block"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
         }"
@@ -57,7 +57,7 @@
         </p>
       </div>
       <div
-        class="category-img d-md-none d-block"
+        class="category-img shadow d-md-none d-block"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
         }"
@@ -80,14 +80,14 @@
         </p>
       </div>
       <div
-        class="category-img mb-5 mt-md-5"
+        class="category-img shadow mb-5 mt-md-5"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/material.jpg')} )`,
         }"
       ></div>
       <!-- 器皿 -->
       <div
-        class="category-img d-none d-md-block"
+        class="category-img shadow d-none d-md-block"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
         }"
@@ -101,7 +101,7 @@
         </p>
       </div>
       <div
-        class="category-img d-md-none d-block"
+        class="category-img shadow d-md-none d-block"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
         }"
@@ -150,7 +150,7 @@
         </p>
       </div>
       <div
-        class="about-img col-md-6 ms-xl-5"
+        class="about-img shadow col-md-6 ms-xl-5"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/about.jpg')} )`,
         }"
@@ -194,11 +194,9 @@ export default {
   .slogan {
     top: 52%;
     width: 300px;
-    text-shadow: 1px 1px 5px #696969;
   }
   .cta-btn {
     top: 62%;
-    text-shadow: 1px 1px 5px #696969;
   }
 }
 @media screen and (min-width: 769px) {
@@ -233,7 +231,6 @@ h2 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  box-shadow: 1px 1px 10px #696969;
 }
 @media screen and (min-width: 769px) {
   .category-img {
@@ -252,7 +249,6 @@ h2 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  box-shadow: 1px 1px 10px #696969;
   img {
     border-radius: 1rem;
   }

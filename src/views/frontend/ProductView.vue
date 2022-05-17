@@ -126,7 +126,7 @@
 
     <!-- Nav tabs -->
     <ul
-      class="nav nav-tabs d-flex justify-content-around mb-3"
+      class="nav nav-tabs d-flex justify-content-around mb-3 border-bottom border-1 border-gray-400"
       id="myTab"
       role="tablist"
     >
@@ -291,7 +291,9 @@ export default {
 
 <style lang="scss" scoped>
 $primary: #ad795d;
+$secondary: #e6ccab;
 $standard: #704e3c;
+$gray-600: #6c757d;
 
 .breadcrumb-item {
   font-size: 0.75rem;
@@ -318,7 +320,7 @@ $standard: #704e3c;
   }
 }
 del {
-  color: #6c757d;
+  color: $gray-600;
   font-size: 0.75rem;
 }
 @media screen and (min-width: 769px) {
@@ -337,10 +339,10 @@ del {
 }
 .product-description {
   background-color: #e6ccab57;
-  border-left: 3px solid #e6ccab;
+  border-left: 3px solid $secondary;
 }
 .form-control {
-  border: 3px solid #e6ccab;
+  border: 3px solid $secondary;
 }
 @media screen and (min-width: 769px) {
   .accordion-body ul li,
@@ -355,19 +357,11 @@ del {
     height: calc(100vh - 118px);
   }
 }
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  color: $standard;
-}
-.nav-tabs {
-  border-bottom: 1px solid #ced4da;
-}
-.nav-link {
-  color: #495057;
-}
+
 .nav .active {
-  border-bottom: 2px solid #e6ccab;
+  border-bottom: 2px solid $primary;
 }
+
 h2 {
   span {
     font-family: "Sansita Swashed", cursive;

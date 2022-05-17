@@ -39,7 +39,7 @@
       <div class="col-md-6 col-lg-9">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
           <div class="col" v-for="item in products" :key="item.id">
-            <div class="card border-width h-100">
+            <div class="card border-width h-100 shadow">
               <div
                 class="fav-icon position-absolute"
                 @click="toggleFav(item.id)"
@@ -68,7 +68,7 @@
               >
                 <div class="card-body-content">
                   <RouterLink
-                    class="card-title fs-5 fw-bold lh-base mb-2"
+                    class="card-title fs-5 text-black fw-bold lh-base mb-2"
                     :to="`/product/${item.id}`"
                   >
                     {{ item.title }}
@@ -222,6 +222,9 @@ export default {
 
 <style lang="scss" scoped>
 $primary: #ad795d;
+$secondary: #e6ccab;
+$gray-600: #6c757d;
+$white: #fffafa;
 
 .main {
   margin-top: 60px;
@@ -239,7 +242,7 @@ h1 {
   text-align: center;
 }
 .router-link-active {
-  color: #6c757d;
+  color: $gray-600;
   &:hover {
     color: #c6cace;
   }
@@ -248,11 +251,11 @@ h1 {
   color: $primary;
   font-weight: bold;
   &:hover {
-    color: #e6ccab;
+    color: $secondary;
   }
 }
 .category li a {
-  color: #6c757d;
+  color: $gray-600;
   width: 200px;
   transition: all 0.5s;
 }
@@ -286,7 +289,6 @@ h1 {
   }
 }
 .card {
-  box-shadow: 0 2px 15px -2px rgb(0 0 0 / 12%), 0 2px 6px -2px rgb(0 0 0 / 5%);
   border-radius: 1rem;
   transition-duration: 0.3s;
   &:hover {
@@ -305,17 +307,14 @@ h1 {
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
   }
-  .card-title {
-    color: #000000;
-  }
   .cart-icon {
     height: 2rem;
     width: 2rem;
-    color: #fffafa;
+    color: $white;
     cursor: pointer;
     &:hover {
       color: $primary;
-      background-color: #fffafa !important;
+      background-color: $white !important;
       border: 3px solid $primary;
     }
   }

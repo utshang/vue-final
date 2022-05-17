@@ -1,5 +1,5 @@
 <template>
-  <h1>你現在在後台頁面</h1>
+  <h1 class="text-center">你現在在後台頁面</h1>
   <DashboardNav />
   <RouterView v-if="checkSuccess" />
 </template>
@@ -53,9 +53,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-h1 {
-  text-align: center;
-}
-</style>

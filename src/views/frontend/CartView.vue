@@ -4,7 +4,7 @@
     <div class="my-5">
       <div class="cart-list rounded-3 shadow p-5">
         <div
-          class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-primary pb-3"
+          class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
         >
           <h3 class="fs-4 fw-bold">購物車</h3>
           <button
@@ -366,6 +366,7 @@ export default {
 <style lang="scss" scoped>
 $white: #fffafa;
 $gray-600: #6c757d;
+
 .cart-img {
   height: 7.5rem;
   width: 7.5rem;

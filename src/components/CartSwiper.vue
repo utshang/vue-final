@@ -124,6 +124,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$primary: #ad795d;
+$white: #fffafa;
+
 .swiper-slide {
   height: 22rem;
   .card {
@@ -139,12 +142,12 @@ export default {
     .cart-icon {
       height: 2rem;
       width: 2rem;
-      color: #fffafa;
+      color: $white;
       cursor: pointer;
       &:hover {
-        color: #ad795d;
-        background-color: #fffafa !important;
-        border: 3px solid #ad795d;
+        color: $primary;
+        background-color: $white !important;
+        border: 3px solid $primary;
       }
     }
   }
