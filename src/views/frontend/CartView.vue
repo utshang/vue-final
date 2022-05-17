@@ -93,8 +93,8 @@
           </div>
 
           <div class="d-flex flex-column align-items-end mt-4 pt-4">
-            <div>
-              <ul class="price-group">
+            <div class="price-group">
+              <ul>
                 <li
                   class="text-end text-muted fs-6 d-flex justify-content-between"
                 >
@@ -396,7 +396,13 @@ h2 {
 }
 
 .price-group {
-  width: 16rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .price-group {
+    width: 16rem;
+  }
 }
 
 .apply {
@@ -407,7 +413,7 @@ h2 {
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .apply {
     width: 16rem;
   }
@@ -416,7 +422,7 @@ h2 {
   width: 100%;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .chekout-btn {
     width: 16rem;
   }
