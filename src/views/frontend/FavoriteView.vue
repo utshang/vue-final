@@ -93,9 +93,40 @@
                 <button
                   @click="addCart(item.id)"
                   type="button"
-                  class="add-cart-btn btn bg-primary rounded-3 text-white align-self-end mt-3"
+                  class="add-cart-btn btn bg-primary rounded-3 text-white mt-3 px-3 d-flex align-items-center"
+                  :disabled="loadingItem === item.id"
                 >
                   加入購物車
+                  <div class="loader" title="1" v-if="loadingItem === item.id">
+                    <svg
+                      version="1.1"
+                      id="loader-1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 50 50"
+                      style="enable-background: new 0 0 50 50"
+                      xml:space="preserve"
+                    >
+                      <path
+                        fill="#000"
+                        d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"
+                      >
+                        <animateTransform
+                          attributeType="xml"
+                          attributeName="transform"
+                          type="rotate"
+                          from="0 25 25"
+                          to="360 25 25"
+                          dur="0.6s"
+                          repeatCount="indefinite"
+                        />
+                      </path>
+                    </svg>
+                  </div>
                 </button>
               </div>
             </div>
@@ -117,9 +148,7 @@ export default {
     return {
       products: [],
       product: [],
-      loadingStatus: {
-        loadingItem: "",
-      },
+      loadingItem: "",
       isLoading: false,
     };
   },
@@ -145,8 +174,7 @@ export default {
       );
     },
     addCart(id, qty = 1) {
-      this.isLoading = true;
-      this.loadingStatus.loadingItem = id;
+      this.loadingItem = id;
       this.$http
         .post(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`,
@@ -155,8 +183,8 @@ export default {
           }
         )
         .then(() => {
-          this.loadingStatus.loadingItem = "";
-          this.isLoading = false;
+          this.loadingItem = "";
+
           this.emitter.emit("push-message", {
             style: "success",
             title: "成功加入購物車囉！",
@@ -179,6 +207,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$white: #fffafa;
+
 .banner {
   height: calc(100vh - 500px);
   background-attachment: fixed;
@@ -215,9 +245,7 @@ export default {
   &-description {
     display: none;
   }
-  .add-cart-btn {
-    width: 8rem;
-  }
+
   .favorite {
     cursor: pointer;
   }
@@ -228,12 +256,21 @@ export default {
     width: 15rem;
   }
 }
-.add-cart-btn {
-  width: 8rem;
-}
+
 @media screen and (min-width: 769px) {
   .fav-item-description {
     display: block;
   }
+}
+
+.loader {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+svg path,
+svg rect {
+  fill: $white;
 }
 </style>

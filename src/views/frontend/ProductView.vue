@@ -115,16 +115,47 @@
           />
           <button
             type="button"
-            class="btn btn-success text-white w-100 mt-4"
+            class="btn btn-primary text-white w-100 mt-4"
             @click="addCart(product.id, qty)"
+            :disabled="loadingItem === product.id"
           >
             加入購物車
+            <div class="loader" title="1" v-if="loadingItem === product.id">
+              <svg
+                version="1.1"
+                id="loader-1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="20px"
+                height="20px"
+                viewBox="0 0 50 50"
+                style="enable-background: new 0 0 50 50"
+                xml:space="preserve"
+              >
+                <path
+                  fill="#000"
+                  d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"
+                >
+                  <animateTransform
+                    attributeType="xml"
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 25 25"
+                    to="360 25 25"
+                    dur="0.6s"
+                    repeatCount="indefinite"
+                  />
+                </path>
+              </svg>
+            </div>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Nav tabs -->
+    <!-- tabs -->
     <ul
       class="nav nav-tabs d-flex justify-content-around mb-3 border-bottom border-1 border-gray-400"
       id="myTab"
@@ -213,9 +244,7 @@ export default {
       },
       productId: "",
       qty: 1,
-      loadingStatus: {
-        loadingItem: "",
-      },
+      loadingItem: "",
       isLoading: false,
     };
   },
@@ -252,6 +281,7 @@ export default {
         });
     },
     addCart(id, qty = 1) {
+      this.loadingItem = id;
       this.$http
         .post(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`,
@@ -260,6 +290,7 @@ export default {
           }
         )
         .then(() => {
+          this.loadingItem = "";
           this.emitter.emit("push-message", {
             style: "success",
             title: "成功加入購物車囉！",
@@ -294,6 +325,7 @@ $primary: #ad795d;
 $secondary: #e6ccab;
 $standard: #704e3c;
 $gray-600: #6c757d;
+$white: #fffafa;
 
 .breadcrumb-item {
   font-size: 0.75rem;
@@ -372,5 +404,15 @@ h2 {
 }
 .fav-icon {
   cursor: pointer;
+}
+.loader {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+}
+
+svg path,
+svg rect {
+  fill: $white;
 }
 </style>

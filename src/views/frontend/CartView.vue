@@ -39,11 +39,11 @@
                       class="form-select border border-1"
                       v-model="item.qty"
                       @change="updateCartItem(item)"
-                      :disabled="loadingStatus.loadingItem === item.id"
+                      :disabled="loadingItem === item.id"
                     >
                       <option
                         :value="num"
-                        v-for="num in 5"
+                        v-for="num in 20"
                         :key="`${num}${item.id}`"
                       >
                         {{ num }}
@@ -170,7 +170,7 @@
       <h2 class="fs-3 text-primary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
-      <CartSwiper :products="randomProducts" @get-cart="getCart" />
+      <CartSwiper :products="randomProducts" />
     </div>
   </div>
 
@@ -191,9 +191,9 @@ export default {
       message: "",
       products: [],
       randomProducts: [],
-      loadingStatus: {
-        loadingItem: "",
-      },
+
+      loadingItem: "",
+
       isLoading: false,
       cartPrice: {},
       cartData: {},
@@ -233,7 +233,7 @@ export default {
       this.randomProducts = this.randomProducts.splice(0, 10);
     },
     updateCartItem(item) {
-      this.loadingStatus.loadingItem = item.id;
+      this.loadingItem = item.id;
       this.$http
         .put(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart/${item.id}`,
@@ -243,7 +243,7 @@ export default {
         )
         .then(() => {
           this.getCart();
-          this.loadingStatus.loadingItem = "";
+          this.loadingItem = "";
           this.isLoading = false;
           this.emitter.emit("push-message", {
             style: "success",
@@ -274,14 +274,12 @@ export default {
     },
     delProduct(id) {
       this.isLoading = true;
-      this.loadingStatus.loadingItem = id;
       this.$http
         .delete(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart/${id}`
         )
         .then(() => {
           this.getCart();
-          this.loadingStatus.loadingItem = "";
           this.isLoading = false;
           this.emitter.emit("get-cart");
           this.emitter.emit("push-message", {

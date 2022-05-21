@@ -285,14 +285,9 @@ export default {
       );
     },
   },
-  computed: {
-    mobile() {
-      return this.$vuetify.breakpoint.sm;
-    },
-  },
+
   mounted() {
     this.getProductsList();
-    // this.offcanvas = new Offcanvas(this.$refs.offcanvas);
     this.getCart();
     this.emitter.on("get-cart", () => {
       this.getCart();

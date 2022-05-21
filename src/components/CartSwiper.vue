@@ -26,11 +26,38 @@
                 NT$ {{ $filters.currency(item.price) }}
               </p>
             </div>
-            <div class="align-self-end">
-              <a
-                class="cart-icon bg-primary pt-3 pb-1 px-2 rounded-circle"
-                @click="addCart(item.id)"
-              >
+            <div class="align-self-end" @click="addCart(item.id)">
+              <div class="loader" title="1" v-if="loadingItem === item.id">
+                <svg
+                  version="1.1"
+                  id="loader-1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 50 50"
+                  style="enable-background: new 0 0 50 50"
+                  xml:space="preserve"
+                >
+                  <path
+                    fill="#000"
+                    d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"
+                  >
+                    <animateTransform
+                      attributeType="xml"
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 25 25"
+                      to="360 25 25"
+                      dur="0.6s"
+                      repeatCount="indefinite"
+                    />
+                  </path>
+                </svg>
+              </div>
+              <a class="cart-icon text-primary" v-else>
                 <span class="material-icons-outlined"> add_shopping_cart </span>
               </a>
             </div>
@@ -59,14 +86,11 @@ export default {
       },
     },
   },
-  emits: ["get-cart"],
   components: { Swiper, SwiperSlide },
   inject: ["emitter"],
   data() {
     return {
-      loadingStatus: {
-        loadingItem: "",
-      },
+      loadingItem: "",
       isLoading: false,
 
       randomProducts: [],
@@ -94,7 +118,7 @@ export default {
   },
   methods: {
     addCart(id, qty = 1) {
-      this.isLoading = true;
+      this.loadingItem = id;
       this.$http
         .post(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/cart`,
@@ -103,7 +127,7 @@ export default {
           }
         )
         .then(() => {
-          this.isLoading = false;
+          this.loadingItem = "";
           this.emitter.emit("get-cart");
           this.emitter.emit("add-cart");
           this.emitter.emit("push-message", {
@@ -142,13 +166,7 @@ $white: #fffafa;
     .cart-icon {
       height: 2rem;
       width: 2rem;
-      color: $white;
       cursor: pointer;
-      &:hover {
-        color: $primary;
-        background-color: $white !important;
-        border: 3px solid $primary;
-      }
     }
   }
 }
