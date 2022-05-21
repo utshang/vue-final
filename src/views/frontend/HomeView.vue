@@ -23,96 +23,81 @@
       </button>
     </RouterLink>
   </div>
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 align-items-center mx-1">
+  <div class="container mt-6">
+    <div class="row mx-1">
       <!-- 花束 -->
-      <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
-        <h2 class="fs-2 text-primary fw-bold mb-3">
+      <div
+        class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
+      >
+        <h2 class="fs-2 text-primary fw-bold">
           花束 <span class="fs-5">Bouquet</span>
         </h2>
-        <p class="text-light lh-lg">
+        <p class="text-light lh-lg my-3">
           為想傳遞愛的你，
           <br />無論是特殊節日，抑或是平常日，<br />送給愛的人或是自己一束精心搭配好的花吧！
         </p>
       </div>
       <div
-        class="category-img shadow mb-5 mt-md-5"
+        class="category-img shadow col-md-6 mb-5"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/bouquet.jpg')} )`,
         }"
       ></div>
+
       <!-- 花籃 -->
-      <div
-        class="category-img shadow d-none d-md-block"
-        :style="{
-          backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
-        }"
-      ></div>
-      <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
-        <h2 class="fs-2 text-primary fw-bold mb-3">
-          花籃 <span class="fs-5">Flower Basket</span>
-        </h2>
-        <p class="text-light lh-lg">
-          在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
-        </p>
-      </div>
-      <div
-        class="category-img shadow d-md-none d-block"
-        :style="{
-          backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
-        }"
-      ></div>
-      <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
-        <h2 class="fs-2 text-primary fw-bold mb-3">
-          花籃 <span class="fs-5">Flower Basket</span>
-        </h2>
-        <p class="text-light lh-lg">
-          在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
-        </p>
+      <div class="d-md-flex flex-md-row-reverse">
+        <div
+          class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
+        >
+          <h2 class="fs-2 text-primary fw-bold">
+            花籃 <span class="fs-5">Flower Basket</span>
+          </h2>
+          <p class="text-light lh-lg my-3">
+            在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
+          </p>
+        </div>
+        <div
+          class="category-img shadow col-md-6 mb-5"
+          :style="{
+            backgroundImage: `url(${require('@/assets/images/front/basket.jpg')} )`,
+          }"
+        ></div>
       </div>
       <!-- 花材 -->
-      <div class="category-des mb-3 p-md-3 ps-md-6 my-5">
-        <h2 class="fs-2 text-primary fw-bold mb-3">
+      <div
+        class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
+      >
+        <h2 class="fs-2 text-primary fw-bold">
           花材 <span class="fs-5">Materials</span>
         </h2>
-        <p class="text-light lh-lg">
-          為想創造生活儀式感的你，<br />準備了精選的花材，從經典到獨有<br />讓你親自挑選、親自搭配、親自包裝、親自享受！<br />
+        <p class="text-light lh-lg my-3">
+          為想創造生活儀式感的你，<br />準備了精選的花材，從經典到獨有，<br />讓你親自挑選、親自搭配、親自包裝、親自享受！<br />
         </p>
       </div>
       <div
-        class="category-img shadow mb-5 mt-md-5"
+        class="category-img shadow col-md-6 mb-5"
         :style="{
           backgroundImage: `url(${require('@/assets/images/front/material.jpg')} )`,
         }"
       ></div>
       <!-- 器皿 -->
-      <div
-        class="category-img shadow d-none d-md-block"
-        :style="{
-          backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
-        }"
-      ></div>
-      <div class="category-des p-md-3 ps-md-6 d-md-block d-lg-none">
-        <h2 class="fs-2 text-primary fw-bold mb-3">
-          器皿 <span class="fs-5">Vase</span>
-        </h2>
-        <p class="text-light lh-lg">
-          在室內空間中的一隅，<br />需要器皿去襯托花的美好<br />讓花朵的美，更容易讓人看見！
-        </p>
-      </div>
-      <div
-        class="category-img shadow d-md-none d-block"
-        :style="{
-          backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
-        }"
-      ></div>
-      <div class="category-des mt-4 p-md-3 ps-md-6 d-none d-lg-block">
-        <h2 class="fs-2 text-primary fw-bold mb-3">
-          器皿 <span class="fs-5">Vase</span>
-        </h2>
-        <p class="text-light lh-lg">
-          在室內空間中的一隅，<br />需要器皿去襯托花的美好<br />讓花朵的美，更容易讓人看見！
-        </p>
+      <div class="d-md-flex flex-md-row-reverse">
+        <div
+          class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
+        >
+          <h2 class="fs-2 text-primary fw-bold">
+            器皿 <span class="fs-5">Vase</span>
+          </h2>
+          <p class="text-light lh-lg my-3">
+            在室內空間中的一隅，需要器皿去襯托花的美好，<br />讓花朵的美，更容易讓人看見！
+          </p>
+        </div>
+        <div
+          class="category-img shadow col-md-6"
+          :style="{
+            backgroundImage: `url(${require('@/assets/images/front/vase.jpg')} )`,
+          }"
+        ></div>
       </div>
     </div>
   </div>
@@ -120,7 +105,7 @@
   <!-- 精選商品 輪播 -->
 
   <div class="container my-6">
-    <h2 class="fs-2 text-primary fw-bold my-5">
+    <h2 class="fs-2 text-primary fw-bold mb-4">
       精選商品 <span class="fs-5">Selected</span>
     </h2>
     <RandomSwiper />
