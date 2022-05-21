@@ -4,16 +4,10 @@
     :navigation="false"
     :thumbs="{ swiper: swiper.thumbsSwiper }"
     :modules="modules"
-    class="mySwiper2"
   >
     <swiper-slide>
       <div
         class="swiper-slide-inner"
-        style="
-          height: 30rem;
-          background-position: center center;
-          background-size: cover;
-        "
         :style="{ backgroundImage: `url(${product.imageUrl})` }"
       ></div>
     </swiper-slide>
@@ -125,6 +119,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.swiper-slide-inner {
+  height: 30rem;
+  background-position: center center;
+  background-size: cover;
+}
+
 .swiper-slide-visible {
   margin-right: 3.75rem !important;
 }
