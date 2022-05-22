@@ -27,7 +27,7 @@
             <label for="title">標題</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control border border-1 border-muted mt-2"
               id="title"
               v-model="tempCoupon.title"
               placeholder="請輸入標題"
@@ -37,7 +37,7 @@
             <label for="coupon_code">優惠碼</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control border border-1 border-muted mt-2"
               id="coupon_code"
               v-model="tempCoupon.code"
               placeholder="請輸入優惠碼"
@@ -47,7 +47,7 @@
             <label for="due_date">到期日</label>
             <input
               type="date"
-              class="form-control"
+              class="form-control border border-1 border-muted mt-2"
               id="due_date"
               v-model="due_date"
             />
@@ -56,7 +56,7 @@
             <label for="price">折扣百分比</label>
             <input
               type="number"
-              class="form-control"
+              class="form-control border border-1 border-muted mt-2"
               id="price"
               min="0"
               v-model.number="tempCoupon.percent"
