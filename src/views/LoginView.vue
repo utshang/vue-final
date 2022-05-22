@@ -36,6 +36,9 @@
           >
             登入
           </button>
+          <RouterLink to="/" class="d-flex justify-content-center mt-3"
+            >回到首頁</RouterLink
+          >
         </form>
       </div>
     </div>

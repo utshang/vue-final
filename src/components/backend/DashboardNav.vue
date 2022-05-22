@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary">
+  <div class="bg-primary position-sticky top-0">
     <div class="container py-3">
       <div class="d-flex justify-content-between">
         <RouterLink class="home text-white fs-3 mt-1" to="/"
