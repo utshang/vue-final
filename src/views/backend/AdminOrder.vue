@@ -1,16 +1,7 @@
 <template>
   <VeeLoading :active="isLoading" />
   <div class="container mt-4">
-    <div class="d-flex justify-content-between">
-      <h2 class="fs-2 fw-bold text-primary">訂單列表</h2>
-      <button
-        class="btn btn-primary text-white"
-        type="button"
-        @click="openCouponModal(true)"
-      >
-        建立新的優惠券
-      </button>
-    </div>
+    <h2 class="fs-2 fw-bold text-primary">訂單列表</h2>
     <table class="table mt-4 border border-1 border-muted">
       <thead class="bg-primary text-white fw-bold">
         <tr>
