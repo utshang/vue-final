@@ -36,15 +36,10 @@
         </ul>
       </div>
     </div>
-
-    <p class="fs-7 bg-success text-center text-white pb-2">
-      本網站僅供個人作品使用，不做任何商業用途
-    </p>
-    <p class="slogan bg-success text-center text-white">
-      Beauty, Romance, and Everything Nice.
-    </p>
-    <p class="footer_end-p bg-success text-center text-white pb-3 pt-2">
-      © The Florist
+    <p class="footer bg-success text-center text-white lh-base">
+      本網站僅供個人作品使用，不做任何商業用途 <br />
+      <span class="slogan">Beauty, Romance, and Everything Nice.</span
+      ><br /><span class="footer_end-p">&copy; The Florist</span>
     </p>
   </div>
 </template>
@@ -59,11 +54,12 @@
 ul {
   padding-left: 0;
 }
-.slogan {
-  font-family: "Sansita Swashed", cursive;
-}
-.footer_end-p {
+
+.footer {
   font-size: 0.8rem;
-  font-family: "Sansita Swashed", cursive;
+  .slogan,
+  .footer_end-p {
+    font-family: "Sansita Swashed", cursive;
+  }
 }
 </style>

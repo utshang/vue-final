@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+    <div class="row justify-content-center align-items-center">
+      <h1 class="h3 mt-6 mb-5 fs-3 text-center text-primary fw-bold">
+        登入後台
+      </h1>
       <div class="col-8">
         <!-- @submit.prevent 阻止表單送出 加上 @submit.prevent 後畫面不會重新載入 -->
         <form id="form" class="form-signin" @submit.prevent="signIn">
@@ -28,13 +30,20 @@
             />
             <label for="password">Password</label>
           </div>
-          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
+          <button
+            class="btn btn-lg btn-primary text-white w-100 mt-3"
+            type="submit"
+          >
             登入
           </button>
         </form>
+        <p class="footer text-muted text-center lh-base">
+          本網站僅供個人作品使用，不做任何商業用途 <br />
+          <span class="slogan">Beauty, Romance, and Everything Nice.</span
+          ><br /><span class="footer_end-p">&copy; The Florist</span>
+        </p>
       </div>
     </div>
-    <p class="mt-5 mb-3 text-muted">&copy; 2021~∞ - 六角學院</p>
   </div>
 </template>
 
@@ -67,7 +76,6 @@ export default {
             title: "登入失敗，請重新登入！",
           });
           this.$router.push("/login");
-          // handle error
         });
     },
   },

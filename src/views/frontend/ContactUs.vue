@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <div class="mb-5 justify-content-center">
+      <div class="mb-5">
         <VeeForm
           class="rounded-3 shadow p-5"
           ref="form"
@@ -41,7 +41,10 @@
               v-model="name"
             />
             <ErrorMessage name="姓名" class="invalid-feedback" />
-            <label for="name" class="form-label fs-7">姓名</label>
+
+            <label for="name" class="form-label fs-7">
+              <span class="text-danger">* </span>姓名</label
+            >
           </div>
           <div class="d-md-flex">
             <div class="form-floating form-downline col-md-6 pe-md-3">
@@ -55,8 +58,10 @@
                 placeholder="請輸入Email"
                 v-model="mail"
               />
-              <label for="email" class="form-label fs-7">Email</label>
               <ErrorMessage name="email" class="invalid-feedback" />
+              <label for="email" class="form-label fs-7"
+                ><span class="text-danger">* </span>Email</label
+              >
             </div>
             <div class="form-floating form-downline col-md-6">
               <VeeField
@@ -70,7 +75,9 @@
                 v-model="phone"
               />
               <ErrorMessage name="電話" class="invalid-feedback" />
-              <label for="tel" class="form-label fs-7">聯絡電話</label>
+              <label for="tel" class="form-label fs-7"
+                ><span class="text-danger">* </span>聯絡電話</label
+              >
             </div>
           </div>
           <div class="form-floating form-downline my-3">
@@ -85,7 +92,9 @@
               v-model="message"
             />
             <ErrorMessage name="訊息" class="invalid-feedback" />
-            <label for="message" class="form-label fs-7">留下你的訊息</label>
+            <label for="message" class="form-label fs-7"
+              ><span class="text-danger">* </span>留下你的訊息</label
+            >
           </div>
           <div class="mt-4 d-flex justify-content-between">
             <p class="fs-8 text-muted d-flex align-items-end">
