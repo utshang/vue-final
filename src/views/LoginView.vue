@@ -12,23 +12,23 @@
               type="email"
               class="form-control"
               id="username"
-              placeholder="name@example.com"
+              placeholder="請輸入管理者帳號"
               v-model="user.username"
               required
               autofocus
             />
-            <label for="username">Email address</label>
+            <label for="username">帳號</label>
           </div>
           <div class="form-floating">
             <input
               type="password"
               class="form-control"
               id="password"
-              placeholder="Password"
+              placeholder="請輸入密碼"
               v-model="user.password"
               required
             />
-            <label for="password">Password</label>
+            <label for="password">密碼</label>
           </div>
           <button
             class="btn btn-lg btn-primary text-white w-100 mt-3"

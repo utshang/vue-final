@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import FrontNav from "@/components/FrontNav.vue";
-import FrontFooter from "@/components/FrontFooter.vue";
+import FrontNav from "@/components/frontend/FrontNav.vue";
+import FrontFooter from "@/components/frontend/FrontFooter.vue";
 
 export default {
   components: {

@@ -68,8 +68,8 @@
 </template>
 
 <script>
-import DelModal from "@/components/DelModal.vue";
-import OrderModal from "@/components/OrderModal.vue";
+import DelModal from "@/components/backend/DelModal.vue";
+import OrderModal from "@/components/backend/OrderModal.vue";
 import PaginationCom from "@/components/PaginationCom.vue";
 
 export default {

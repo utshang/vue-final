@@ -178,8 +178,8 @@
 </template>
 
 <script>
-import ProgressBar from "@/components/ProgressBar.vue";
-import CartSwiper from "@/components/CartSwiper.vue";
+import ProgressBar from "@/components/frontend/ProgressBar.vue";
+import CartSwiper from "@/components/frontend/CartSwiper.vue";
 
 export default {
   components: { CartSwiper, ProgressBar },

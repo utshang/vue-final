@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import ProductModal from "@/components/ProductModal.vue";
-import DelModal from "@/components/DelModal.vue";
+import ProductModal from "@/components/backend/ProductModal.vue";
+import DelModal from "@/components/backend/DelModal.vue";
 import PaginationCom from "@/components/PaginationCom.vue";
 
 export default {

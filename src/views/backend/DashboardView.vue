@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import DashboardNav from "@/components/DashboardNav.vue";
+import DashboardNav from "@/components/backend/DashboardNav.vue";
 
 export default {
   inject: ["emitter"],

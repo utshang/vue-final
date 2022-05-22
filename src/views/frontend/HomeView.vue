@@ -145,7 +145,7 @@
 </template>
 
 <script>
-import RandomSwiper from "@/components/RandomSwiper.vue";
+import RandomSwiper from "@/components/frontend/RandomSwiper.vue";
 
 export default {
   data() {

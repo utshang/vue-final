@@ -229,8 +229,8 @@
 </template>
 
 <script>
-import RandomSwiper from "@/components/RandomSwiper.vue";
-import ProductSwiper from "@/components/ProductSwiper.vue";
+import RandomSwiper from "@/components/frontend/RandomSwiper.vue";
+import ProductSwiper from "@/components/frontend/ProductSwiper.vue";
 import FavoriteMixin from "@/mixins/FavoriteMixin";
 
 export default {
