@@ -23,9 +23,9 @@
       </thead>
       <tbody>
         <tr
-          v-for="(item, key) in coupons"
-          :key="key"
-          class="border border-1 border-muted"
+          v-for="item in coupons"
+          :key="item.title"
+          class="border-bottom border-1 border-muted"
         >
           <td>{{ item.title }}</td>
           <td>{{ item.percent }}%</td>
