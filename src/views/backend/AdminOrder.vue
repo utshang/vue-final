@@ -43,14 +43,14 @@
           <td>
             <div class="btn-group">
               <button
-                class="btn btn-outline-primary btn-sm"
+                class="btn btn-primary text-white btn-sm me-2 rounded"
                 type="button"
                 @click="openModal(item)"
               >
                 檢視
               </button>
               <button
-                class="btn btn-outline-danger btn-sm"
+                class="btn btn-danger text-white btn-sm rounded"
                 type="button"
                 @click="openDelOrderModal(item)"
               >

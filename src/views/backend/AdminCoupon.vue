@@ -38,14 +38,14 @@
             <div class="btn-group">
               <button
                 type="button"
-                class="btn btn-outline-primary btn-sm px-0"
+                class="btn btn-primary text-white btn-sm me-2 rounded"
                 @click="openCouponModal(false, item)"
               >
                 編輯
               </button>
               <button
                 type="button"
-                class="btn btn-outline-danger btn-sm"
+                class="btn btn-danger text-white btn-sm rounded"
                 @click="openDelCouponModal(item)"
               >
                 刪除
