@@ -1,29 +1,41 @@
 <template>
-  <div class="text-end mt-4">
-    <button class="btn btn-primary" type="button" @click="openModal(true)">
-      建立新的產品
-    </button>
-    <table class="table mt-4">
-      <thead>
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between">
+      <h2 class="fs-2 fw-bold text-primary">產品列表</h2>
+      <button
+        class="btn btn-primary text-white"
+        type="button"
+        @click="openModal(true)"
+      >
+        建立新的產品
+      </button>
+    </div>
+    <table class="table mt-4 border border-1 border-muted">
+      <thead class="bg-primary text-white fw-bold">
         <tr>
           <th width="120">分類</th>
-          <th>產品名稱</th>
-          <th width="120">原價</th>
-          <th width="120">售價</th>
-          <th width="100">是否啟用</th>
+          <th width="200">產品名稱</th>
+          <th width="120" class="text-center">原價</th>
+          <th width="120" class="text-center">售價</th>
+          <th width="100" class="text-center">是否啟用</th>
+          <th width="100"></th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in products" :key="item.id">
+        <tr
+          v-for="item in products"
+          :key="item.id"
+          class="border-bottom border-1 border-muted"
+        >
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
-          <td class="text-end">
+          <td class="text-center">
             {{ item.origin_price }}
           </td>
-          <td class="text-end">
+          <td class="text-center">
             {{ item.price }}
           </td>
-          <td>
+          <td class="text-center">
             <span v-if="item.is_enabled" class="text-success">啟用</span>
             <span v-else>未啟用</span>
           </td>
@@ -104,7 +116,6 @@ export default {
         .then((response) => {
           this.products = response.data.products;
           this.pagination = response.data.pagination;
-          console.log(this.products);
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");

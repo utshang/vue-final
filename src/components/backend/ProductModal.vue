@@ -29,7 +29,7 @@
                 <label for="image" class="form-label">輸入圖片網址</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="image"
                   v-model="tempProduct.imageUrl"
                   placeholder="請輸入圖片連結"
@@ -88,7 +88,7 @@
                 >
                   <button
                     type="button"
-                    class="btn btn-outline-primary btn-sm d-block w-100"
+                    class="btn btn-primary text-white btn-sm d-block w-100"
                     @click="tempProduct.imagesUrl.push('')"
                   >
                     新增圖片
@@ -101,7 +101,7 @@
                 <label for="title" class="form-label">標題</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="title"
                   v-model="tempProduct.title"
                   placeholder="請輸入標題"
@@ -112,7 +112,7 @@
                   <label for="category" class="form-label">分類</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control border border-1 border-muted"
                     id="category"
                     v-model="tempProduct.category"
                     placeholder="請輸入分類"
@@ -122,7 +122,7 @@
                   <label for="price" class="form-label">單位</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control border border-1 border-muted"
                     id="unit"
                     v-model="tempProduct.unit"
                     placeholder="請輸入單位"
@@ -134,7 +134,7 @@
                   <label for="origin_price" class="form-label">原價</label>
                   <input
                     type="number"
-                    class="form-control"
+                    class="form-control border border-1 border-muted"
                     id="origin_price"
                     min="0"
                     v-model.number="tempProduct.origin_price"
@@ -145,7 +145,7 @@
                   <label for="price" class="form-label">售價</label>
                   <input
                     type="number"
-                    class="form-control"
+                    class="form-control border border-1 border-muted"
                     id="price"
                     v-model.number="tempProduct.price"
                     min="0"
@@ -159,7 +159,7 @@
                   <label for="content" class="form-label">說明</label>
                   <textarea
                     type="text"
-                    class="form-control"
+                    class="form-control border border-1 border-muted"
                     id="content"
                     v-model="tempProduct.content"
                     placeholder="請輸入說明"
@@ -169,7 +169,7 @@
                 <label for="description" class="form-label">產品描述</label>
                 <textarea
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="description"
                   v-model="tempProduct.description"
                   placeholder="請輸入產品描述"
@@ -180,7 +180,7 @@
                 <label for="specification" class="form-label">規格</label>
                 <textarea
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="specification"
                   v-model="tempProduct.specification"
                   placeholder="請輸入規格"
@@ -191,7 +191,7 @@
                 <label for="color" class="form-label">色系</label>
                 <textarea
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="color"
                   v-model="tempProduct.color"
                   placeholder="請輸入色系"
@@ -202,7 +202,7 @@
                 <label for="notice" class="form-label">注意事項</label>
                 <textarea
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="notice"
                   v-model="tempProduct.notice"
                   placeholder="請輸入注意事項"
@@ -229,14 +229,14 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-outline-secondary"
+            class="btn btn-success text-white"
             data-bs-dismiss="modal"
           >
             取消
           </button>
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn btn-primary text-white"
             @click="$emit('update-product', tempProduct)"
           >
             確認

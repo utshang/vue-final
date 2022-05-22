@@ -7,6 +7,7 @@
         >
         <button
           class="btn text-primary bg-white fw-bold px-3"
+          type="button"
           @click.prevent="signOut"
         >
           登出
@@ -15,11 +16,11 @@
     </div>
   </div>
   <div class="container mt-4 d-flex justify-content-end">
-    <RouterLink to="/admin/products">後台產品列表 | </RouterLink>
+    <RouterLink to="/admin/products">產品列表</RouterLink>
 
-    <RouterLink to="/admin/coupon"> 後台優惠卷 | </RouterLink>
+    <RouterLink to="/admin/coupon">| 優惠卷列表 |</RouterLink>
 
-    <RouterLink to="/admin/order"> 後台訂單</RouterLink>
+    <RouterLink to="/admin/order">訂單列表</RouterLink>
   </div>
 </template>
 
