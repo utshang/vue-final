@@ -1,11 +1,8 @@
 <template>
-  <div>
-    這裡是 後台 產品列表
-    <div class="text-end mt-4">
-      <button class="btn btn-primary" type="button" @click="openModal(true)">
-        建立新的產品
-      </button>
-    </div>
+  <div class="text-end mt-4">
+    <button class="btn btn-primary" type="button" @click="openModal(true)">
+      建立新的產品
+    </button>
     <table class="table mt-4">
       <thead>
         <tr>
@@ -52,7 +49,11 @@
       </tbody>
     </table>
     <VeeLoading :active="isLoading" />
-    <PaginationCom :pages="pagination" @emit-pages="getProductsList" />
+    <PaginationCom
+      class="d-flex justify-content-end"
+      :pages="pagination"
+      @emit-pages="getProductsList"
+    />
     <!-- ProductModal -->
     <ProductModal
       @update-product="updateProduct"

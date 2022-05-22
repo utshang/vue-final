@@ -1,16 +1,18 @@
 <template>
-  <h1 class="text-center">你現在在後台頁面</h1>
   <DashboardNav />
   <RouterView v-if="checkSuccess" />
+  <DashboardFooter />
 </template>
 
 <script>
 import DashboardNav from "@/components/backend/DashboardNav.vue";
+import DashboardFooter from "@/components/backend/DashboardFooter.vue";
 
 export default {
   inject: ["emitter"],
   components: {
     DashboardNav,
+    DashboardFooter,
   },
   data() {
     return {
