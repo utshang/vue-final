@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <div class="cart-list rounded-3 shadow p-5">
           <div
-            class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-primary pb-3"
+            class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
           >
             <h3 class="fs-4 fw-bold">購物清單</h3>
           </div>
@@ -73,7 +73,9 @@
           @submit="createOrder"
         >
           <div>
-            <h3 class="border-bottom border-2 border-primary fs-4 fw-bold pb-3">
+            <h3
+              class="border-bottom border-2 border-secondary fs-4 fw-bold pb-3"
+            >
               填寫資料
             </h3>
           </div>
