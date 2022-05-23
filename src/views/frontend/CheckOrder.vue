@@ -227,11 +227,7 @@ export default {
         });
     },
     goToPreviousPage() {
-      this.$router.push("/cart");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      this.$router.go(-1);
     },
   },
   mounted() {
