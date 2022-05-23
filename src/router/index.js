@@ -59,6 +59,11 @@ const routes = [
   },
 
   {
+    path: "/login",
+    component: () => import("../views/LoginView.vue"),
+  },
+
+  {
     path: "/admin",
     component: () => import("../views/backend/DashboardView.vue"),
     children: [
@@ -78,7 +83,7 @@ const routes = [
   },
   {
     path: "/:pathMatch(.*)*",
-    redirect: "/",
+    component: () => import("../views/NotFound.vue"),
   },
 ];
 
