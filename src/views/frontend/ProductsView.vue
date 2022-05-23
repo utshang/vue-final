@@ -1,22 +1,38 @@
 <template>
   <div class="main container">
     <!-- 麵包屑導航 -->
-    <ol class="breadcrumb mb-5">
-      <li class="breadcrumb-item"><RouterLink to="/">首頁</RouterLink></li>
-      <li class="breadcrumb-item active" aria-current="page">
-        <RouterLink
-          class="text-standard"
-          to="/products"
-          @click="getProductsList"
-          >全部產品</RouterLink
+    <div class="d-sm-flex justify-content-sm-between mb-5">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><RouterLink to="/">首頁</RouterLink></li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <RouterLink
+            class="text-standard"
+            to="/products"
+            @click="getProductsList"
+            >全部產品</RouterLink
+          >
+        </li>
+      </ol>
+      <div class="d-flex">
+        <input
+          type="text"
+          v-model="search"
+          placeholder="請輸入關鍵字"
+          class="fs-7 px-2 rounded-0 border border-1 border-muted search"
+        />
+        <button
+          type="submit"
+          class="btn bg-primary d-flex align-items-center rounded-0"
         >
-      </li>
-    </ol>
+          <span class="material-icons-outlined text-white"> search </span>
+        </button>
+      </div>
+    </div>
     <!-- 產品 -->
     <div class="menu row">
       <div class="category ps-md-5 col-md-6 col-lg-3">
         <h3
-          class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center"
+          class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center justify-content-center justify-content-md-start"
           @click="getCategory('')"
         >
           全部商品<span class="ms-2 material-icons-outlined">
@@ -159,6 +175,7 @@ export default {
       loadingItem: "",
       isLoading: false,
       currentPage: 1,
+      search: "",
     };
   },
   mixins: [FavoriteMixin],
@@ -349,6 +366,16 @@ h1 {
       top: 21%;
       left: 20%;
     }
+  }
+}
+
+.search {
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .search {
+    width: 80%;
   }
 }
 
