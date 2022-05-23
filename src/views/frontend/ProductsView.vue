@@ -1,7 +1,7 @@
 <template>
   <div class="main container">
     <!-- 麵包屑導航 -->
-    <div class="d-sm-flex justify-content-sm-between mb-5">
+    <div class="d-sm-flex justify-content-sm-between breadcrumb-search">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">首頁</RouterLink></li>
         <li class="breadcrumb-item active" aria-current="page">
@@ -13,24 +13,42 @@
           >
         </li>
       </ol>
-      <div class="d-flex">
-        <input
-          type="text"
-          v-model="search"
-          placeholder="請輸入關鍵字"
-          class="fs-7 px-2 rounded-0 border border-1 border-muted search"
-        />
-        <button
-          type="submit"
-          class="btn bg-primary d-flex align-items-center rounded-0"
-        >
-          <span class="material-icons-outlined text-white"> search </span>
-        </button>
-      </div>
+      <form class="search-form">
+        <div class="d-flex">
+          <input
+            type="search"
+            v-model.trim="search"
+            placeholder="請輸入關鍵字"
+            class="fs-7 px-2 rounded-0 border border-1 border-muted w-100"
+          />
+          <button
+            type="submit"
+            class="btn bg-primary d-flex align-items-center rounded-0"
+            @click="searchProducts"
+          >
+            <span class="material-icons-outlined text-white"> search </span>
+          </button>
+          <ul
+            class="search-list bg-pure shadow mt-2"
+            :class="searchComplete ? '' : 'd-none'"
+          >
+            <li
+              class="search-result p-3 w-100"
+              v-for="item in matchWord"
+              :key="item.title"
+            >
+              <RouterLink :to="`/product/${item.id}`"
+                >{{ item.title }}
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
+      </form>
     </div>
+
     <!-- 產品 -->
-    <div class="menu row">
-      <div class="category ps-md-5 col-md-6 col-lg-3">
+    <div class="menu row mt-5">
+      <div class="category-list ps-md-5 col-md-6 col-lg-3">
         <h3
           class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center justify-content-center justify-content-md-start"
           @click="getCategory('')"
@@ -51,7 +69,9 @@
             >
           </li>
         </ul>
+        <h1>test</h1>
       </div>
+
       <div class="col-md-6 col-lg-9">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
           <div class="col" v-for="item in products" :key="item.id">
@@ -176,6 +196,7 @@ export default {
       isLoading: false,
       currentPage: 1,
       search: "",
+      searchComplete: false,
     };
   },
   mixins: [FavoriteMixin],
@@ -247,10 +268,42 @@ export default {
     getCategory(category) {
       this.category = category;
     },
+    searchProducts() {
+      this.products = this.filterProducts;
+      this.searchComplete = false;
+    },
   },
   watch: {
     category() {
       this.getProductsList();
+    },
+    search() {
+      if (this.search) {
+        this.searchComplete = true;
+        // this.pagination.current_page = 1;
+        // this.pagination.total_pages = 1;
+        // this.pagination.has_next = false;
+      } else {
+        this.searchComplete = false;
+        // this.selectedIndex = -1;
+      }
+    },
+  },
+  computed: {
+    matchWord() {
+      const strArr = this.search.split(" "); // 以空白格切分字串
+      const arr = [];
+      // 比對字串
+      strArr.forEach((str) => {
+        this.allProducts.forEach((item) => {
+          if (item.title.includes(str)) {
+            arr.push(item);
+          }
+        });
+      });
+      // 如果輸入兩個關鍵字就會出現重複的資料，所以需要刪除重複資料。
+      // 過濾出重複的元素
+      return [...new Set(arr)];
     },
   },
   mounted() {
@@ -264,7 +317,9 @@ export default {
 <style lang="scss" scoped>
 $primary: #ad795d;
 $secondary: #e6ccab;
+$gray-300: #dee2e6;
 $gray-600: #6c757d;
+$black: #000;
 $white: #fffafa;
 
 .main {
@@ -326,7 +381,6 @@ h1 {
   .category {
     position: sticky;
     top: 118px;
-    height: calc(100vh - 118px);
   }
 }
 .card {
@@ -369,13 +423,30 @@ h1 {
   }
 }
 
-.search {
+.search-form {
+  z-index: 5000;
+}
+
+.search-list {
+  position: absolute;
+  top: 20%;
+  right: 4.5%;
   width: 100%;
+  .search-result {
+    letter-spacing: 1px;
+    &:hover {
+      background-color: $gray-300;
+      cursor: pointer;
+    }
+    a {
+      color: $black;
+    }
+  }
 }
 
 @media screen and (min-width: 576px) {
-  .search {
-    width: 80%;
+  .search-list {
+    width: 222px;
   }
 }
 
