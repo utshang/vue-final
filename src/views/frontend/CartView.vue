@@ -126,13 +126,13 @@
             <div class="d-flex apply my-3">
               <input
                 type="text "
-                class="form-control border border-2 apply-input fs-7"
+                class="form-control apply-input fs-7 rounded-0 border border-2 border-muted search"
                 v-model="couponCode"
                 :placeholder="message"
               />
 
               <button
-                class="btn btn-outline-primary text-white apply-btn fs-7"
+                class="btn btn-outline-primary text-white apply-btn fs-7 rounded-0"
                 type="button"
                 @click="ApplyCoupon"
               >
