@@ -279,20 +279,16 @@ export default {
     search() {
       if (this.search) {
         this.searchComplete = true;
-        // this.pagination.current_page = 1;
-        // this.pagination.total_pages = 1;
-        // this.pagination.has_next = false;
       } else {
         this.searchComplete = false;
-        // this.selectedIndex = -1;
       }
     },
   },
   computed: {
     matchWord() {
-      const strArr = this.search.split(" "); // 以空白格切分字串
+      const strArr = this.search.split(" ");
       const arr = [];
-      // 比對字串
+
       strArr.forEach((str) => {
         this.allProducts.forEach((item) => {
           if (item.title.includes(str)) {
@@ -300,8 +296,7 @@ export default {
           }
         });
       });
-      // 如果輸入兩個關鍵字就會出現重複的資料，所以需要刪除重複資料。
-      // 過濾出重複的元素
+
       return [...new Set(arr)];
     },
   },
