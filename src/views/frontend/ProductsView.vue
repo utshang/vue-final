@@ -31,7 +31,7 @@
         </div>
 
         <ul
-          class="search-list bg-pure shadow mt-2"
+          class="search-list bg-pure shadow mt-2 position-absolute"
           :class="searchComplete ? '' : 'd-none'"
         >
           <li
@@ -439,7 +439,7 @@ h1 {
 
 @media screen and (min-width: 576px) {
   .search-list {
-    width: 230px;
+    width: 222px;
   }
 }
 
