@@ -33,10 +33,8 @@
           class="search-list shadow mt-2 position-absolute"
           :class="searchComplete ? '' : 'd-none'"
         >
-          <li v-if="matchProducts === 0">沒有相符的搜尋結果</li>
           <li
             class="search-result p-3 fs-7"
-            v-else
             v-for="item in matchProducts"
             :key="item.title"
           >
@@ -73,100 +71,123 @@
       </div>
 
       <div class="col-md-6 col-lg-9">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
-          <div class="col" v-for="item in products" :key="item.id">
-            <div class="card border-width h-100 shadow">
-              <div
-                class="fav-icon position-absolute"
-                @click="toggleFav(item.id)"
-              >
-                <span
-                  class="material-icons-outlined favorite position-absolute text-white"
-                  v-if="favorite.includes(item.id)"
-                >
-                  favorite
-                </span>
-                <span
-                  class="material-icons-outlined favorite position-absolute text-white"
-                  v-else
-                >
-                  favorite_border
-                </span>
-              </div>
-              <RouterLink :to="`/product/${item.id}`">
+        <template v-if="products.length === 0">
+          <div class="text-center pt-4">
+            <span
+              class="material-icons-outlined sentiment_dissatisfied text-primary pb-3"
+            >
+              sentiment_dissatisfied
+            </span>
+            <p class="text-muted mb-4 fs-5 fw-bold">沒有符合條件的搜尋結果！</p>
+          </div>
+        </template>
+        <template v-else>
+          <p v-if="searchResult" class="fs-5 fw-bold mb-4">
+            符合
+            <span class="text-primary">{{ this.searchResult }}</span> 的搜尋結果
+          </p>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+            <div class="col" v-for="item in products" :key="item.id">
+              <div class="card border-width h-100 shadow">
                 <div
-                  class="card-img"
-                  :style="{ backgroundImage: `url(${item.imageUrl})` }"
-                ></div
-              ></RouterLink>
-              <div
-                class="card-body d-flex align-items-end justify-content-between"
-              >
-                <div class="card-body-content">
-                  <RouterLink
-                    class="card-title fs-5 text-black fw-bold lh-base mb-2"
-                    :to="`/product/${item.id}`"
+                  class="fav-icon position-absolute"
+                  @click="toggleFav(item.id)"
+                >
+                  <span
+                    class="material-icons-outlined favorite position-absolute text-white"
+                    v-if="favorite.includes(item.id)"
                   >
-                    {{ item.title }}
-                  </RouterLink>
-                  <div
-                    class="price fs-6 fw-bold text-primary mt-3"
-                    v-if="item.origin_price === item.price"
+                    favorite
+                  </span>
+                  <span
+                    class="material-icons-outlined favorite position-absolute text-white"
+                    v-else
                   >
-                    NT$ {{ $filters.currency(item.price) }} 元
-                  </div>
-                  <div class="origin-price d-flex align-items-end mt-3" v-else>
-                    <p class="fs-6 pe-2 text-primary fs-5 fw-bold">
-                      NT$ {{ $filters.currency(item.price) }} 元
-                    </p>
-                    <del class="fs-7 text-muted">
-                      NT$
-                      {{ $filters.currency(item.origin_price) }} 元</del
-                    >
-                  </div>
+                    favorite_border
+                  </span>
                 </div>
-
-                <div @click="addCart(item.id)">
-                  <div class="loader" title="1" v-if="loadingItem === item.id">
-                    <svg
-                      version="1.1"
-                      id="loader-1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      width="24px"
-                      height="24px"
-                      viewBox="0 0 50 50"
-                      style="enable-background: new 0 0 50 50"
-                      xml:space="preserve"
+                <RouterLink :to="`/product/${item.id}`">
+                  <div
+                    class="card-img"
+                    :style="{ backgroundImage: `url(${item.imageUrl})` }"
+                  ></div
+                ></RouterLink>
+                <div
+                  class="card-body d-flex align-items-end justify-content-between"
+                >
+                  <div class="card-body-content">
+                    <RouterLink
+                      class="card-title fs-5 text-black fw-bold lh-base mb-2"
+                      :to="`/product/${item.id}`"
                     >
-                      <path
-                        fill="#000"
-                        d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"
+                      {{ item.title }}
+                    </RouterLink>
+                    <div
+                      class="price fs-6 fw-bold text-primary mt-3"
+                      v-if="item.origin_price === item.price"
+                    >
+                      NT$ {{ $filters.currency(item.price) }} 元
+                    </div>
+                    <div
+                      class="origin-price d-flex align-items-end mt-3"
+                      v-else
+                    >
+                      <p class="fs-6 pe-2 text-primary fs-5 fw-bold">
+                        NT$ {{ $filters.currency(item.price) }} 元
+                      </p>
+                      <del class="fs-7 text-muted">
+                        NT$
+                        {{ $filters.currency(item.origin_price) }} 元</del
                       >
-                        <animateTransform
-                          attributeType="xml"
-                          attributeName="transform"
-                          type="rotate"
-                          from="0 25 25"
-                          to="360 25 25"
-                          dur="0.6s"
-                          repeatCount="indefinite"
-                        />
-                      </path>
-                    </svg>
+                    </div>
                   </div>
-                  <a class="cart-icon text-primary" v-else>
-                    <span class="material-icons-outlined">
-                      add_shopping_cart
-                    </span>
-                  </a>
+
+                  <div @click="addCart(item.id)">
+                    <div
+                      class="loader"
+                      title="1"
+                      v-if="loadingItem === item.id"
+                    >
+                      <svg
+                        version="1.1"
+                        id="loader-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 50 50"
+                        style="enable-background: new 0 0 50 50"
+                        xml:space="preserve"
+                      >
+                        <path
+                          fill="#000"
+                          d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"
+                        >
+                          <animateTransform
+                            attributeType="xml"
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 25 25"
+                            to="360 25 25"
+                            dur="0.6s"
+                            repeatCount="indefinite"
+                          />
+                        </path>
+                      </svg>
+                    </div>
+                    <a class="cart-icon text-primary" v-else>
+                      <span class="material-icons-outlined">
+                        add_shopping_cart
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </template>
       </div>
     </div>
     <PaginationCom
@@ -196,6 +217,7 @@ export default {
       isLoading: false,
       currentPage: 1,
       search: "",
+      searchResult: "",
       searchComplete: false,
     };
   },
@@ -269,8 +291,10 @@ export default {
       this.category = category;
     },
     searchProducts() {
+      this.searchResult = this.search;
       this.products = this.matchProducts;
       this.searchComplete = false;
+      this.search = "";
     },
   },
   watch: {
@@ -457,6 +481,9 @@ h1 {
   }
   &-bar {
     padding-right: 1rem;
+  }
+  .sentiment_dissatisfied {
+    font-size: 3rem;
   }
 }
 
