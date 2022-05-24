@@ -1,7 +1,7 @@
 <template>
   <div class="main container">
     <!-- 麵包屑導航 -->
-    <div class="d-sm-flex justify-content-sm-between breadcrumb-search">
+    <div class="d-sm-flex justify-content-sm-between mb-5">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><RouterLink to="/">首頁</RouterLink></li>
         <li class="breadcrumb-item active" aria-current="page">
@@ -13,7 +13,7 @@
           >
         </li>
       </ol>
-      <form class="search-form">
+      <div>
         <div class="d-flex">
           <input
             type="search"
@@ -28,27 +28,27 @@
           >
             <span class="material-icons-outlined text-white"> search </span>
           </button>
-          <ul
-            class="search-list bg-pure shadow mt-2"
-            :class="searchComplete ? '' : 'd-none'"
-          >
-            <li
-              class="search-result p-3 w-100"
-              v-for="item in matchWord"
-              :key="item.title"
-            >
-              <RouterLink :to="`/product/${item.id}`"
-                >{{ item.title }}
-              </RouterLink>
-            </li>
-          </ul>
         </div>
-      </form>
-    </div>
 
+        <ul
+          class="search-list bg-pure shadow mt-2"
+          :class="searchComplete ? '' : 'd-none'"
+        >
+          <li
+            class="search-result p-3"
+            v-for="item in matchWord"
+            :key="item.title"
+          >
+            <RouterLink :to="`/product/${item.id}`"
+              >{{ item.title }}
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+    </div>
     <!-- 產品 -->
     <div class="menu row mt-5">
-      <div class="category-list ps-md-5 col-md-6 col-lg-3">
+      <div class="category ps-md-5 col-md-6 col-lg-3">
         <h3
           class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center justify-content-center justify-content-md-start"
           @click="getCategory('')"
@@ -57,7 +57,7 @@
             local_florist
           </span>
         </h3>
-        <ul class="category d-flex d-md-block justify-content-evenly mt-3">
+        <ul class="d-flex d-md-block justify-content-evenly mt-3">
           <li
             class="mb-4"
             v-for="item in categories"
@@ -69,7 +69,6 @@
             >
           </li>
         </ul>
-        <h1>test</h1>
       </div>
 
       <div class="col-md-6 col-lg-9">
@@ -381,6 +380,7 @@ h1 {
   .category {
     position: sticky;
     top: 118px;
+    height: calc(100vh - 118px);
   }
 }
 .card {
@@ -423,14 +423,7 @@ h1 {
   }
 }
 
-.search-form {
-  z-index: 5000;
-}
-
 .search-list {
-  position: absolute;
-  top: 20%;
-  right: 4.5%;
   width: 100%;
   .search-result {
     letter-spacing: 1px;
@@ -446,7 +439,7 @@ h1 {
 
 @media screen and (min-width: 576px) {
   .search-list {
-    width: 222px;
+    width: 230px;
   }
 }
 
