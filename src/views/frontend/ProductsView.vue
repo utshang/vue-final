@@ -29,14 +29,15 @@
             <span class="material-icons-outlined text-white"> search </span>
           </button>
         </div>
-
         <ul
-          class="search-list bg-pure shadow mt-2 position-absolute"
+          class="search-list shadow mt-2 position-absolute"
           :class="searchComplete ? '' : 'd-none'"
         >
+          <li v-if="matchProducts === 0">沒有相符的搜尋結果</li>
           <li
-            class="search-result p-3"
-            v-for="item in matchWord"
+            class="search-result p-3 fs-7"
+            v-else
+            v-for="item in matchProducts"
             :key="item.title"
           >
             <RouterLink :to="`/product/${item.id}`"
@@ -268,7 +269,7 @@ export default {
       this.category = category;
     },
     searchProducts() {
-      this.products = this.filterProducts;
+      this.products = this.matchProducts;
       this.searchComplete = false;
     },
   },
@@ -279,16 +280,19 @@ export default {
     search() {
       if (this.search) {
         this.searchComplete = true;
+        this.pagination.current_page = 1;
+        this.pagination.total_pages = 1;
+        this.pagination.has_next = false;
       } else {
         this.searchComplete = false;
       }
     },
   },
   computed: {
-    matchWord() {
-      const strArr = this.search.split(" ");
+    matchProducts() {
+      const strArr = this.search.split(" "); // 以空白格切分字串
       const arr = [];
-
+      // 比對字串
       strArr.forEach((str) => {
         this.allProducts.forEach((item) => {
           if (item.title.includes(str)) {
@@ -296,7 +300,8 @@ export default {
           }
         });
       });
-
+      // 如果輸入兩個關鍵字就會出現重複的資料，所以需要刪除重複資料。
+      // 過濾出重複的元素
       return [...new Set(arr)];
     },
   },
@@ -419,7 +424,9 @@ h1 {
 }
 
 .search-list {
-  width: 100%;
+  width: 351px;
+  background-color: #fff;
+  z-index: 1;
   .search-result {
     letter-spacing: 1px;
     &:hover {
@@ -429,6 +436,12 @@ h1 {
     a {
       color: $black;
     }
+  }
+}
+
+@media screen and (min-width: 424px) {
+  .search-list {
+    width: 401px;
   }
 }
 
