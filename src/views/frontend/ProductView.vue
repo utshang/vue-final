@@ -221,7 +221,7 @@
       <h2 class="fs-3 text-primary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
-      <RandomSwiper />
+      <RandomSwiper @get-product="getProduct" />
     </div>
   </div>
 
@@ -307,9 +307,10 @@ export default {
   },
   //因為不會再重新跑一次 mounted，需要監聽 $route，當路徑改變，前往該頁面
   watch: {
-    $route(to) {
+    $route() {
       if (this.$route.name === "product") {
-        this.getProduct(`${to.params.id}`);
+        this.getProduct();
+        // this.getProduct(`${to.params.id}`);
       }
     },
   },

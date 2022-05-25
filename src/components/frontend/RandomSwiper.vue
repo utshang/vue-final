@@ -46,6 +46,7 @@ import "swiper/css/pagination";
 
 export default {
   components: { Swiper, SwiperSlide },
+  emits: ["get-product"],
   data() {
     return {
       products: [],
@@ -99,6 +100,13 @@ export default {
       }
       //從索引值0開始刪除後面10個元素，並把刪除的元素通通傳回來
       this.randomProducts = this.randomProducts.splice(0, 10);
+    },
+  },
+  watch: {
+    $route() {
+      if (this.$route.name === "product") {
+        this.getProductsList();
+      }
     },
   },
   mounted() {

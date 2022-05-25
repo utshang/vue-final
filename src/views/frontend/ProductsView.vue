@@ -82,10 +82,6 @@
           </div>
         </template>
         <template v-else>
-          <p v-if="searchResult" class="fs-5 fw-bold mb-4">
-            符合
-            <span class="text-primary">{{ this.searchResult }}</span> 的搜尋結果
-          </p>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
             <div class="col" v-for="item in products" :key="item.id">
               <div class="card border-width h-100 shadow">
@@ -217,7 +213,7 @@ export default {
       isLoading: false,
       currentPage: 1,
       search: "",
-      searchResult: "",
+      searchResult: [],
       searchComplete: false,
     };
   },
@@ -291,7 +287,6 @@ export default {
       this.category = category;
     },
     searchProducts() {
-      this.searchResult = this.search;
       this.products = this.matchProducts;
       this.searchComplete = false;
       this.search = "";
@@ -327,6 +322,8 @@ export default {
       // 如果輸入兩個關鍵字就會出現重複的資料，所以需要刪除重複資料。
       // 過濾出重複的元素
       return [...new Set(arr)];
+
+      // this.searchResult = [...new Set(arr)];
     },
   },
   mounted() {
