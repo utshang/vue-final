@@ -50,6 +50,10 @@ const routes = [
         path: "faq",
         component: () => import("../views/frontend/AskedQuestion.vue"),
       },
+      {
+        path: "articles",
+        component: () => import("../views/frontend/AritcleView.vue"),
+      },
     ],
   },
 
