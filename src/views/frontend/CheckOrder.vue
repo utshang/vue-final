@@ -90,8 +90,10 @@
               v-model="form.user.name"
               placeholder="請輸入姓名"
             />
+            <label for="name" class="form-label"
+              ><span class="text-danger">* </span>姓名</label
+            >
             <ErrorMessage name="姓名" class="invalid-feedback" />
-            <label for="name" class="form-label">姓名</label>
           </div>
           <div class="form-floating form-downline mb-3">
             <VeeField
@@ -104,8 +106,10 @@
               v-model="form.user.tel"
               placeholder="請輸入電話"
             />
+            <label for="tel" class="form-label"
+              ><span class="text-danger">* </span>聯絡電話</label
+            >
             <ErrorMessage name="電話" class="invalid-feedback" />
-            <label for="tel" class="form-label">聯絡電話</label>
           </div>
           <div class="form-floating form-downline mb-3">
             <VeeField
@@ -118,8 +122,11 @@
               v-model="form.user.address"
               placeholder="請輸入地址"
             />
+
+            <label for="address" class="form-label"
+              ><span class="text-danger">* </span>寄送地址</label
+            >
             <ErrorMessage name="地址" class="invalid-feedback" />
-            <label for="address" class="form-label">寄送地址</label>
           </div>
           <div class="form-floating form-downline">
             <VeeField
@@ -132,7 +139,9 @@
               v-model="form.user.email"
               placeholder="請輸入Email"
             />
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label"
+              ><span class="text-danger">* </span>Email</label
+            >
             <ErrorMessage name="email" class="invalid-feedback" />
           </div>
           <div class="mt-3">

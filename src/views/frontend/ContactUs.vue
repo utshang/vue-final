@@ -40,11 +40,10 @@
               placeholder="請輸入姓名"
               v-model="name"
             />
-            <ErrorMessage name="姓名" class="invalid-feedback" />
-
             <label for="name" class="form-label fs-7">
               <span class="text-danger">* </span>姓名</label
             >
+            <ErrorMessage name="姓名" class="invalid-feedback" />
           </div>
           <div class="d-md-flex">
             <div class="form-floating form-downline col-md-6 pe-md-3">
@@ -58,10 +57,10 @@
                 placeholder="請輸入Email"
                 v-model="mail"
               />
-              <ErrorMessage name="email" class="invalid-feedback" />
               <label for="email" class="form-label fs-7"
                 ><span class="text-danger">* </span>Email</label
               >
+              <ErrorMessage name="email" class="invalid-feedback" />
             </div>
             <div class="form-floating form-downline col-md-6">
               <VeeField
@@ -74,10 +73,10 @@
                 placeholder="請輸入電話"
                 v-model="phone"
               />
-              <ErrorMessage name="電話" class="invalid-feedback" />
               <label for="tel" class="form-label fs-7"
                 ><span class="text-danger">* </span>聯絡電話</label
               >
+              <ErrorMessage name="電話" class="invalid-feedback" />
             </div>
           </div>
           <div class="form-floating form-downline my-3">
@@ -91,10 +90,10 @@
               placeholder="請輸入姓名"
               v-model="message"
             />
-            <ErrorMessage name="訊息" class="invalid-feedback" />
             <label for="message" class="form-label fs-7"
               ><span class="text-danger">* </span>留下你的訊息</label
             >
+            <ErrorMessage name="訊息" class="invalid-feedback" />
           </div>
           <div class="mt-4 d-flex justify-content-between">
             <p class="fs-8 text-muted d-flex align-items-end">

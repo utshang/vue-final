@@ -15,6 +15,8 @@ import $httpMessageState from "@/libs/PushMessageState";
 import "material-icons/iconfont/material-icons.css";
 import "animate.css";
 
+import CKEditor from "@ckeditor/ckeditor5-vue";
+
 import App from "./App.vue";
 import router from "./router";
 import { date, currency } from "./libs/filters";
@@ -40,11 +42,11 @@ app.config.globalProperties.$httpMessageState = $httpMessageState;
 
 app.use(router);
 app.use(VueAxios, axios);
+app.use(CKEditor);
 
 app.component("VeeLoading", Loading);
-
 app.component("VeeForm", Form);
-
 app.component("VeeField", Field);
 app.component("ErrorMessage", ErrorMessage);
+
 app.mount("#app");
