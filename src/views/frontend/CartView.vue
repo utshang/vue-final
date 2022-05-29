@@ -173,7 +173,6 @@
       <CartSwiper :products="randomProducts" />
     </div>
   </div>
-
   <VeeLoading :active="isLoading" />
 </template>
 

@@ -1,5 +1,4 @@
 <template>
-  <VeeLoading :active="isLoading" />
   <div class="container mt-4">
     <h2 class="fs-2 fw-bold text-primary">訂單列表</h2>
     <table class="table mt-4 border border-1 border-muted">
@@ -78,6 +77,7 @@
     />
     <OrderModal :order="tempOrder" ref="orderModal" @update-paid="updatePaid" />
     <DelModal :item="tempOrder" ref="delModal" @del-item="delOrder" />
+    <VeeLoading :active="isLoading" />
   </div>
 </template>
 

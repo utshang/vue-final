@@ -1,5 +1,4 @@
 <template>
-  <VeeLoading :active="isLoading" />
   <div class="container mt-4">
     <div class="d-flex justify-content-between">
       <h2 class="fs-2 fw-bold text-primary">產品列表</h2>
@@ -75,6 +74,7 @@
     />
     <!-- DelModal -->
     <DelModal :item="tempProduct" ref="delModal" @del-item="delProduct" />
+    <VeeLoading :active="isLoading" />
   </div>
 </template>
 
