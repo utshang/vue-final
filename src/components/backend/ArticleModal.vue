@@ -29,7 +29,7 @@
                 <label for="title" class="form-label">標題</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="title"
                   v-model="tempArticle.title"
                   placeholder="請輸入標題"
@@ -39,7 +39,7 @@
                 <label for="image" class="form-label">輸入圖片網址</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="image"
                   v-model="tempArticle.image"
                   placeholder="請輸入圖片連結"
@@ -49,17 +49,17 @@
                 <label for="author" class="form-label">作者</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="author"
                   v-model="tempArticle.author"
                   placeholder="請輸入標題"
                 />
               </div>
               <div class="mb-3">
-                <label for="create_at">文章建立日期</label>
+                <label for="create_at" class="form-label">文章建立日期</label>
                 <input
                   type="date"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="create_at"
                   v-model="create_at"
                 />
@@ -76,7 +76,7 @@
                   <div class="input-group input-group-sm">
                     <input
                       type="text"
-                      class="form-control form-control"
+                      class="form-control border border-1 border-muted"
                       id="tag"
                       v-model="tempArticle.tag[key]"
                       placeholder="請輸入標籤"
@@ -91,7 +91,7 @@
                   </div>
                 </div>
                 <div
-                  class="col-md-2 mb-1"
+                  class="col-md-2 mb-1 border border-1 border-muted"
                   v-if="
                     tempArticle.tag[tempArticle.tag.length - 1] ||
                     !tempArticle.tag.length
@@ -109,7 +109,7 @@
                 <label for="description" class="form-label">文章描述</label>
                 <textarea
                   type="text"
-                  class="form-control"
+                  class="form-control border border-1 border-muted"
                   id="description"
                   v-model="tempArticle.description"
                   placeholder="請輸入文章描述"
@@ -208,12 +208,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-$primary: #ad795d;
-$white: #fffafa;
-
-.ck-editor__editable_inline {
-  min-height: 300px;
-}
-</style>
