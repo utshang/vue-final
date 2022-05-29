@@ -52,6 +52,10 @@ const routes = [
       },
       {
         path: "articles",
+        component: () => import("../views/frontend/AritclesView.vue"),
+      },
+      {
+        path: "article/:id",
         component: () => import("../views/frontend/AritcleView.vue"),
       },
     ],
@@ -85,7 +89,7 @@ const routes = [
       },
       {
         path: "articles",
-        component: () => import("../views/backend/AdminArticle.vue"),
+        component: () => import("../views/backend/AdminArticles.vue"),
       },
     ],
   },

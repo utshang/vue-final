@@ -89,7 +89,7 @@ export default {
     DelModal,
     PaginationCom,
   },
-  props: ["token"],
+  // props: ["token"],
   data() {
     return {
       products: [],
@@ -99,10 +99,6 @@ export default {
       isLoading: false,
       status: {
         fileUploading: false,
-      },
-      modal: {
-        editModal: "",
-        delModal: "",
       },
       currentPage: 1,
     };
@@ -131,6 +127,7 @@ export default {
       }
       const productComponent = this.$refs.productModal;
       productComponent.openModal();
+      console.log(this.$refs);
     },
     updateProduct(item) {
       this.tempProduct = item;

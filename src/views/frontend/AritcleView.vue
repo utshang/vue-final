@@ -1,3 +1,3 @@
 <template>
-  <div>前台文章</div>
+  <div>前台單一文章</div>
 </template>
