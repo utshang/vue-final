@@ -15,6 +15,11 @@
               >
             </li>
             <li>
+              <RouterLink class="link pb-3 ms-3 fs-7 fw-bold" to="/articles"
+                >最新消息</RouterLink
+              >
+            </li>
+            <li>
               <RouterLink class="link pb-3 ms-3 fs-7 fw-bold" to="/about"
                 >關於我們</RouterLink
               >
@@ -178,6 +183,11 @@
                   <li class="pb-3">
                     <RouterLink class="dropdown-item link" to="/products">
                       全部產品</RouterLink
+                    >
+                  </li>
+                  <li class="pb-3">
+                    <RouterLink class="dropdown-item link" to="/articles"
+                      >最新消息</RouterLink
                     >
                   </li>
                   <li class="pb-3">

@@ -17,9 +17,8 @@
   </div>
   <div class="container mt-4 d-flex justify-content-end">
     <RouterLink to="/admin/products">產品列表</RouterLink>
-
+    <RouterLink to="/admin/articles">|文章列表</RouterLink>
     <RouterLink to="/admin/coupon">| 優惠卷列表 |</RouterLink>
-
     <RouterLink to="/admin/order">訂單列表</RouterLink>
   </div>
 </template>

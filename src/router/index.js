@@ -83,6 +83,10 @@ const routes = [
         path: "order",
         component: () => import("../views/backend/AdminOrder.vue"),
       },
+      {
+        path: "articles",
+        component: () => import("../views/backend/AdminArticle.vue"),
+      },
     ],
   },
   {
