@@ -235,6 +235,7 @@ export default {
         })
         .catch((error) => {
           this.$httpMessageState(error.response, "錯誤訊息");
+          console.log(error.response);
         });
     },
     goToPreviousPage() {
