@@ -52,11 +52,11 @@ const routes = [
       },
       {
         path: "articles",
-        component: () => import("../views/frontend/AritclesView.vue"),
+        component: () => import("../views/frontend/ArticlesView.vue"),
       },
       {
         path: "article/:id",
-        component: () => import("../views/frontend/AritcleView.vue"),
+        component: () => import("../views/frontend/ArticleView.vue"),
       },
     ],
   },
