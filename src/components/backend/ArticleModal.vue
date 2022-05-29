@@ -141,7 +141,7 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-outline-secondary"
+            class="btn btn-success text-white"
             data-bs-dismiss="modal"
           >
             取消
