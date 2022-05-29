@@ -54,7 +54,7 @@ export default {
 }
 @media screen and (min-width: 769px) {
   .slogan {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 }
 @media screen and (min-width: 769px) {
