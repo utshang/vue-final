@@ -66,16 +66,16 @@
                   <input
                     type="url"
                     class="form-control form-control"
-                    v-model="tempProduct.imagesUrl[key]"
+                    v-model="tempProduct.imagesUrl[index]"
                     placeholder="請輸入連結"
                   />
                   <div>
-                    <img class="img-fluid" :src="image" alt="產品多圖" />
+                    <img class="img-fluid" :src="image" :alt="產品多圖" />
                   </div>
                   <button
                     type="button"
                     class="btn btn-outline-danger"
-                    @click="tempProduct.imagesUrl.splice(key, 1)"
+                    @click="tempProduct.imagesUrl.splice(index, 1)"
                   >
                     移除
                   </button>
