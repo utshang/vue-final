@@ -64,7 +64,7 @@
     <ArticleModal
       ref="articleModal"
       :article="tempArticle"
-      :is-new="isNew"
+      :isNew="isNew"
       @update-article="updateArticle"
     ></ArticleModal>
     <DelModal :item="tempArticle" ref="delModal" @del-item="delArticle" />

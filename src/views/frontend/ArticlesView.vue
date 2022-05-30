@@ -29,7 +29,7 @@
         </div>
       </template>
       <template v-else>
-        <div v-for="item in articles" :key="item.id">
+        <div v-for="item in articles" :key="item.id" class="mt-3">
           <RouterLink :to="`/article/${item.id}`">
             <div class="row rounded-3 shadow p-4">
               <div class="col-sm-5 col-md-3">

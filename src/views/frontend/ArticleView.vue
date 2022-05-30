@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div class="body">
-      <div class="d-flex justify-content-between">
+      <img
+        class="article-img rounded-3"
+        :src="article.image"
+        :alt="article.title"
+      />
+      <div class="d-flex justify-content-between mx-5 mt-3">
         <div class="d-flex align-items-center">
           <span class="material-icons-outlined text-primary me-2"> face </span>
           <p class="text-muted me-4">{{ article.author }}</p>
@@ -21,6 +26,10 @@
             <span class="fs-7 text-primary">#{{ item }}</span>
           </p>
         </div>
+      </div>
+      <div class="my-5 mx-5">
+        <h3 class="mb-4">{{ article.title }}</h3>
+        <div class="lh-lg" v-html="article.content"></div>
       </div>
     </div>
   </div>
@@ -68,5 +77,11 @@ $gray-100: #f8f9fa;
 
 .tag {
   background-color: $gray-100;
+}
+
+.article-img {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
 }
 </style>
