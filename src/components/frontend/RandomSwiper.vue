@@ -83,8 +83,8 @@ export default {
           this.products = res.data.products;
           this.getRandomProducts();
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     //Fisher-Yates Shuffle

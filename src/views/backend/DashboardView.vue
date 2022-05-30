@@ -37,8 +37,8 @@ export default {
             //token 沒過期，有身份進到後台，此時 router-view 將會出現
             this.checkSuccess = true;
           })
-          .catch((error) => {
-            this.$httpMessageState(error.response, "錯誤訊息");
+          .catch((err) => {
+            this.$httpMessageState(err.response, "錯誤訊息");
             this.$router.push("/login");
           });
       } else {

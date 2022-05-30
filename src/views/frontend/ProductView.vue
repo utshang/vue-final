@@ -261,8 +261,8 @@ export default {
           this.product = res.data.product;
           this.isLoading = false;
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     updateCartItem(item) {
@@ -276,8 +276,8 @@ export default {
         .then(() => {
           this.getCart();
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     addCart(id, qty = 1) {

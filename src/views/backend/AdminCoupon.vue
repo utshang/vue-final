@@ -100,14 +100,14 @@ export default {
       const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/coupons`;
       this.$http
         .get(url)
-        .then((response) => {
-          this.coupons = response.data.coupons;
-          this.pagination = response.data.pagination;
+        .then((res) => {
+          this.coupons = res.data.coupons;
+          this.pagination = res.data.pagination;
           this.isLoading = false;
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "錯誤訊息");
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     openCouponModal(isNew, item) {
@@ -139,15 +139,15 @@ export default {
         status = "更新優惠券";
       }
       this.$http[httpMethos](url, { data })
-        .then((response) => {
+        .then((res) => {
           this.isLoading = false;
-          this.$httpMessageState(response, status);
+          this.$httpMessageState(res, status);
           this.getCoupons();
           this.$refs.couponModal.hideModal();
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "錯誤訊息");
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     delCoupon() {
@@ -155,16 +155,16 @@ export default {
       this.isLoading = true;
       this.$http
         .delete(url)
-        .then((response) => {
+        .then((res) => {
           this.isLoading = false;
-          this.$httpMessageState(response, "刪除優惠券");
+          this.$httpMessageState(res, "刪除優惠券");
           const delComponent = this.$refs.delModal;
           delComponent.hideModal();
           this.getCoupons();
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "錯誤訊息");
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
   },

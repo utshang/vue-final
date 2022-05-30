@@ -109,14 +109,14 @@ export default {
       this.isLoading = true;
       this.$http
         .get(url, this.tempProduct)
-        .then((response) => {
-          this.orders = response.data.orders;
-          this.pagination = response.data.pagination;
+        .then((res) => {
+          this.orders = res.data.orders;
+          this.pagination = res.data.pagination;
           this.isLoading = false;
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "錯誤訊息");
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     openModal(item) {
@@ -138,16 +138,16 @@ export default {
       };
       this.$http
         .put(api, { data: paid })
-        .then((response) => {
+        .then((res) => {
           this.isLoading = false;
           const orderComponent = this.$refs.orderModal;
           orderComponent.hideModal();
           this.getOrders(this.currentPage);
-          this.$httpMessageState(response, "更新付款狀態");
+          this.$httpMessageState(res, "更新付款狀態");
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "錯誤訊息");
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     delOrder() {
@@ -161,9 +161,9 @@ export default {
           delComponent.hideModal();
           this.getOrders(this.currentPage);
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "錯誤訊息");
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
   },

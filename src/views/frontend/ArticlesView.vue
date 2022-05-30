@@ -96,19 +96,17 @@ export default {
       this.isLoading = true;
       this.$http
         .get(api)
-        .then((response) => {
+        .then((res) => {
           this.isLoading = false;
-          this.articles = response.data.articles;
-          console.log(this.articles);
+          this.articles = res.data.articles;
         })
-        .catch((error) => {
+        .catch(() => {
           // axios 的錯誤狀態，可參考：https://github.com/axios/axios#handling-errors
           // console.log("error", error.response, error.request, error.message);
           this.isLoading = false;
           this.emitter.emit("push-message", {
-            title: "連線錯誤",
             style: "danger",
-            content: error.message,
+            title: "連線錯誤",
           });
         });
     },

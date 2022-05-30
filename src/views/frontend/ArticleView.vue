@@ -55,8 +55,8 @@ export default {
           this.article = res.data.article;
           this.isLoading = false;
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
   },

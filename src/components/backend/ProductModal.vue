@@ -289,29 +289,29 @@ export default {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then((response) => {
+        .then((res) => {
           this.status.fileUploading = false;
-          if (response.data.success) {
-            this.tempProduct.imageUrl = response.data.imageUrl;
+          if (res.data.success) {
+            this.tempProduct.imageUrl = res.data.imageUrl;
             this.$refs.fileInput.value = "";
             //傳遞資料
             this.emitter.emit("push-message", {
               style: "success",
               title: "圖片已上傳",
-              content: response.data.message,
+              content: res.data.message,
             });
           } else {
             this.$refs.fileInput.value = "";
             this.emitter.emit("push-message", {
               style: "danger",
               title: "圖片已上傳",
-              content: response.data.message,
+              content: res.data.message,
             });
           }
         })
-        .catch((error) => {
+        .catch((err) => {
           this.status.fileUploading = false;
-          this.$httpMessageState(error.response, "圖片失敗");
+          this.$httpMessageState(err.response, "圖片失敗");
         });
     },
   },

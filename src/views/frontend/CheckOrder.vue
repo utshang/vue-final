@@ -233,9 +233,8 @@ export default {
           this.isLoading = false;
           this.goToTop();
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
-          console.log(error.response);
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     goToPreviousPage() {

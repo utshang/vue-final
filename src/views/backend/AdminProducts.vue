@@ -109,12 +109,12 @@ export default {
         .get(
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
         )
-        .then((response) => {
-          this.products = response.data.products;
-          this.pagination = response.data.pagination;
+        .then((res) => {
+          this.products = res.data.products;
+          this.pagination = res.data.pagination;
         })
-        .catch((error) => {
-          this.$httpMessageState(error.response, "錯誤訊息");
+        .catch((err) => {
+          this.$httpMessageState(err.response, "錯誤訊息");
         });
     },
     openModal(isNew, item) {
@@ -127,7 +127,6 @@ export default {
       }
       const productComponent = this.$refs.productModal;
       productComponent.openModal();
-      console.log(this.$refs);
     },
     updateProduct(item) {
       this.tempProduct = item;
@@ -142,16 +141,16 @@ export default {
       }
       const productComponent = this.$refs.productModal;
       this.$http[httpMethod](api, { data: this.tempProduct })
-        .then((response) => {
+        .then((res) => {
           this.isLoading = false;
           //$httpMessageState已經import在全域main.js中，不需要再import，在任何地方都可以使用
-          this.$httpMessageState(response, status);
+          this.$httpMessageState(res, status);
           productComponent.hideModal();
           this.getProductsList(this.currentPage);
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, status);
+          this.$httpMessageState(err.response, status);
         });
     },
     openDelProductModal(item) {
