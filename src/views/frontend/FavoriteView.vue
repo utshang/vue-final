@@ -12,7 +12,7 @@
         backgroundImage: `url(${require('@/assets/images/front/favorite.jpg')} )`,
       }"
     ></div>
-    <p class="title text-primary fw-bold text-center mt-5">我的最愛</p>
+    <h2 class="title text-primary fw-bold text-center mt-5">我的最愛</h2>
     <template v-if="product.length === 0">
       <div class="p-5 text-center">
         <span class="material-icons-outlined heart_broken text-primary mb-3">
@@ -215,9 +215,6 @@ $white: #fffafa;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-}
-.title {
-  font-size: 1.875rem;
 }
 .heart_broken {
   font-size: 5rem;

@@ -16,11 +16,7 @@
       :key="`swiperImage_${index}`"
     >
       <div
-        style="
-          height: 30rem;
-          background-position: center center;
-          background-size: cover;
-        "
+        class="swiper-slide-inner"
         :style="{ backgroundImage: `url(${img})` }"
       ></div>
     </swiper-slide>
@@ -38,13 +34,7 @@
   >
     <swiper-slide>
       <div
-        class="swiper-slide-inner"
-        style="
-          height: 8rem;
-          width: 8rem;
-          background-position: center center;
-          background-size: cover;
-        "
+        class="slides"
         :style="{ backgroundImage: `url(${product.imageUrl})` }"
       ></div>
     </swiper-slide>
@@ -52,15 +42,7 @@
       v-for="(img, index) in product.imagesUrl"
       :key="`swiperImage_${index}`"
     >
-      <div
-        style="
-          height: 8rem;
-          width: 8rem;
-          background-position: center center;
-          background-size: cover;
-        "
-        :style="{ backgroundImage: `url(${img})` }"
-      ></div>
+      <div class="slides" :style="{ backgroundImage: `url(${img})` }"></div>
     </swiper-slide>
   </swiper>
 </template>
@@ -121,6 +103,13 @@ export default {
 <style lang="scss" scoped>
 .swiper-slide-inner {
   height: 30rem;
+  background-position: center center;
+  background-size: cover;
+}
+
+.slides {
+  height: 8rem;
+  width: 8rem;
   background-position: center center;
   background-size: cover;
 }

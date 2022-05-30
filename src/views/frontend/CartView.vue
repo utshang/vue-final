@@ -6,7 +6,7 @@
         <div
           class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
         >
-          <h3 class="fs-4 fw-bold">購物車</h3>
+          <h4 class="fw-bold">購物車</h4>
           <button
             class="text-muted d-block border-0"
             type="button"

@@ -48,14 +48,14 @@
     <!-- 產品 -->
     <div class="menu row mt-5">
       <div class="category ps-md-5 col-md-6 col-lg-3">
-        <h3
+        <p
           class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center justify-content-center justify-content-md-start"
           @click="getCategory('')"
         >
           全部商品<span class="ms-2 material-icons-outlined">
             local_florist
           </span>
-        </h3>
+        </p>
         <ul class="d-flex d-md-block justify-content-evenly mt-3">
           <li
             class="mb-4"

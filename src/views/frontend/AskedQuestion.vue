@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <h2 class="slogan text-primary fw-bold">常見問答</h2>
+      <h2 class="text-primary fw-bold">常見問答</h2>
       <div
         class="accordion rounded-3 shadow mt-4"
         id="accordionPanelsStayOpenExample"
@@ -149,14 +149,6 @@ export default {
 @media screen and (min-width: 769px) {
   .body {
     padding: 0 8rem;
-  }
-}
-.slogan {
-  font-size: 1.125rem;
-}
-@media screen and (min-width: 769px) {
-  .slogan {
-    font-size: 1.875rem;
   }
 }
 </style>

@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <h2 class="slogan text-primary fw-bold mb-5">最新消息</h2>
+      <h2 class="text-primary fw-bold mb-5">最新消息</h2>
       <template v-if="articles.length === 0">
         <div class="p-5 text-center">
           <span class="material-icons-outlined heart_broken text-primary mb-3">
@@ -50,8 +50,7 @@
                     {{ item.description }}
                   </p>
                 </div>
-
-                <div class="d-flex align-items-center fs-7">
+                <div class="d-flex align-items-center flex-wrap fs-7">
                   <span class="material-icons-outlined text-primary me-2">
                     face
                   </span>
@@ -62,8 +61,23 @@
                   <p class="fs-7 text-muted me-4">
                     {{ $filters.date(item.create_at) }}
                   </p>
-                  <div v-for="(item, index) in item.tag" :key="`tags_${index}`">
+                  <div
+                    v-for="(item, index) in item.tag"
+                    :key="`tags_${index}`"
+                    class="d-md-block d-none"
+                  >
                     <span class="tag me-2 py-1 px-2 rounded-3"
+                      >#{{ item }}</span
+                    >
+                  </div>
+                </div>
+                <div class="d-flex mt-3">
+                  <div
+                    v-for="(item, index) in item.tag"
+                    :key="`tags_${index}`"
+                    class="d-md-none"
+                  >
+                    <span class="tag fs-7 me-2 py-1 px-2 rounded-3"
                       >#{{ item }}</span
                     >
                   </div>
@@ -132,14 +146,6 @@ $gray-100: #f8f9fa;
 @media screen and (min-width: 769px) {
   .body {
     padding: 0 8rem;
-  }
-}
-.slogan {
-  font-size: 1.125rem;
-}
-@media screen and (min-width: 769px) {
-  .slogan {
-    font-size: 1.875rem;
   }
 }
 .heart_broken {

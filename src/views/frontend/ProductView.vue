@@ -45,7 +45,7 @@
               </span>
             </div>
           </div>
-          <h2 class="product-title fw-bold mb-4">
+          <h2 class="fw-bold mb-4">
             {{ product.title }}
           </h2>
           <div
@@ -334,14 +334,6 @@ $white: #fffafa;
 @media screen and (min-width: 769px) {
   .breadcrumb-item {
     font-size: 1rem;
-  }
-}
-.product-title {
-  font-size: 1.5rem;
-}
-@media screen and (min-width: 769px) {
-  .product-title {
-    font-size: 2rem;
   }
 }
 .origin-price {

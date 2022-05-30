@@ -7,7 +7,7 @@
             <span class="material-icons-outlined text-primary shopping_bag">
               shopping_bag
             </span>
-            <p class="fs-3 fw-bold">訂單資訊確認</p>
+            <h4 class="fw-bold">訂單資訊確認</h4>
           </div>
           <div
             class="order-detail border-top border-2 border-primary pt-3 mt-3"

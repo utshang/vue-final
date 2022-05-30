@@ -7,7 +7,7 @@
           <div
             class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
           >
-            <h3 class="fs-4 fw-bold">購物清單</h3>
+            <h4 class="fw-bold">購物清單</h4>
           </div>
           <div v-for="item in cartData.carts" :key="item.id">
             <div class="cart-list-body mt-4 d-flex">

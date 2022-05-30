@@ -20,7 +20,7 @@
           v-slot="{ errors }"
           @submit="getSubscription"
         >
-          <h2 class="slogan text-primary fw-bold text-center">聯絡我們</h2>
+          <h2 class="text-primary fw-bold text-center">聯絡我們</h2>
           <p class="text-center lh-lg text-muted pt-3 fs-7">
             若有任何問題，歡迎透過表單與我們聯繫，我們將於服務時段儘速聯絡你！<br />你也可以試著在
             <RouterLink class="faq text-decoration-underline" to="/faq"
@@ -176,14 +176,6 @@ $gray-600: #6c757d;
   }
 }
 
-.slogan {
-  font-size: 1.125rem;
-}
-@media screen and (min-width: 769px) {
-  .slogan {
-    font-size: 1.875rem;
-  }
-}
 .form-control {
   border: 1px solid $gray-300;
 }
