@@ -225,10 +225,11 @@ export default {
   methods: {
     getProductsList(page = 1) {
       document.documentElement.scrollTop = 0;
-      let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}&category=${this.category}`;
       this.isLoading = true;
       this.$http
-        .get(url)
+        .get(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/?page=${page}&category=${this.category}`
+        )
         .then((res) => {
           this.products = res.data.products;
           this.pagination = res.data.pagination;
@@ -265,9 +266,10 @@ export default {
     },
     getAllProducts() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`;
       this.$http
-        .get(url)
+        .get(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products/all`
+        )
         .then((res) => {
           this.allProducts = res.data.products;
           this.isLoading = false;

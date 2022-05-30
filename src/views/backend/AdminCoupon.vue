@@ -97,9 +97,10 @@ export default {
   methods: {
     getCoupons() {
       this.isLoading = true;
-      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/coupons`;
       this.$http
-        .get(url)
+        .get(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/coupons`
+        )
         .then((res) => {
           this.coupons = res.data.coupons;
           this.pagination = res.data.pagination;
@@ -151,10 +152,11 @@ export default {
         });
     },
     delCoupon() {
-      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`;
       this.isLoading = true;
       this.$http
-        .delete(url)
+        .delete(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
+        )
         .then((res) => {
           this.isLoading = false;
           this.$httpMessageState(res, "刪除優惠券");

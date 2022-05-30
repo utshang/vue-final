@@ -159,20 +159,21 @@ export default {
       delComponent.openModal();
     },
     delProduct() {
-      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
       this.isLoading = true;
       this.$http
-        .delete(url)
-        .then((response) => {
+        .delete(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
+        )
+        .then((res) => {
           this.isLoading = false;
-          this.$httpMessageState(response, "刪除產品");
+          this.$httpMessageState(res, "刪除產品");
           const delComponent = this.$refs.delModal;
           delComponent.hideModal();
           this.getProductsList(this.currentPage);
         })
-        .catch((error) => {
+        .catch((err) => {
           this.isLoading = false;
-          this.$httpMessageState(error.response, "刪除產品");
+          this.$httpMessageState(err.response, "刪除產品");
         });
     },
   },

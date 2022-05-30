@@ -92,10 +92,11 @@ export default {
   methods: {
     getArticles(page = 1) {
       this.currentPage = page;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/articles?page=${page}`;
       this.isLoading = true;
       this.$http
-        .get(api)
+        .get(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/articles?page=${page}`
+        )
         .then((res) => {
           this.isLoading = false;
           this.articles = res.data.articles;

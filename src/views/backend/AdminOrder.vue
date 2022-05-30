@@ -105,10 +105,12 @@ export default {
   methods: {
     getOrders(currentPage = 1) {
       this.currentPage = currentPage;
-      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`;
       this.isLoading = true;
       this.$http
-        .get(url, this.tempProduct)
+        .get(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`,
+          this.tempProduct
+        )
         .then((res) => {
           this.orders = res.data.orders;
           this.pagination = res.data.pagination;
@@ -132,12 +134,14 @@ export default {
     },
     updatePaid(item) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
       const paid = {
         is_paid: item.is_paid,
       };
       this.$http
-        .put(api, { data: paid })
+        .put(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`,
+          { data: paid }
+        )
         .then((res) => {
           this.isLoading = false;
           const orderComponent = this.$refs.orderModal;
@@ -151,10 +155,11 @@ export default {
         });
     },
     delOrder() {
-      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`;
       this.isLoading = true;
       this.$http
-        .delete(url)
+        .delete(
+          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
+        )
         .then(() => {
           this.isLoading = false;
           const delComponent = this.$refs.delModal;
