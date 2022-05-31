@@ -182,7 +182,6 @@ import ProgressBar from "@/components/frontend/ProgressBar.vue";
 
 export default {
   components: { ProgressBar },
-  inject: ["emitter"],
   data() {
     return {
       loadingStatus: {
@@ -220,18 +219,17 @@ export default {
     },
     createOrder() {
       this.isLoading = true;
-      const order = this.form;
       this.$http
         .post(
-          `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/order`,
-          { data: order }
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`,
+          { data: this.form }
         )
         .then((res) => {
-          const { orderId } = res.data;
-          this.$refs.form.resetForm();
-          this.$router.push(`/checkout/${orderId}`);
           this.isLoading = false;
-          this.goToTop();
+          this.$refs.form.resetForm();
+          this.form.message = "";
+          const { orderId } = res.data;
+          this.$router.push(`/checkout/${orderId}`);
         })
         .catch((err) => {
           this.$httpMessageState(err.response, "錯誤訊息");
