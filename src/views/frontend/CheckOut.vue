@@ -7,10 +7,10 @@
             <span class="material-icons-outlined text-primary shopping_bag">
               shopping_bag
             </span>
-            <h2 class="fw-bold">訂單資訊確認</h2>
+            <h2 class="fw-bold fs-3">訂單資訊確認</h2>
           </div>
           <div
-            class="order-detail border-top border-2 border-primary pt-3 mt-3"
+            class="order-detail border-top border-2 border-secondary pt-3 mt-3"
           >
             <div
               class="accordion rounded-3 shadow mt-4"
@@ -37,7 +37,7 @@
                     :key="item.id"
                   >
                     <div>
-                      <h1 class="text-start fw-bold">
+                      <h1 class="text-start fw-bold fs-6">
                         {{ item.product.title }}
                       </h1>
                       <div class="d-flex align-items-end">

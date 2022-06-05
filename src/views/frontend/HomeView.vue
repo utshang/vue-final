@@ -6,18 +6,16 @@
       backgroundImage: `url(${require('@/assets/images/front/banner.jpg')} )`,
     }"
   >
-    <h1 class="title text-white position-absolute start-50 translate-middle">
-      The Florist
-    </h1>
-    <h2
-      class="slogan text-white mt-3 position-absolute start-50 translate-middle"
-    >
-      希望你的生活，有 The Florist 花閣的陪伴
-    </h2>
+    <div class="position-absolute start-50 top-50 translate-middle text-white">
+      <h1 class="title">The Florist</h1>
+      <h2 class="fs-6 mt-3 mb-5 slogan">
+        希望你的生活，有 The Florist 花閣的陪伴
+      </h2>
+    </div>
     <RouterLink to="/products">
       <button
         type="button"
-        class="cta-btn btn fs-5 text-white position-absolute start-50 translate-middle border-white border-3 rounded-3 px-4"
+        class="cta-btn btn fs-5 text-white border-white border-3 rounded-3 px-4 position-absolute start-50 translate-middle"
       >
         來去逛逛吧！
       </button>
@@ -29,10 +27,10 @@
       <div
         class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
       >
-        <h2 class="fs-2 text-primary fw-bold">
+        <h2 class="fs-2 text-primary fw-bold category-title">
           花束 <span class="fs-5">Bouquet</span>
         </h2>
-        <h3 class="text-light lh-lg my-3">
+        <h3 class="text-light lh-lg my-3 fs-6">
           為想傳遞愛的你，
           <br />無論是特殊節日，抑或是平常日，<br />送給愛的人或是自己一束精心搭配好的花吧！
         </h3>
@@ -49,10 +47,10 @@
         <div
           class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
         >
-          <h2 class="fs-2 text-primary fw-bold">
+          <h2 class="fs-2 text-primary fw-bold category-title">
             花籃 <span class="fs-5">Flower Basket</span>
           </h2>
-          <h3 class="text-light lh-lg my-3">
+          <h3 class="text-light lh-lg my-3 fs-6">
             在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
           </h3>
         </div>
@@ -67,10 +65,10 @@
       <div
         class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
       >
-        <h2 class="fs-2 text-primary fw-bold">
+        <h2 class="fs-2 text-primary fw-bold category-title">
           花材 <span class="fs-5">Materials</span>
         </h2>
-        <h3 class="text-light lh-lg my-3">
+        <h3 class="text-light lh-lg my-3 fs-6">
           為想創造生活儀式感的你，<br />準備了精選的花材，從經典到獨有，<br />讓你親自挑選、親自搭配、親自包裝、親自享受！<br />
         </h3>
       </div>
@@ -85,10 +83,10 @@
         <div
           class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
         >
-          <h2 class="fs-2 text-primary fw-bold">
+          <h2 class="fs-2 text-primary fw-bold category-title">
             器皿 <span class="fs-5">Vase</span>
           </h2>
-          <h3 class="text-light lh-lg my-3">
+          <h3 class="text-light lh-lg my-3 fs-6">
             在室內空間中的一隅，需要器皿去襯托花的美好，<br />讓花朵的美，更容易讓人看見！
           </h3>
         </div>
@@ -127,7 +125,7 @@
         <h2 class="fs-2 text-primary fw-bold mb-5">
           關於我們 <span class="fs-5">About us</span>
         </h2>
-        <h3 class="text-light lh-lg">
+        <h3 class="text-light lh-lg fs-6">
           The florist 花閣 讓花成為你生活中的陪伴<br />
           花，除了可以為生活帶來氛圍，也是一種傳遞愛的媒介，<br />
           希望可以透過花朵，創造生活的儀式感，激發你的浪漫因子，<br />
@@ -204,7 +202,7 @@ export default {
     top: 58%;
   }
 }
-h2 {
+.category-title {
   text-shadow: 1px 1px #f9d4ba;
   span {
     font-family: "Sansita Swashed", cursive;

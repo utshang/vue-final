@@ -6,7 +6,7 @@
         <div
           class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
         >
-          <h2 class="fw-bold">購物車</h2>
+          <h2 class="fw-bold fs-4">購物車</h2>
           <button
             class="text-muted d-block border-0"
             type="button"
@@ -167,7 +167,7 @@
       </div>
     </div>
     <div class="my-6">
-      <h2 class="fs-3 text-primary fw-bold mb-4">
+      <h2 class="text-primary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
       <CartSwiper :products="randomProducts" />

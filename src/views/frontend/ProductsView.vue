@@ -59,18 +59,16 @@
           </span>
         </h2>
         <ul class="d-flex d-md-block justify-content-evenly mt-3">
-          <h2>
-            <li
-              class="mb-4"
-              v-for="item in categories"
-              :key="`類別_${item}`"
-              @click="getCategory(item)"
+          <li
+            class="mb-4"
+            v-for="item in categories"
+            :key="`類別_${item}`"
+            @click="getCategory(item)"
+          >
+            <a
+              ><h2 class="fs-5">{{ item }}</h2></a
             >
-              <a
-                ><span>{{ item }}</span></a
-              >
-            </li>
-          </h2>
+          </li>
         </ul>
       </div>
 
@@ -378,13 +376,13 @@ $white: #fffafa;
   width: 200px;
   transition: all 0.5s;
 }
-.category li a span {
+.category li a h2 {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-.category li a span:after {
+.category li a h2:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -392,11 +390,11 @@ $white: #fffafa;
   right: -20px;
   transition: 0.5s;
 }
-.category li a:hover span {
+.category li a:hover h2 {
   color: #c6cace;
   padding-right: 25px;
 }
-.category li a:hover span:after {
+.category li a:hover h2:after {
   opacity: 1;
   right: 0;
 }

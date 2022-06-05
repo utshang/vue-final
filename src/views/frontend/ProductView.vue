@@ -45,7 +45,7 @@
               </span>
             </div>
           </div>
-          <h1 class="fw-bold mb-4">
+          <h1 class="fw-bold mb-4 fs-2">
             {{ product.title }}
           </h1>
           <div
@@ -62,7 +62,7 @@
               NT$ {{ $filters.currency(product.origin_price) }} 元</del
             >
           </div>
-          <h2 class="product-description lh-lg mt-4 p-3 rounded-3">
+          <h2 class="product-description lh-lg mt-4 p-3 rounded-3 fs-6">
             {{ product.description }}
           </h2>
           <!-- 產品詳細說明 -->
@@ -89,24 +89,20 @@
                   class="accordion-body lh-lg border-top border-1 border-primary"
                 >
                   <ul>
-                    <h3>
-                      <li class="fs-7" v-if="product.specification">
-                        <p class="text-standard">規格：</p>
-                        {{ product.specification }}
-                      </li>
-                    </h3>
-                    <h3>
-                      <li class="fs-7 mt-3" v-if="product.color">
-                        <p class="text-standard">花朵色系：</p>
-                        {{ product.color }}
-                      </li>
-                    </h3>
-                    <h3>
-                      <li class="fs-7 mt-3" v-if="product.notice">
-                        <p class="text-standard">注意事項：</p>
-                        {{ product.notice }}
-                      </li>
-                    </h3>
+                    <li class="fs-7" v-if="product.specification">
+                      <h3 class="text-standard fs-6">規格：</h3>
+                      {{ product.specification }}
+                    </li>
+
+                    <li class="fs-7 mt-3" v-if="product.color">
+                      <h3 class="text-standard fs-6">花朵色系：</h3>
+                      {{ product.color }}
+                    </li>
+
+                    <li class="fs-7 mt-3" v-if="product.notice">
+                      <h3 class="text-standard fs-6">注意事項：</h3>
+                      {{ product.notice }}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -224,7 +220,7 @@
     </div>
     <!-- 精選商品 輪播 -->
     <div class="mt-6">
-      <h2 class="fs-3 text-primary fw-bold mb-4">
+      <h2 class="text-primary fw-bold mb-4">
         推薦商品 <span class="fs-5">Recommend</span>
       </h2>
       <RandomSwiper @get-product="getProduct" />

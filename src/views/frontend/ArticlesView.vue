@@ -19,7 +19,7 @@
           <span class="material-icons-outlined heart_broken text-primary mb-3">
             heart_broken
           </span>
-          <h2 class="text-muted mb-4">目前沒有發佈任何文章唷！</h2>
+          <p class="text-muted mb-4">目前沒有發佈任何文章唷！</p>
 
           <RouterLink
             to="/products"
@@ -29,7 +29,7 @@
         </div>
       </template>
       <template v-else>
-        <div v-for="item in articles" :key="item.id" class="mt-3">
+        <div v-for="item in articles" :key="item.id" class="m-3">
           <RouterLink :to="`/article/${item.id}`">
             <div class="row rounded-3 shadow p-4">
               <div class="col-sm-5 col-md-3">
@@ -46,7 +46,7 @@
                   <h1 class="fs-4 fw-bold text-black mb-3">
                     {{ item.title }}
                   </h1>
-                  <h2 class="mb-3 text-black lh-base">
+                  <h2 class="mb-3 text-black lh-base fs-6">
                     {{ item.description }}
                   </h2>
                 </div>
@@ -66,21 +66,21 @@
                     :key="`tags_${index}`"
                     class="d-md-block d-none"
                   >
-                    <span class="tag me-2 py-1 px-2 rounded-3"
-                      >#{{ item }}</span
-                    >
+                    <h3 class="tag me-2 py-1 px-2 rounded-3 fs-7">
+                      #{{ item }}
+                    </h3>
                   </h3>
                 </div>
-                <div class="d-flex mt-3">
-                  <h3
+                <div class="d-flex d-md-none mt-3 mt-md-0">
+                  <div
                     v-for="(item, index) in item.tag"
                     :key="`tags_${index}`"
                     class="d-md-none"
                   >
-                    <span class="tag fs-7 me-2 py-1 px-2 rounded-3"
-                      >#{{ item }}</span
-                    >
-                  </h3>
+                    <h3 class="tag fs-7 me-2 py-1 px-2 rounded-3 fs-7">
+                      #{{ item }}
+                    </h3>
+                  </div>
                 </div>
               </div>
             </div>

@@ -20,7 +20,7 @@
           v-slot="{ errors }"
           @submit="getSubscription"
         >
-          <h1 class="text-primary fw-bold text-center">聯絡我們</h1>
+          <h1 class="text-primary fw-bold text-center fs-2">聯絡我們</h1>
           <h2 class="text-center lh-lg text-muted pt-3 fs-7">
             若有任何問題，歡迎透過表單與我們聯繫，我們將於服務時段儘速聯絡你！<br />你也可以試著在
             <RouterLink class="faq text-decoration-underline" to="/faq"

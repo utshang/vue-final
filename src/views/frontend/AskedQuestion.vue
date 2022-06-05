@@ -13,7 +13,7 @@
       }"
     ></div>
     <div class="body my-5">
-      <h1 class="text-primary fw-bold">常見問答</h1>
+      <h1 class="text-primary fw-bold fs-2">常見問答</h1>
       <div
         class="accordion rounded-3 shadow mt-4"
         id="accordionPanelsStayOpenExample"
@@ -33,7 +33,9 @@
             class="accordion-collapse collapse show"
             aria-labelledby="panelsStayOpen-headingOne"
           >
-            <h3 class="accordion-body lh-lg border-top border-1 border-primary">
+            <h3
+              class="accordion-body lh-lg border-top border-1 border-primary fs-6"
+            >
               器皿進貨數量不多，加上為了保持花朵的新鮮，全館商品若於網頁訂購皆為預購唷，想要快點收到的朋朋歡迎來工作室逛逛！<br />
               地址：台北市信義區松壽路1號 <br />
               營業時間： MON.-FRI. 09:00-12:00 / 13:00-18:00
@@ -60,7 +62,9 @@
             class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingOne"
           >
-            <h3 class="accordion-body lh-lg border-top border-1 border-primary">
+            <h3
+              class="accordion-body lh-lg border-top border-1 border-primary fs-6"
+            >
               請務必拍照存檔並來信至客服信箱向我們反應，小編將於上班時段儘速回覆！
               <br />
               客服信箱：service@theflorist.com.tw
@@ -87,7 +91,9 @@
             class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingOne"
           >
-            <h3 class="accordion-body lh-lg border-top border-1 border-primary">
+            <h3
+              class="accordion-body lh-lg border-top border-1 border-primary fs-6"
+            >
               有的！為保護消費者權益，器皿的部分享七天鑑賞期，辦理退換時請保持商品的完整性，如商品超過鑑賞期欲辦理退貨者，或是因人為因素造成商品受損，恕不受理，敬請見諒！
             </h3>
           </div>
@@ -112,7 +118,9 @@
             class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingOne"
           >
-            <h3 class="accordion-body lh-lg border-top border-1 border-primary">
+            <h3
+              class="accordion-body lh-lg border-top border-1 border-primary fs-6"
+            >
               於上班時段來信至客服信箱或直接前往工作室，我們會竭盡心力的為你解決問題！
             </h3>
           </div>
