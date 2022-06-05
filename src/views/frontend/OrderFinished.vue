@@ -6,7 +6,7 @@
           <span class="material-icons-outlined text-primary shopping_bag">
             shopping_bag
           </span>
-          <p class="fs-3 fw-bold">訂單已成立</p>
+          <h1 class="fs-3 fw-bold">訂單已成立</h1>
           <p class="mt-3 mb-4">
             我們收到你的訂單囉！感謝訂購！<br />
             自取的朋朋，我們將通知你取貨，請務必留意來電<br />

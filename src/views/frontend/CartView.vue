@@ -6,7 +6,7 @@
         <div
           class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
         >
-          <h4 class="fw-bold">購物車</h4>
+          <h2 class="fw-bold">購物車</h2>
           <button
             class="text-muted d-block border-0"
             type="button"
@@ -29,9 +29,9 @@
                 </RouterLink>
                 <div class="d-flex flex-column justify-content-start ms-3 mt-2">
                   <RouterLink :to="`/product/${item.product.id}`" class="mb-3">
-                    <p class="fs-5 fw-bold text-black">
+                    <h1 class="fs-5 fw-bold text-black">
                       {{ item.product.title }}
-                    </p>
+                    </h1>
                   </RouterLink>
                   <div class="select-num">
                     <select

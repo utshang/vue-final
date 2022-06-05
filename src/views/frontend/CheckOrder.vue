@@ -7,7 +7,7 @@
           <div
             class="d-flex justify-content-between align-items-end fs-7 border-bottom border-2 border-secondary pb-3"
           >
-            <h4 class="fw-bold">購物清單</h4>
+            <h2 class="fw-bold">購物清單</h2>
           </div>
           <div v-for="item in cartData.carts" :key="item.id">
             <div class="cart-list-body mt-4 d-flex">
@@ -21,9 +21,9 @@
                 </RouterLink>
                 <div class="d-flex flex-column justify-content-start ms-3 mt-2">
                   <RouterLink :to="`/product/${item.product.id}`" class="mb-3">
-                    <p class="fs-5 fw-bold text-black">
+                    <h1 class="fs-5 fw-bold text-black">
                       {{ item.product.title }}
-                    </p>
+                    </h1>
                   </RouterLink>
                   <p>數量：{{ item.qty }} {{ item.product.unit }}</p>
                   <div class="d-sm-none d-flex align-items-end">
@@ -73,11 +73,11 @@
           @submit="createOrder"
         >
           <div>
-            <h3
+            <h2
               class="border-bottom border-2 border-secondary fs-4 fw-bold pb-3"
             >
               填寫資料
-            </h3>
+            </h2>
           </div>
           <div class="form-floating form-downline mt-4 mb-3">
             <VeeField

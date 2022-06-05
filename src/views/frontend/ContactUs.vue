@@ -20,14 +20,14 @@
           v-slot="{ errors }"
           @submit="getSubscription"
         >
-          <h2 class="text-primary fw-bold text-center">聯絡我們</h2>
-          <p class="text-center lh-lg text-muted pt-3 fs-7">
+          <h1 class="text-primary fw-bold text-center">聯絡我們</h1>
+          <h2 class="text-center lh-lg text-muted pt-3 fs-7">
             若有任何問題，歡迎透過表單與我們聯繫，我們將於服務時段儘速聯絡你！<br />你也可以試著在
             <RouterLink class="faq text-decoration-underline" to="/faq"
               >常見問答</RouterLink
             >
             找到相關答案
-          </p>
+          </h2>
 
           <div class="form-floating form-downline mt-4 mb-3">
             <VeeField

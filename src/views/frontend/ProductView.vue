@@ -45,9 +45,9 @@
               </span>
             </div>
           </div>
-          <h2 class="fw-bold mb-4">
+          <h1 class="fw-bold mb-4">
             {{ product.title }}
-          </h2>
+          </h1>
           <div
             class="price fw-bold text-primary mt-3"
             v-if="product.origin_price === product.price"
@@ -62,9 +62,9 @@
               NT$ {{ $filters.currency(product.origin_price) }} 元</del
             >
           </div>
-          <p class="product-description lh-lg mt-4 p-3 rounded-3">
+          <h2 class="product-description lh-lg mt-4 p-3 rounded-3">
             {{ product.description }}
-          </p>
+          </h2>
           <!-- 產品詳細說明 -->
           <div
             class="accordion rounded-3 shadow mt-4"
@@ -89,18 +89,24 @@
                   class="accordion-body lh-lg border-top border-1 border-primary"
                 >
                   <ul>
-                    <li class="fs-7" v-if="product.specification">
-                      <p class="text-standard">規格：</p>
-                      {{ product.specification }}
-                    </li>
-                    <li class="fs-7 mt-3" v-if="product.color">
-                      <p class="text-standard">花朵色系：</p>
-                      {{ product.color }}
-                    </li>
-                    <li class="fs-7 mt-3" v-if="product.notice">
-                      <p class="text-standard">注意事項：</p>
-                      {{ product.notice }}
-                    </li>
+                    <h3>
+                      <li class="fs-7" v-if="product.specification">
+                        <p class="text-standard">規格：</p>
+                        {{ product.specification }}
+                      </li>
+                    </h3>
+                    <h3>
+                      <li class="fs-7 mt-3" v-if="product.color">
+                        <p class="text-standard">花朵色系：</p>
+                        {{ product.color }}
+                      </li>
+                    </h3>
+                    <h3>
+                      <li class="fs-7 mt-3" v-if="product.notice">
+                        <p class="text-standard">注意事項：</p>
+                        {{ product.notice }}
+                      </li>
+                    </h3>
                   </ul>
                 </div>
               </div>

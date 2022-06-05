@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="my-5 mx-5">
-        <h3 class="mb-4">{{ article.title }}</h3>
+        <h1 class="mb-4">{{ article.title }}</h1>
         <div class="lh-lg" v-html="article.content"></div>
       </div>
     </div>

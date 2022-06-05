@@ -19,7 +19,7 @@
           <span class="material-icons-outlined heart_broken text-primary mb-3">
             heart_broken
           </span>
-          <p class="text-muted mb-4">目前沒有發佈任何文章唷！</p>
+          <h2 class="text-muted mb-4">目前沒有發佈任何文章唷！</h2>
 
           <RouterLink
             to="/products"
@@ -43,12 +43,12 @@
                 class="col-sm-7 col-md-9 mt-4 mt-sm-1 my-1 d-flex flex-column justify-content-between"
               >
                 <div>
-                  <h3 class="fs-4 fw-bold text-black mb-3">
+                  <h1 class="fs-4 fw-bold text-black mb-3">
                     {{ item.title }}
-                  </h3>
-                  <p class="mb-3 text-black lh-base">
+                  </h1>
+                  <h2 class="mb-3 text-black lh-base">
                     {{ item.description }}
-                  </p>
+                  </h2>
                 </div>
                 <div class="d-flex align-items-center flex-wrap fs-7">
                   <span class="material-icons-outlined text-primary me-2">
@@ -61,7 +61,7 @@
                   <p class="fs-7 text-muted me-4">
                     {{ $filters.date(item.create_at) }}
                   </p>
-                  <div
+                  <h3
                     v-for="(item, index) in item.tag"
                     :key="`tags_${index}`"
                     class="d-md-block d-none"
@@ -69,10 +69,10 @@
                     <span class="tag me-2 py-1 px-2 rounded-3"
                       >#{{ item }}</span
                     >
-                  </div>
+                  </h3>
                 </div>
                 <div class="d-flex mt-3">
-                  <div
+                  <h3
                     v-for="(item, index) in item.tag"
                     :key="`tags_${index}`"
                     class="d-md-none"
@@ -80,7 +80,7 @@
                     <span class="tag fs-7 me-2 py-1 px-2 rounded-3"
                       >#{{ item }}</span
                     >
-                  </div>
+                  </h3>
                 </div>
               </div>
             </div>

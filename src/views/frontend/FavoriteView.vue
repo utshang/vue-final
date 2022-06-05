@@ -70,15 +70,15 @@
                 </div>
                 <div class="fav-body mt-sm-1">
                   <RouterLink :to="`/product/${item.id}`">
-                    <h2
+                    <h1
                       class="fav-item-title text-primary fw-bold mb-3 lh-base"
                     >
                       {{ item.title }}
-                    </h2>
+                    </h1>
                   </RouterLink>
-                  <p class="fav-item-description fs-7 text-muted mb-4 lh-base">
+                  <h2 class="fav-item-description fs-7 text-muted mb-4 lh-base">
                     {{ item.description }}
-                  </p>
+                  </h2>
                   <div class="d-flex align-items-end fw-bold">
                     <p class="fs-5 text-black me-2">
                       NT$ {{ $filters.currency(item.price) }}

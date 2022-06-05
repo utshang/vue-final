@@ -9,11 +9,11 @@
     <h1 class="title text-white position-absolute start-50 translate-middle">
       The Florist
     </h1>
-    <p
+    <h2
       class="slogan text-white mt-3 position-absolute start-50 translate-middle"
     >
       希望你的生活，有 The Florist 花閣的陪伴
-    </p>
+    </h2>
     <RouterLink to="/products">
       <button
         type="button"
@@ -32,10 +32,10 @@
         <h2 class="fs-2 text-primary fw-bold">
           花束 <span class="fs-5">Bouquet</span>
         </h2>
-        <p class="text-light lh-lg my-3">
+        <h3 class="text-light lh-lg my-3">
           為想傳遞愛的你，
           <br />無論是特殊節日，抑或是平常日，<br />送給愛的人或是自己一束精心搭配好的花吧！
-        </p>
+        </h3>
       </div>
       <div
         class="category-img shadow col-md-6 mb-5"
@@ -52,9 +52,9 @@
           <h2 class="fs-2 text-primary fw-bold">
             花籃 <span class="fs-5">Flower Basket</span>
           </h2>
-          <p class="text-light lh-lg my-3">
+          <h3 class="text-light lh-lg my-3">
             在聚會或派對時，<br />除了美食佳餚填滿我們的胃，<br />滂薄的花籃與瀰漫的香氣也滿足了視覺與嗅覺！
-          </p>
+          </h3>
         </div>
         <div
           class="category-img shadow col-md-6 mb-5"
@@ -70,9 +70,9 @@
         <h2 class="fs-2 text-primary fw-bold">
           花材 <span class="fs-5">Materials</span>
         </h2>
-        <p class="text-light lh-lg my-3">
+        <h3 class="text-light lh-lg my-3">
           為想創造生活儀式感的你，<br />準備了精選的花材，從經典到獨有，<br />讓你親自挑選、親自搭配、親自包裝、親自享受！<br />
-        </p>
+        </h3>
       </div>
       <div
         class="category-img shadow col-md-6 mb-5"
@@ -88,9 +88,9 @@
           <h2 class="fs-2 text-primary fw-bold">
             器皿 <span class="fs-5">Vase</span>
           </h2>
-          <p class="text-light lh-lg my-3">
+          <h3 class="text-light lh-lg my-3">
             在室內空間中的一隅，需要器皿去襯托花的美好，<br />讓花朵的美，更容易讓人看見！
-          </p>
+          </h3>
         </div>
         <div
           class="category-img shadow col-md-6"
@@ -127,12 +127,12 @@
         <h2 class="fs-2 text-primary fw-bold mb-5">
           關於我們 <span class="fs-5">About us</span>
         </h2>
-        <p class="text-light lh-lg">
+        <h3 class="text-light lh-lg">
           The florist 花閣 讓花成為你生活中的陪伴<br />
           花，除了可以為生活帶來氛圍，也是一種傳遞愛的媒介，<br />
           希望可以透過花朵，創造生活的儀式感，激發你的浪漫因子，<br />
           希望你的生活，有The Florist 花閣的相伴。
-        </p>
+        </h3>
       </div>
       <div
         class="about-img shadow col-md-6 ms-xl-5"

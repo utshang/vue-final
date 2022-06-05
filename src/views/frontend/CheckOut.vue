@@ -7,7 +7,7 @@
             <span class="material-icons-outlined text-primary shopping_bag">
               shopping_bag
             </span>
-            <h4 class="fw-bold">訂單資訊確認</h4>
+            <h2 class="fw-bold">訂單資訊確認</h2>
           </div>
           <div
             class="order-detail border-top border-2 border-primary pt-3 mt-3"
@@ -37,7 +37,9 @@
                     :key="item.id"
                   >
                     <div>
-                      <p class="text-start fw-bold">{{ item.product.title }}</p>
+                      <h1 class="text-start fw-bold">
+                        {{ item.product.title }}
+                      </h1>
                       <div class="d-flex align-items-end">
                         <p class="fw-bold">
                           NT$

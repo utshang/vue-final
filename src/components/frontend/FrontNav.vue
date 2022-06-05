@@ -4,9 +4,11 @@
   >
     <div class="nav justify-content-between">
       <div class="d-flex">
-        <RouterLink class="home text-primary fs-3 mt-1" to="/"
-          >The Florist</RouterLink
-        >
+        <h2>
+          <RouterLink class="home text-primary fs-3 mt-1" to="/"
+            >The Florist</RouterLink
+          >
+        </h2>
         <div class="d-md-block d-none">
           <div class="d-flex mt-3">
             <li>

@@ -33,40 +33,44 @@
           class="search-list shadow mt-2 position-absolute"
           :class="searchComplete ? '' : 'd-none'"
         >
-          <li
-            class="search-result p-3 fs-7"
-            v-for="item in matchProducts"
-            :key="item.title"
-          >
-            <RouterLink :to="`/product/${item.id}`"
-              >{{ item.title }}
-            </RouterLink>
-          </li>
+          <h1>
+            <li
+              class="search-result p-3 fs-7"
+              v-for="item in matchProducts"
+              :key="item.title"
+            >
+              <RouterLink :to="`/product/${item.id}`"
+                >{{ item.title }}
+              </RouterLink>
+            </li>
+          </h1>
         </ul>
       </div>
     </div>
     <!-- 產品 -->
     <div class="menu row mt-5">
       <div class="category ps-md-5 col-md-6 col-lg-3">
-        <p
+        <h2
           class="mb-4 fs-4 fw-bold text-primary d-flex align-items-center justify-content-center justify-content-md-start"
           @click="getCategory('')"
         >
           全部商品<span class="ms-2 material-icons-outlined">
             local_florist
           </span>
-        </p>
+        </h2>
         <ul class="d-flex d-md-block justify-content-evenly mt-3">
-          <li
-            class="mb-4"
-            v-for="item in categories"
-            :key="`類別_${item}`"
-            @click="getCategory(item)"
-          >
-            <a
-              ><span>{{ item }}</span></a
+          <h2>
+            <li
+              class="mb-4"
+              v-for="item in categories"
+              :key="`類別_${item}`"
+              @click="getCategory(item)"
             >
-          </li>
+              <a
+                ><span>{{ item }}</span></a
+              >
+            </li>
+          </h2>
         </ul>
       </div>
 
@@ -356,9 +360,6 @@ $white: #fffafa;
     padding-left: 2.2rem;
   }
 }
-h1 {
-  text-align: center;
-}
 .router-link-active {
   color: $gray-600;
   &:hover {
@@ -475,12 +476,6 @@ h1 {
 }
 
 .menu {
-  h3 {
-    cursor: pointer;
-  }
-  &-bar {
-    padding-right: 1rem;
-  }
   .sentiment_dissatisfied {
     font-size: 3rem;
   }
