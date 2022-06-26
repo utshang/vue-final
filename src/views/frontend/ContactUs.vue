@@ -96,7 +96,7 @@
           </div>
           <div class="mt-4 d-flex justify-content-between">
             <p class="fs-8 text-muted d-flex align-items-end">
-              服務時段：MON.-FRI. 09:00-20:00
+              服務時段：MON.-FRI. 09:00-18:00
             </p>
             <button
               type="submit"
