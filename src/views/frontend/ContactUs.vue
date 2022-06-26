@@ -87,7 +87,7 @@
               class="form-control"
               :class="{ 'is-invalid': errors['訊息'] }"
               rules="required"
-              placeholder="請輸入姓名"
+              placeholder="請輸入訊息"
               v-model="message"
             />
             <label for="message" class="form-label fs-7"

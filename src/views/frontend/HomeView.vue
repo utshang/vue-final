@@ -28,7 +28,7 @@
         class="category-des d-flex flex-column justify-content-center align-items-center col-md-6"
       >
         <h2 class="fs-2 text-primary fw-bold category-title">
-          花束 <span class="fs-5">Bouquet</span>
+          花束 <span class="fs-5">Bouquet｀</span>
         </h2>
         <h3 class="text-light lh-lg my-3 fs-6">
           為想傳遞愛的你，
