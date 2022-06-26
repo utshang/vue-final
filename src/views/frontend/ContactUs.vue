@@ -28,7 +28,6 @@
             >
             找到相關答案
           </h2>
-
           <div class="form-floating form-downline mt-4 mb-3">
             <VeeField
               id="name"
@@ -80,7 +79,7 @@
             </div>
           </div>
           <div class="form-floating form-downline my-3">
-            <VeeField
+            <VeeField｀
               id="message"
               name="訊息"
               type="text"
@@ -153,7 +152,6 @@ export default {
         });
     },
   },
-  mounted() {},
 };
 </script>
 
