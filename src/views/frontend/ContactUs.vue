@@ -79,7 +79,7 @@
             </div>
           </div>
           <div class="form-floating form-downline my-3">
-            <VeeField｀
+            <VeeField
               id="message"
               name="訊息"
               type="text"
@@ -150,6 +150,14 @@ export default {
             title: "發生錯誤，請稍後再試！",
           });
         });
+    },
+    validateNote(value) {
+      // if the field is empty
+      if (!value) {
+        return "請記得備註！";
+      }
+      // All is good
+      return true;
     },
   },
 };
